@@ -13,7 +13,7 @@ namespace IdentityServerAzureSpike.IdentityServerWebApi
     {
         public void Configuration(IAppBuilder appBuilder)
         {
-            LogProvider.SetCurrentLogProvider(new DiagnosticsTraceLogProvider());
+            //LogProvider.SetCurrentLogProvider(new DiagnosticsTraceLogProvider());
 
             var factory = InMemoryFactory.Create(
                 users: Users.Get(),

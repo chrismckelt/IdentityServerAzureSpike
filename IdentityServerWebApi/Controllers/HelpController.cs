@@ -19,7 +19,7 @@ namespace IdentityServerAzureSpike.IdentityServerWebApi.Controllers
     ///   The HELP controller.
     /// </summary>
     /// <remarks>Adjust routing prefix according to your own needs.</remarks>
-    [RoutePrefix("api/help")]
+    [RoutePrefix("help")]
     public sealed class HelpController : HelpControllerBase
     {
         /// <summary>
