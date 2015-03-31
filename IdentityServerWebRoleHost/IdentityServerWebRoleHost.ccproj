@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>2.5</ProductVersion>
+    <ProjectGuid>5c71cbb0-cbaf-462c-b41d-f61d36aa8557</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IdentityServerWebRoleApiHost</RootNamespace>
+    <AssemblyName>IdentityServerWebRoleApiHost</AssemblyName>
+    <StartDevelopmentStorage>True</StartDevelopmentStorage>
+    <Name>IdentityServerWebRoleHost</Name>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <!-- Items for the project -->
+  <ItemGroup>
+    <ServiceDefinition Include="ServiceDefinition.csdef" />
+    <ServiceConfiguration Include="ServiceConfiguration.Local.cscfg" />
+    <ServiceConfiguration Include="ServiceConfiguration.Cloud.cscfg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IdentityServerWebApi\IdentityServerWebApi.csproj">
+      <Name>IdentityServerWebApi</Name>
+      <Project>{128b21a2-1f23-465b-8002-6c18f040188c}</Project>
+      <Private>True</Private>
+      <RoleType>Web</RoleType>
+      <RoleName>IdentityServerWebApi</RoleName>
+      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
+    </ProjectReference>
+    <ProjectReference Include="..\SiteA\SiteA.csproj">
+      <Name>SiteA</Name>
+      <Project>{7b8919f0-51f1-468b-ad14-a390738f00b0}</Project>
+      <Private>True</Private>
+      <RoleType>Web</RoleType>
+      <RoleName>SiteA</RoleName>
+      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
+    </ProjectReference>
+    <ProjectReference Include="..\SiteB\SiteB.csproj">
+      <Name>SiteB</Name>
+      <Project>{41987699-7ce6-491a-87a2-328fc47c1b4e}</Project>
+      <Private>True</Private>
+      <RoleType>Web</RoleType>
+      <RoleName>SiteB</RoleName>
+      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
+    </ProjectReference>
+    <ProjectReference Include="..\SiteC\SiteC.csproj">
+      <Name>SiteC</Name>
+      <Project>{bbd228df-3187-4842-85f2-95be2deeda2e}</Project>
+      <Private>True</Private>
+      <RoleType>Web</RoleType>
+      <RoleName>SiteC</RoleName>
+      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="IdentityServerWebApiContent\" />
+    <Folder Include="SiteAContent\" />
+    <Folder Include="SiteBContent\" />
+    <Folder Include="SiteCContent\" />
+  </ItemGroup>
+  <ItemGroup>
+    <DiagnosticsConfiguration Include="IdentityServerWebApiContent\diagnostics.wadcfgx" />
+    <DiagnosticsConfiguration Include="SiteAContent\diagnostics.wadcfgx" />
+    <DiagnosticsConfiguration Include="SiteBContent\diagnostics.wadcfgx" />
+    <DiagnosticsConfiguration Include="SiteCContent\diagnostics.wadcfgx" />
+  </ItemGroup>
+  <!-- Import the target files for this project template -->
+  <PropertyGroup>
+    <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
+    <CloudExtensionsDir Condition=" '$(CloudExtensionsDir)' == '' ">$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Windows Azure Tools\2.5\</CloudExtensionsDir>
+  </PropertyGroup>
+  <Import Project="$(CloudExtensionsDir)Microsoft.WindowsAzure.targets" />
+</Project>

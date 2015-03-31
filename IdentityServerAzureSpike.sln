@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServerWebApi", "IdentityServerWebApi\IdentityServerWebApi.csproj", "{128B21A2-1F23-465B-8002-6C18F040188C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiteA", "SiteA\SiteA.csproj", "{7B8919F0-51F1-468B-AD14-A390738F00B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiteB", "SiteB\SiteB.csproj", "{41987699-7CE6-491A-87A2-328FC47C1B4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiteC", "SiteC\SiteC.csproj", "{BBD228DF-3187-4842-85F2-95BE2DEEDA2E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AC377108-3821-4941-8F41-5A877882FCC8}"
+	ProjectSection(SolutionItems) = preProject
+		ReadMe.md = ReadMe.md
+	EndProjectSection
+EndProject
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "IdentityServerWebRoleHost", "IdentityServerWebRoleHost\IdentityServerWebRoleHost.ccproj", "{5C71CBB0-CBAF-462C-B41D-F61D36AA8557}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{128B21A2-1F23-465B-8002-6C18F040188C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{128B21A2-1F23-465B-8002-6C18F040188C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{128B21A2-1F23-465B-8002-6C18F040188C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{128B21A2-1F23-465B-8002-6C18F040188C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B8919F0-51F1-468B-AD14-A390738F00B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B8919F0-51F1-468B-AD14-A390738F00B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B8919F0-51F1-468B-AD14-A390738F00B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B8919F0-51F1-468B-AD14-A390738F00B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41987699-7CE6-491A-87A2-328FC47C1B4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41987699-7CE6-491A-87A2-328FC47C1B4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41987699-7CE6-491A-87A2-328FC47C1B4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41987699-7CE6-491A-87A2-328FC47C1B4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBD228DF-3187-4842-85F2-95BE2DEEDA2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBD228DF-3187-4842-85F2-95BE2DEEDA2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBD228DF-3187-4842-85F2-95BE2DEEDA2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBD228DF-3187-4842-85F2-95BE2DEEDA2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C71CBB0-CBAF-462C-B41D-F61D36AA8557}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C71CBB0-CBAF-462C-B41D-F61D36AA8557}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C71CBB0-CBAF-462C-B41D-F61D36AA8557}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C71CBB0-CBAF-462C-B41D-F61D36AA8557}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

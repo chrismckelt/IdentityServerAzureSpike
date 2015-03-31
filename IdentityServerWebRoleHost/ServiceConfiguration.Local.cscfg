@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration serviceName="IdentityServerWebRoleApi" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2014-06.2.4">
+  <Role name="IdentityServerWebApi">
+    <Instances count="1" />
+    <ConfigurationSettings />
+  </Role>
+  <Role name="SiteA">
+    <Instances count="1" />
+    <ConfigurationSettings />
+  </Role>
+  <Role name="SiteB">
+    <Instances count="1" />
+    <ConfigurationSettings />
+  </Role>
+  <Role name="SiteC">
+    <Instances count="1" />
+    <ConfigurationSettings />
+  </Role>
+</ServiceConfiguration>
