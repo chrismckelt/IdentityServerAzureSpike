@@ -1,11 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.Diagnostics;
 using Microsoft.WindowsAzure.ServiceRuntime;
 
-namespace SiteB
+namespace IdentityServerAzureSpike.SiteB
 {
     public class WebRole : RoleEntryPoint
     {

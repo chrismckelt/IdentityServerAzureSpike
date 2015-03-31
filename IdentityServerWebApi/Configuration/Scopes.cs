@@ -18,7 +18,7 @@ using System.Collections.Generic;
 using IdentityServer3.Core;
 using IdentityServer3.Core.Models;
 
-namespace IdentityServerWebApi.Configuration
+namespace IdentityServerAzureSpike.IdentityServerWebApi.Configuration
 {
     public class Scopes
     {

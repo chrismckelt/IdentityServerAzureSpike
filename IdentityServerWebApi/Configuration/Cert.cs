@@ -17,7 +17,7 @@
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
 
-namespace IdentityServerWebApi.Configuration
+namespace IdentityServerAzureSpike.IdentityServerWebApi.Configuration
 {
     public class Certificate
     {

@@ -19,7 +19,7 @@ using System.Security.Claims;
 using IdentityServer3.Core;
 using IdentityServer3.Core.Services.InMemory;
 
-namespace IdentityServerWebApi.Configuration
+namespace IdentityServerAzureSpike.IdentityServerWebApi.Configuration
 {
     static class Users
     {

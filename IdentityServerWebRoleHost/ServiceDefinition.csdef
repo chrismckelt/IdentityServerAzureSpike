@@ -1,51 +1,55 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ServiceDefinition name="IdentityServerWebRoleApi" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2014-06.2.4">
+  <!-- IdentityServerWebApi -->
   <WebRole name="IdentityServerWebApi" vmsize="Small">
     <Sites>
-      <Site name="Web">
+      <Site name="IdentityServerWebApi" physicalDirectory="..\..\..\IdentityServerWebApi">
         <Bindings>
-          <Binding name="Endpoint1" endpointName="Endpoint1" />
+          <Binding name="IdentityServerWebApi" endpointName="IdentityServerWebApiEndpoint1" hostHeader="identity.demo.local" />
         </Bindings>
       </Site>
     </Sites>
     <Endpoints>
-      <InputEndpoint name="Endpoint1" protocol="http" port="80" />
+      <InputEndpoint name="IdentityServerWebApiEndpoint1" protocol="http" port="9555" />
     </Endpoints>
   </WebRole>
+  <!-- SiteA -->
   <WebRole name="SiteA" vmsize="Small">
     <Sites>
-      <Site name="Web">
+      <Site name="SiteA" physicalDirectory="..\..\..\SiteA">
         <Bindings>
-          <Binding name="Endpoint1" endpointName="Endpoint1" />
+          <Binding name="SiteA" endpointName="SiteAEndpoint1" hostHeader="sitea.demo.local" />
         </Bindings>
       </Site>
     </Sites>
     <Endpoints>
-      <InputEndpoint name="Endpoint1" protocol="http" port="8080" />
+      <InputEndpoint name="SiteAEndpoint1" protocol="http" port="9556" />
     </Endpoints>
   </WebRole>
+  <!-- SiteB -->
   <WebRole name="SiteB" vmsize="Small">
     <Sites>
-      <Site name="Web">
+      <Site name="SiteB" physicalDirectory="..\..\..\SiteB">
         <Bindings>
-          <Binding name="Endpoint1" endpointName="Endpoint1" />
+          <Binding name="SiteB" endpointName="SiteBEndpoint1" hostHeader="siteb.demo.local" />
         </Bindings>
       </Site>
     </Sites>
     <Endpoints>
-      <InputEndpoint name="Endpoint1" protocol="http" port="8081" />
+      <InputEndpoint name="SiteBEndpoint1" protocol="http" port="9557" />
     </Endpoints>
   </WebRole>
+  <!-- SiteC -->
   <WebRole name="SiteC" vmsize="Small">
     <Sites>
-      <Site name="Web">
+      <Site name="SiteC" physicalDirectory="..\..\..\SiteC">
         <Bindings>
-          <Binding name="Endpoint1" endpointName="Endpoint1" />
+          <Binding name="SiteC" endpointName="SiteCEndpoint1" hostHeader="sitec.demo.local" />
         </Bindings>
       </Site>
     </Sites>
     <Endpoints>
-      <InputEndpoint name="Endpoint1" protocol="http" port="8082" />
+      <InputEndpoint name="SiteCEndpoint1" protocol="http" port="9558" />
     </Endpoints>
   </WebRole>
 </ServiceDefinition>

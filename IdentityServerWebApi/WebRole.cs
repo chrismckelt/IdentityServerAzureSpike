@@ -1,16 +1,20 @@
 using IdentityServer3.Core.Configuration;
-using IdentityServerWebApi.Configuration;
+using IdentityServer3.Core.Logging;
+using IdentityServerAzureSpike.IdentityServerWebApi;
+using IdentityServerAzureSpike.IdentityServerWebApi.Configuration;
 using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartup(typeof(IdentityServerWebApi.Startup))]
+[assembly: OwinStartup(typeof(Startup))]
 
-namespace IdentityServerWebApi
+namespace IdentityServerAzureSpike.IdentityServerWebApi
 {
     public class Startup
     {
         public void Configuration(IAppBuilder appBuilder)
         {
+            LogProvider.SetCurrentLogProvider(new DiagnosticsTraceLogProvider());
+
             var factory = InMemoryFactory.Create(
                 users: Users.Get(),
                 clients: Clients.Get());
@@ -22,6 +26,9 @@ namespace IdentityServerWebApi
             };
 
             appBuilder.UseIdentityServer(options);
+
+            WebApiConfig.Register();
+
         }
     }
 }
