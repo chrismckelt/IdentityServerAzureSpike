@@ -3,7 +3,10 @@
 ### Demo
 
 -	Single Sign On/Out for customers under any *.website.com website 
--	2 MVC web sites authenticating against an Identity Server  
+-	4 Sites
+    - 1 x WebApi
+    - 2 x MVC
+    - 1 x JavaScript SPA
 -	Session management handled by client sites (token refresh/expiry)
 
 ### Assumptions
