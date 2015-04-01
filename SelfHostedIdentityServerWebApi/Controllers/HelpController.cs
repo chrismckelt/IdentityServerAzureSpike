@@ -23,6 +23,7 @@ namespace SelfHostedIdentityServerWebApi.Controllers
             Info.MyServiceName = "identity.demo.local";
             Info.MyCompanyName = "Identity Server Spike";
             Info.MyCustomerName = "CC Identity";
+            Info.MyCustomerUrl = "https://github.com/chrismckelt/IdentityServerAzureSpike";
             Info.MyCompanyUrl = "https://github.com/chrismckelt/IdentityServerAzureSpike";
             Info.IntroductionMarkdown =
                 "[Identity Server Discovery Document](.well-known/openid-configuration)    " +

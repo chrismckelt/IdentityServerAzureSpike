@@ -4,10 +4,12 @@
 
 -	Single Sign On/Out for customers under any *.website.com website 
 -	4 Sites
-    - 1 x WebApi
-    - 2 x MVC
-    - 1 x JavaScript SPA
-    - Session management handled by client sites (token refresh/expiry)
+        1. Identity Server - OWIN Self Hosted WebApi in Azure Worker Role
+        2. Javascript & WebApi (Bearer Token) (relays to Identity Server)
+        3. MVC (relays to Identity Server)
+        4. JavaScript (direct call Identity Server)
+        
+    Session management handled by client sites (token refresh/expiry)
 
 ### Assumptions
 

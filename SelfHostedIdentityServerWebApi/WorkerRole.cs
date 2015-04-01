@@ -38,10 +38,11 @@ namespace SelfHostedIdentityServerWebApi
 
             try
             {
-                var endpoint = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["SelfHostedIdentityServerWebApiEndpoint1"];
+                var endpoint = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["SelfHostedIdentityServerWebApiEndpoint1Secure"];
                 string baseUri = String.Format("{0}://{1}", endpoint.Protocol, endpoint.IPEndpoint);
-
-                _app = WebApp.Start<Startup>(new StartOptions(url: baseUri));
+                var options = new StartOptions(url: baseUri);
+//                options.Urls.Add("https://+:9443/");
+                _app = WebApp.Start<Startup>(options);
 
             }
             catch (Exception ex)

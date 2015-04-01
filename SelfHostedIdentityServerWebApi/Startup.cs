@@ -1,9 +1,12 @@
 ﻿
+using System;
 using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Web.Http;
+using System.Web.Http.SelfHost;
 using Finsa.WebApi.HelpPage.AnyHost;
 using IdentityServer3.Core.Configuration;
+using IdentityServerAzureSpike.Shared;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Owin;
@@ -17,14 +20,17 @@ namespace SelfHostedIdentityServerWebApi
         // parameter in the WebApp.Start method.
         public void Configuration(IAppBuilder appBuilder)
         {
-            SetupWebApi(appBuilder);
-
+            SetupWebApi();
+           
             SetupIdentityServer(appBuilder);
+
+            SetupSsl();
 
         }
 
-        private static void SetupWebApi(IAppBuilder appBuilder)
+        private static void SetupWebApi()
         {
+            
             // Configure Web API for self-host. 
             HttpConfiguration config = new HttpConfiguration();
             config.Routes.MapHttpRoute(
@@ -43,7 +49,15 @@ namespace SelfHostedIdentityServerWebApi
 
             config.EnableCors();
 
-            appBuilder.UseWebApi(config);
+        }
+
+        private void SetupSsl()
+        {
+            var config = new ExtendHttpSelfHostConfiguration(Constants.IdentityServer);
+            using (HttpSelfHostServer server = new HttpSelfHostServer(config))
+            {
+                server.OpenAsync().Wait();
+            }
         }
 
         private void SetupIdentityServer(IAppBuilder appBuilder)
