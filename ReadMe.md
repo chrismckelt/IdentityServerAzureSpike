@@ -7,7 +7,7 @@
     - 1 x WebApi
     - 2 x MVC
     - 1 x JavaScript SPA
--	Session management handled by client sites (token refresh/expiry)
+    - Session management handled by client sites (token refresh/expiry)
 
 ### Assumptions
 

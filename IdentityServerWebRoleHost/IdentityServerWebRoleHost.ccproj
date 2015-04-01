@@ -38,12 +38,12 @@
     <ServiceConfiguration Include="ServiceConfiguration.Cloud.cscfg" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\IdentityServerWebApi\IdentityServerWebApi.csproj">
-      <Name>IdentityServerWebApi</Name>
-      <Project>{128b21a2-1f23-465b-8002-6c18f040188c}</Project>
+    <ProjectReference Include="..\SelfHostedIdentityServerWebApi\SelfHostedIdentityServerWebApi.csproj">
+      <Name>SelfHostedIdentityServerWebApi</Name>
+      <Project>{d9ec0d9c-c91f-4579-bb44-63509efd1a6e}</Project>
       <Private>True</Private>
-      <RoleType>Web</RoleType>
-      <RoleName>IdentityServerWebApi</RoleName>
+      <RoleType>Worker</RoleType>
+      <RoleName>SelfHostedIdentityServerWebApi</RoleName>
       <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
     </ProjectReference>
     <ProjectReference Include="..\SiteA\SiteA.csproj">
@@ -73,12 +73,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="IdentityServerWebApiContent\" />
+    <Folder Include="SelfHostedIdentityServerWebApiContent\" />
     <Folder Include="SiteAContent\" />
     <Folder Include="SiteBContent\" />
     <Folder Include="SiteCContent\" />
   </ItemGroup>
   <ItemGroup>
     <DiagnosticsConfiguration Include="IdentityServerWebApiContent\diagnostics.wadcfgx" />
+    <DiagnosticsConfiguration Include="SelfHostedIdentityServerWebApiContent\diagnostics.wadcfgx" />
     <DiagnosticsConfiguration Include="SiteAContent\diagnostics.wadcfgx" />
     <DiagnosticsConfiguration Include="SiteBContent\diagnostics.wadcfgx" />
     <DiagnosticsConfiguration Include="SiteCContent\diagnostics.wadcfgx" />

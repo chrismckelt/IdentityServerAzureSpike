@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServerWebApi", "IdentityServerWebApi\IdentityServerWebApi.csproj", "{128B21A2-1F23-465B-8002-6C18F040188C}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiteA", "SiteA\SiteA.csproj", "{7B8919F0-51F1-468B-AD14-A390738F00B0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiteB", "SiteB\SiteB.csproj", "{41987699-7CE6-491A-87A2-328FC47C1B4E}"
@@ -20,16 +18,14 @@ Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "IdentityServerWebRoleHost",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{FEB509D1-A739-43C2-843C-5463C5A21F29}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelfHostedIdentityServerWebApi", "SelfHostedIdentityServerWebApi\SelfHostedIdentityServerWebApi.csproj", "{D9EC0D9C-C91F-4579-BB44-63509EFD1A6E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{128B21A2-1F23-465B-8002-6C18F040188C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{128B21A2-1F23-465B-8002-6C18F040188C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{128B21A2-1F23-465B-8002-6C18F040188C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{128B21A2-1F23-465B-8002-6C18F040188C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7B8919F0-51F1-468B-AD14-A390738F00B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7B8919F0-51F1-468B-AD14-A390738F00B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B8919F0-51F1-468B-AD14-A390738F00B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -50,6 +46,10 @@ Global
 		{FEB509D1-A739-43C2-843C-5463C5A21F29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FEB509D1-A739-43C2-843C-5463C5A21F29}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FEB509D1-A739-43C2-843C-5463C5A21F29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9EC0D9C-C91F-4579-BB44-63509EFD1A6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9EC0D9C-C91F-4579-BB44-63509EFD1A6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9EC0D9C-C91F-4579-BB44-63509EFD1A6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9EC0D9C-C91F-4579-BB44-63509EFD1A6E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
