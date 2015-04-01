@@ -24,8 +24,6 @@ namespace SelfHostedIdentityServerWebApi
            
             SetupIdentityServer(appBuilder);
 
-            SetupSsl();
-
         }
 
         private static void SetupWebApi()

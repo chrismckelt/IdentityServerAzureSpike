@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ServiceConfiguration serviceName="IdentityServerWebRoleApi" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2014-06.2.4">
+  <Role name="SelfHostedIdentityServerWebApi">
+    <Instances count="1" />
+    <ConfigurationSettings />
+    <Certificates>
+      <Certificate name="identity.demo.local" thumbprintAlgorithm="sha1" thumbprint="40AE80DBF154399CC71D35C698F01F57862CCACA"></Certificate>
+    </Certificates>
+  </Role>
   <Role name="SiteA">
     <Instances count="1" />
     <ConfigurationSettings />
@@ -9,10 +16,6 @@
     <ConfigurationSettings />
   </Role>
   <Role name="SiteC">
-    <Instances count="1" />
-    <ConfigurationSettings />
-  </Role>
-  <Role name="SelfHostedIdentityServerWebApi">
     <Instances count="1" />
     <ConfigurationSettings />
   </Role>
