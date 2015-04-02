@@ -38,10 +38,13 @@ namespace SelfHostedIdentityServerWebApi
 
             try
             {
-                var endpoint = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["SelfHostedIdentityServerWebApiEndpoint1Secure"];
+                var endpoint = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["SelfHostedIdentityServerWebApiEndpoint1Public"];
                 string baseUri = String.Format("{0}://{1}", endpoint.Protocol, endpoint.IPEndpoint);
                 var options = new StartOptions(url: baseUri);
-//                options.Urls.Add("https://+:9443/");
+                
+           //     options.Urls.Add("https://+:443/");
+                //options.Urls.Add("http://+:80/");
+               // options.Urls.Add("http://+:9555/");
                 _app = WebApp.Start<Startup>(options);
 
             }
@@ -71,7 +74,7 @@ namespace SelfHostedIdentityServerWebApi
         {        
             while (!cancellationToken.IsCancellationRequested)
             {
-                Trace.TraceInformation("Heartbeat");
+                Trace.TraceInformation("Heartbeat " + DateTime.Now.ToShortTimeString());
                 await Task.Delay(1000);
             }
         }

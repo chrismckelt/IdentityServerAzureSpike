@@ -4,7 +4,7 @@
   <WorkerRole name="SelfHostedIdentityServerWebApi" vmsize="Small"   >
     <Endpoints>
       <InputEndpoint name="SelfHostedIdentityServerWebApiEndpoint1Public" protocol="http" port="9555"  />
-      <InputEndpoint name="SelfHostedIdentityServerWebApiEndpoint1" protocol="https" port="443" certificate="identity.demo.local" />
+      <!--<InputEndpoint name="SelfHostedIdentityServerWebApiEndpoint1" protocol="https" port="443" certificate="identity.demo.local" />-->
     </Endpoints>
     <Certificates>
       <Certificate name="identity.demo.local" storeLocation="LocalMachine" storeName="My" />
@@ -20,7 +20,7 @@
       </Site>
     </Sites>
     <Endpoints>
-      <InputEndpoint name="SiteAEndpoint1" protocol="http" port="9556" />
+      <InputEndpoint name="SiteAEndpoint1" protocol="http" port="80" />
     </Endpoints>
   </WebRole>
   <!-- SiteB -->

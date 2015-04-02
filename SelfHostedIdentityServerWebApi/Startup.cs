@@ -49,15 +49,6 @@ namespace SelfHostedIdentityServerWebApi
 
         }
 
-        private void SetupSsl()
-        {
-            var config = new ExtendHttpSelfHostConfiguration(Constants.IdentityServer);
-            using (HttpSelfHostServer server = new HttpSelfHostServer(config))
-            {
-                server.OpenAsync().Wait();
-            }
-        }
-
         private void SetupIdentityServer(IAppBuilder appBuilder)
         {
             var factory = InMemoryFactory.Create(
