@@ -6,9 +6,9 @@
       <InputEndpoint name="SelfHostedIdentityServerWebApiEndpoint1Public" protocol="http" port="9555"  />
       <!--<InputEndpoint name="SelfHostedIdentityServerWebApiEndpoint1" protocol="https" port="443" certificate="identity.demo.local" />-->
     </Endpoints>
-    <Certificates>
+    <!--<Certificates>
       <Certificate name="identity.demo.local" storeLocation="LocalMachine" storeName="My" />
-    </Certificates>
+    </Certificates>-->
   </WorkerRole>
   <!-- SiteA -->
   <WebRole name="SiteA" vmsize="Small">

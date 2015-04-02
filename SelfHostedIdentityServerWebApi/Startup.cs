@@ -20,13 +20,13 @@ namespace SelfHostedIdentityServerWebApi
         // parameter in the WebApp.Start method.
         public void Configuration(IAppBuilder appBuilder)
         {
-            SetupWebApi();
+            SetupWebApi(appBuilder);
            
             SetupIdentityServer(appBuilder);
 
         }
 
-        private static void SetupWebApi()
+        private static void SetupWebApi(IAppBuilder appBuilder)
         {
             
             // Configure Web API for self-host. 
@@ -46,7 +46,7 @@ namespace SelfHostedIdentityServerWebApi
             config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
 
             config.EnableCors();
-
+            appBuilder.UseWebApi(config);
         }
 
         private void SetupIdentityServer(IAppBuilder appBuilder)
