@@ -38,7 +38,7 @@ namespace SelfHostedIdentityServerWebApi
 
             try
             {
-                var endpoint = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["SelfHostedIdentityServerWebApiEndpoint1Public"];
+                var endpoint = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["SelfHostedIdentityServerWebApiEndpoint1"];
                 string baseUri = String.Format("{0}://{1}", endpoint.Protocol, endpoint.IPEndpoint);
                 var options = new StartOptions(url: baseUri);
                 
