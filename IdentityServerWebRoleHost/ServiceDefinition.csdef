@@ -20,7 +20,7 @@
       </Site>
     </Sites>
     <Endpoints>
-      <InputEndpoint name="SiteAEndpoint1" protocol="http" port="80" />
+      <InputEndpoint name="SiteAEndpoint1" protocol="http" port="9556" />
     </Endpoints>
   </WebRole>
   <!-- SiteB -->
