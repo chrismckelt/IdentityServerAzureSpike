@@ -62,7 +62,13 @@ namespace SelfHostedIdentityServerWebApi
                 SiteName = "demo.identity.local (self host)",
                 SigningCertificate = Certificate.Get(),
                 Factory = factory,
-                RequireSsl = false
+                RequireSsl = false,
+                AuthenticationOptions = new AuthenticationOptions()
+                {
+                    EnableLocalLogin = true,
+                    EnableLoginHint = true,
+
+                }
             };
             
             appBuilder.UseIdentityServer(options);

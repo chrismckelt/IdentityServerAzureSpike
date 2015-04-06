@@ -16,7 +16,7 @@ namespace SelfHostedIdentityServerWebApi.Config
                     {
                         new Claim(Constants.ClaimTypes.GivenName, "Chris"),
                         new Claim(Constants.ClaimTypes.FamilyName, "McKelt"),
-                        new Claim(Constants.ClaimTypes.Email, "chris@mckelt.com"),
+                        new Claim(Constants.ClaimTypes.Email, "chris@mckelt.com")
                     }
                 },
                 new InMemoryUser{Subject = "blair", Username = "blair", Password = "secretsauce", 

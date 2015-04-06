@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>IdentityServerWebRoleApiHost</RootNamespace>
     <AssemblyName>IdentityServerWebRoleApiHost</AssemblyName>
-    <StartDevelopmentStorage>False</StartDevelopmentStorage>
+    <StartDevelopmentStorage>True</StartDevelopmentStorage>
     <Name>IdentityServerWebRoleHost</Name>
     <UseWebProjectPorts>False</UseWebProjectPorts>
   </PropertyGroup>
