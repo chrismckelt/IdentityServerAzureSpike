@@ -11,6 +11,8 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Owin;
 using SelfHostedIdentityServerWebApi.Config;
+using IdentityServer3.Core.Services;
+using SelfHostedIdentityServerWebApi.Extensions;
 
 namespace SelfHostedIdentityServerWebApi
 {
@@ -56,10 +58,18 @@ namespace SelfHostedIdentityServerWebApi
                clients: Clients.Get(),
                scopes: Scopes.Get());
 
+
+            //factory.ClaimsProvider =
+            //  new Registration<IClaimsProvider>(typeof(CustomClaimsProvider));
+            //factory.UserService =
+            //    new Registration<IUserService>(typeof(CustomUserService));
+            //factory.CustomGrantValidator =
+            //    new Registration<ICustomGrantValidator>(typeof(CustomGrantValidator));
+
             var options = new IdentityServerOptions
             {
-                IssuerUri = "https://idsrv3.com",
-                SiteName = "demo.identity.local (self host)",
+                IssuerUri = "https://identity.demo.local",
+                SiteName = "identity server spike (OWIN Web API self hosted)",
                 SigningCertificate = Certificate.Get(),
                 Factory = factory,
                 RequireSsl = false,

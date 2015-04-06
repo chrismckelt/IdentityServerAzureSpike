@@ -4,10 +4,10 @@
   <WorkerRole name="SelfHostedIdentityServerWebApi" vmsize="Small"   >
     <Endpoints>
       <InputEndpoint name="SelfHostedIdentityServerWebApiEndpoint1Public" protocol="http" port="9555"  />
-      <InputEndpoint name="SelfHostedIdentityServerWebApiEndpoint1" protocol="https" port="443" certificate="identity.demo.local" />
+      <InputEndpoint name="SelfHostedIdentityServerWebApiEndpoint1" protocol="https" port="443" certificate="idsrv3test" />
     </Endpoints>
     <Certificates>
-      <Certificate name="identity.demo.local" storeLocation="LocalMachine" storeName="My" />
+      <Certificate name="idsrv3test" storeLocation="LocalMachine" storeName="My" />
     </Certificates>
   </WorkerRole>
   <!-- SiteA -->

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Security.Claims;
+using IdentityServer3.Core;
 using IdentityServer3.Core.Models;
 
 namespace SelfHostedIdentityServerWebApi.Config
@@ -18,7 +19,7 @@ namespace SelfHostedIdentityServerWebApi.Config
                     ClientId = "codeclient",
                     ClientSecrets = new List<Secret>
                     { 
-                        new Secret("secret".Sha256())
+                       new Secret("secret".Sha256())
                     },
 
                     Flow = Flows.AuthorizationCode,
@@ -34,8 +35,16 @@ namespace SelfHostedIdentityServerWebApi.Config
                         // MVC code client manual
                         "https://localhost:44312/callback",
                     },
-                    AllowAccessToAllScopes = true
-                    ,
+
+                    AllowedScopes = new List<string>
+                    {
+                        Constants.StandardScopes.OpenId,
+                        Constants.StandardScopes.Profile,
+                        Constants.StandardScopes.Email,
+                        Constants.StandardScopes.OfflineAccess,
+                        "read",
+                        "write"
+                    },
                     
                     AccessTokenType = AccessTokenType.Reference,
                 },
@@ -48,7 +57,7 @@ namespace SelfHostedIdentityServerWebApi.Config
                     ClientId = "implicitclient",
                     ClientSecrets = new List<Secret>
                     { 
-                        new Secret("secret".Sha256())
+                       new Secret("secret".Sha256())
                     },
 
                     Flow = Flows.Implicit,
@@ -66,8 +75,14 @@ namespace SelfHostedIdentityServerWebApi.Config
                         "http://localhost:23453/frame.html",
                         "http://localhost:23453/modal.html",
 
+                        // WPF client
+                        "oob://localhost/wpfclient",
+                        
+                        // WinRT client
+                        "ms-app://s-1-15-2-1677770454-1667073387-2045065244-1646983296-4049597744-3433330513-3528227871/",
+
                         // JavaScript client
-                        "http://sitec.demo.local",
+                        "http://localhost:21575/index.html",
 
                         // MVC form post sample
                         "http://localhost:11716/account/signInCallback",
@@ -92,7 +107,7 @@ namespace SelfHostedIdentityServerWebApi.Config
                     ClientId = "hybridclient",
                     ClientSecrets = new List<Secret>
                     { 
-                        new Secret("secret".Sha256())
+                       new Secret("secret".Sha256())
                     },
 
                     Flow = Flows.Hybrid,
@@ -116,7 +131,7 @@ namespace SelfHostedIdentityServerWebApi.Config
                     ClientId = "katanaclient",
                     ClientSecrets = new List<Secret>
                     { 
-                        new Secret("secret".Sha256())
+                       new Secret("secret".Sha256())
                     },
 
                     Flow = Flows.Hybrid,
@@ -129,12 +144,12 @@ namespace SelfHostedIdentityServerWebApi.Config
                     
                     RedirectUris = new List<string>
                     {
-                        "http://localhost:2672/",
+                        "http://sitea.demo.local",
                     },
 
                     PostLogoutRedirectUris = new List<string>
                     {
-                        "http://localhost:2672/"
+                        "http://sitea.demo.local"
                     }
                 },
 
@@ -145,7 +160,7 @@ namespace SelfHostedIdentityServerWebApi.Config
                     ClientId = "client",
                     ClientSecrets = new List<Secret>
                     { 
-                        new Secret("secret".Sha256())
+                       new Secret("secret".Sha256())
                     },
 
                     Flow = Flows.ClientCredentials,
@@ -164,7 +179,7 @@ namespace SelfHostedIdentityServerWebApi.Config
                     ClientId = "customclient",
                     ClientSecrets = new List<Secret>
                     { 
-                        new Secret("secret".Sha256())
+                       new Secret("secret".Sha256())
                     },
 
                     Flow = Flows.Custom
@@ -177,7 +192,7 @@ namespace SelfHostedIdentityServerWebApi.Config
                     ClientId = "roclient",
                     ClientSecrets = new List<Secret>
                     { 
-                        new Secret("secret".Sha256())
+                       new Secret("secret".Sha256())
                     },
 
                     Flow = Flows.ResourceOwner,
