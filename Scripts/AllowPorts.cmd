@@ -1,0 +1,9 @@
+netsh http add urlacl url=https://localcommandhub:40443/ user=Everyone
+netsh http add urlacl url=https://localeventhub:40444/ user=Everyone
+netsh http add urlacl url=https://locallogrepository:40445/ user=Everyone
+netsh http add urlacl url=https://localmediator:40447/ user=Everyone
+netsh http add urlacl url=https://localgateway:40448/ user=Everyone
+netsh http add urlacl url=https://localadmin:40449/ user=Everyone
+netsh http add urlacl url=https://localonlineapplication:40450/ user=Everyone
+netsh http add urlacl url=https://localesign:40451/ user=Everyone
+netsh http add urlacl url=https://localdocumenthub:40453/ user=Everyone
