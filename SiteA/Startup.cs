@@ -40,7 +40,7 @@ namespace IdentityServerAzureSpike.SiteA
                     ClientId = Shared.Constants.SiteA, // must match IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config.Clients
                     Authority = Shared.Constants.IdentityServerCoreUri,
                     RedirectUri = Constants.SiteARedirectUri,
-                    PostLogoutRedirectUri = Constants.SiteARedirectUri + "/?Logout=true",
+                    PostLogoutRedirectUri = Constants.SiteARedirectUri,
                     ResponseType = IdentityServer3.Core.Constants.ResponseTypes.CodeIdTokenToken,
                     Scope = "openid email profile read write offline_access",
                     SignInAsAuthenticationType = "Cookies",
@@ -70,7 +70,7 @@ namespace IdentityServerAzureSpike.SiteA
                             userInfo.Claims.ToList().ForEach(ui => claims.Add(new Claim(ui.Item1, ui.Item2)));
 
                             // get access and refresh token
-                            var tokenClient = new OAuth2Client(new Uri(Constants.TokenEndpoint),Constants.SiteA,Constants.Secret,OAuth2Client.ClientAuthenticationStyle.None);
+                            var tokenClient = new OAuth2Client(new Uri(Constants.TokenEndpoint),Constants.SiteA,Constants.Secret);
 
                             var response = await tokenClient.RequestAuthorizationCodeAsync(n.Code, n.RedirectUri);
 
