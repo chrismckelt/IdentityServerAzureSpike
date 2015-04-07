@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using System.Security.Claims;
+using System.Web;
 using System.Web.Mvc;
 
 namespace IdentityServerAzureSpike.SiteA.Controllers
@@ -11,11 +12,10 @@ namespace IdentityServerAzureSpike.SiteA.Controllers
         }
 
         [Authorize]
+        [Route]
         public ActionResult Claims()
         {
-            ViewBag.Message = "Claims";
-
-            return View();
+            return View((User as ClaimsPrincipal).Claims);
         }
 
         public ActionResult Signout()

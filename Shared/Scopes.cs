@@ -1,11 +1,22 @@
-﻿using System.Collections.Generic;
-using IdentityServer3.Core;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using IdentityServer3.Core.Models;
 
-namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
+namespace IdentityServerAzureSpike.Shared
 {
     public class Scopes
     {
+        public static string DemoScopeNames()
+        {
+            const string delimeter = " ";
+            string names =  Get().Select(x => x.Name).Aggregate((i, j) => i + delimeter + j);
+            Console.WriteLine("-----------------");
+            Console.WriteLine(names);
+            Console.WriteLine("-----------------");
+            return names;
+        }
+
         public static IEnumerable<Scope> Get()
         {
             return new[]
@@ -50,8 +61,8 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
                         
                         Claims = new List<ScopeClaim>
                         {
-                            new ScopeClaim(Constants.ClaimTypes.Name),
-                            new ScopeClaim(Constants.ClaimTypes.Role)
+                            new ScopeClaim(IdentityServer3.Core.Constants.ClaimTypes.Name),
+                            new ScopeClaim(IdentityServer3.Core.Constants.ClaimTypes.Role)
                         }
                     }
                 };

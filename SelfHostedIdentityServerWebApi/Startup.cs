@@ -2,8 +2,10 @@
 using System.Net.Http.Headers;
 using System.Web.Http;
 using Finsa.WebApi.HelpPage.AnyHost;
+using IdentityServer3.AccessTokenValidation;
 using IdentityServer3.Core.Configuration;
 using IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config;
+using IdentityServerAzureSpike.Shared;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Owin;
@@ -16,15 +18,58 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi
         // parameter in the WebApp.Start method.
         public void Configuration(IAppBuilder appBuilder)
         {
-            SetupWebApi(appBuilder);
-           
             SetupIdentityServer(appBuilder);
 
+            SetupWebApi(appBuilder);
+
+        }
+
+        private void SetupIdentityServer(IAppBuilder appBuilder)
+        {
+            var factory = InMemoryFactory.Create(
+               users: Users.Get(),
+               clients: Clients.Get(),
+               scopes: Scopes.Get());
+
+            var options = new IdentityServerOptions
+            {
+                IssuerUri = Constants.IdentityServerUri,
+                SiteName = Constants.IdentityServer,
+                SigningCertificate = Certificate.Get(),
+                Factory = factory,
+                RequireSsl = false,
+                AuthenticationOptions = new AuthenticationOptions()
+                {
+                    EnableLocalLogin = true,
+                    EnableLoginHint = true,
+                    EnablePostSignOutAutoRedirect = true,
+                    CookieOptions = new CookieOptions()
+                    {
+                        AllowRememberMe = true,
+                        Path = "identity",
+                        IsPersistent = true,
+                        SecureMode = CookieSecureMode.SameAsRequest
+                    },
+                },
+                
+            };
+
+            appBuilder.Map("/core", builder =>
+            {
+                builder.UseIdentityServer(options);
+
+                //var bearerOptions = new IdentityServerBearerTokenAuthenticationOptions
+                //{
+                //    Authority = Constants.IdentityServerCoreUri,
+                //};
+
+                //builder.UseIdentityServerBearerTokenAuthentication(bearerOptions);
+            });
         }
 
         private static void SetupWebApi(IAppBuilder appBuilder)
         {
-            
+
             // Configure Web API for self-host. 
             HttpConfiguration config = new HttpConfiguration();
             config.Routes.MapHttpRoute(
@@ -45,44 +90,5 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi
             appBuilder.UseWebApi(config);
         }
 
-        private void SetupIdentityServer(IAppBuilder appBuilder)
-        {
-            var factory = InMemoryFactory.Create(
-               users: Users.Get(),
-               clients: Clients.Get(),
-               scopes: Scopes.Get());
-
-
-           // RegisterCustomFactories();
-
-            var options = new IdentityServerOptions
-            {
-                IssuerUri = Shared.Constants.IdentityServerUri,
-                SiteName = Shared.Constants.IdentityServer + " - OWIN self hosted WebApi",
-                SigningCertificate = Certificate.Get(),
-                Factory = factory,
-                RequireSsl = false,
-                AuthenticationOptions = new AuthenticationOptions()
-                {
-                    EnableLocalLogin = true,
-                    EnableLoginHint = true,
-                    EnablePostSignOutAutoRedirect = true,
-
-                }
-            };
-            
-            appBuilder.UseIdentityServer(options);
-
-        }
-
-        private void RegisterCustomFactories()
-        {
-            //factory.ClaimsProvider =
-            //  new Registration<IClaimsProvider>(typeof(CustomClaimsProvider));
-            //factory.UserService =
-            //    new Registration<IUserService>(typeof(CustomUserService));
-            //factory.CustomGrantValidator =
-            //    new Registration<ICustomGrantValidator>(typeof(CustomGrantValidator));
-        }
     } 
 }
