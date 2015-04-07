@@ -1,11 +1,11 @@
-﻿using IdentityServer3.Core.Models;
-using IdentityServer3.Core.Services;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using IdentityServer3.Core.Models;
+using IdentityServer3.Core.Services;
 
-namespace SelfHostedIdentityServerWebApi.Extensions
+namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Extensions
 {
     class CustomUserService : IUserService
     {

@@ -4,7 +4,7 @@
     <Instances count="1" />
     <ConfigurationSettings />
     <Certificates>
-      <Certificate name="idsrv3test" thumbprintAlgorithm="sha1" thumbprint="89F3CA1A29312C6815CC3AD1AC7D153E6318C284"></Certificate>
+      <Certificate name="identity.demo.local" thumbprintAlgorithm="sha1" thumbprint="DCD93CBCC257A9C2343F89C163ECBEBD2E09ED0A"></Certificate>
     </Certificates>
   </Role>
   <Role name="SiteA">

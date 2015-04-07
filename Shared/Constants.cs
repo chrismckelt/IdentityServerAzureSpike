@@ -2,10 +2,16 @@
 {
     public static class Constants
     {
-        public const string IdentityServer = "https://identity.demo.local";
-        public const string SiteA = "https://siteA.demo.local";
-        public const string SiteB = "https://siteB.demo.local";
-        public const string SiteC = "https://siteC.demo.local";
+        public const string IdentityServer = "ccIdentity";
+        public const string SiteA = "Site A";
+        public const string SiteB = "Site B";
+        public const string SiteC = "Site C";
+        public const string IdentityServerUri = "https://identity.demo.local";
+        public const string SiteAUri = "https://siteA.demo.local";
+        public const string SiteBUri = "https://siteB.demo.local";
+        public const string SiteCUri = "https://siteC.demo.local";
+
+        public const string Secret = "secret";
 
         public const string AuthorizeEndpoint = IdentityServer + "/connect/authorize";
         public const string LogoutEndpoint = IdentityServer + "/connect/endsession";

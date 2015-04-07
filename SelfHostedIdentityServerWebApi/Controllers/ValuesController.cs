@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
 
-namespace SelfHostedIdentityServerWebApi.Controllers
+namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Controllers
 {
     public class ValuesController : ApiController
     {

@@ -13,7 +13,7 @@
 using System.Web.Http;
 using Finsa.WebApi.HelpPage.AnyHost;
 
-namespace SelfHostedIdentityServerWebApi.Controllers
+namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Controllers
 {    
     [RoutePrefix("help")]
     public sealed class HelpController : HelpControllerBase

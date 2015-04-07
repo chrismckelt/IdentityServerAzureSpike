@@ -7,7 +7,7 @@ using IdentityServer3.Core.Logging;
 using Microsoft.Owin.Hosting;
 using Microsoft.WindowsAzure.ServiceRuntime;
 
-namespace SelfHostedIdentityServerWebApi
+namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi
 {
     public class WorkerRole : RoleEntryPoint
     {

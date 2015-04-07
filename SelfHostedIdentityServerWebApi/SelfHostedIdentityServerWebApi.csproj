@@ -8,8 +8,8 @@
     <ProjectGuid>{D9EC0D9C-C91F-4579-BB44-63509EFD1A6E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SelfHostedIdentityServerWebApi</RootNamespace>
-    <AssemblyName>SelfHostedIdentityServerWebApi</AssemblyName>
+    <RootNamespace>IdentityServerAzureSpike.SelfHostedIdentityServerWebApi</RootNamespace>
+    <AssemblyName>IdentityServerAzureSpike.SelfHostedIdentityServerWebApi</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <RoleType>Worker</RoleType>
@@ -155,8 +155,10 @@
     <Compile Include="WorkerRole.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="..\lib\certificates\IdentityDemoLocalSSL.pfx">
+      <Link>Config\IdentityDemoLocalSSL.pfx</Link>
+    </EmbeddedResource>
     <None Include="app.config" />
-    <EmbeddedResource Include="Config\idsrv3test.pfx" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

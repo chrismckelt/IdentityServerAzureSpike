@@ -2,7 +2,7 @@
 using IdentityServer3.Core;
 using IdentityServer3.Core.Models;
 
-namespace SelfHostedIdentityServerWebApi.Config
+namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
 {
     public class Scopes
     {

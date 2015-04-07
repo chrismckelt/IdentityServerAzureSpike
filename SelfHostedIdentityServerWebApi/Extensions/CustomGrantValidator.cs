@@ -1,12 +1,11 @@
-﻿using System.Security.Claims;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using IdentityServer3.Core.Extensions;
 using IdentityServer3.Core.Logging;
 using IdentityServer3.Core.Models;
 using IdentityServer3.Core.Services;
 using IdentityServer3.Core.Validation;
 
-namespace SelfHostedIdentityServerWebApi.Extensions
+namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Extensions
 {
     class CustomGrantValidator : ICustomGrantValidator
     {

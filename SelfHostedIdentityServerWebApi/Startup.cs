@@ -1,20 +1,14 @@
-﻿
-using System;
-using System.Net.Http.Formatting;
+﻿using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Web.Http;
-using System.Web.Http.SelfHost;
 using Finsa.WebApi.HelpPage.AnyHost;
 using IdentityServer3.Core.Configuration;
-using IdentityServerAzureSpike.Shared;
+using IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Owin;
-using SelfHostedIdentityServerWebApi.Config;
-using IdentityServer3.Core.Services;
-using SelfHostedIdentityServerWebApi.Extensions;
 
-namespace SelfHostedIdentityServerWebApi
+namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi
 {
     public class Startup
     {
@@ -59,17 +53,12 @@ namespace SelfHostedIdentityServerWebApi
                scopes: Scopes.Get());
 
 
-            //factory.ClaimsProvider =
-            //  new Registration<IClaimsProvider>(typeof(CustomClaimsProvider));
-            //factory.UserService =
-            //    new Registration<IUserService>(typeof(CustomUserService));
-            //factory.CustomGrantValidator =
-            //    new Registration<ICustomGrantValidator>(typeof(CustomGrantValidator));
+           // RegisterCustomFactories();
 
             var options = new IdentityServerOptions
             {
-                IssuerUri = "https://identity.demo.local",
-                SiteName = "identity server spike (OWIN Web API self hosted)",
+                IssuerUri = Shared.Constants.IdentityServerUri,
+                SiteName = Shared.Constants.IdentityServer + " - OWIN self hosted WebApi",
                 SigningCertificate = Certificate.Get(),
                 Factory = factory,
                 RequireSsl = false,
@@ -77,11 +66,23 @@ namespace SelfHostedIdentityServerWebApi
                 {
                     EnableLocalLogin = true,
                     EnableLoginHint = true,
+                    EnablePostSignOutAutoRedirect = true,
 
                 }
             };
             
             appBuilder.UseIdentityServer(options);
+
+        }
+
+        private void RegisterCustomFactories()
+        {
+            //factory.ClaimsProvider =
+            //  new Registration<IClaimsProvider>(typeof(CustomClaimsProvider));
+            //factory.UserService =
+            //    new Registration<IUserService>(typeof(CustomUserService));
+            //factory.CustomGrantValidator =
+            //    new Registration<ICustomGrantValidator>(typeof(CustomGrantValidator));
         }
     } 
 }

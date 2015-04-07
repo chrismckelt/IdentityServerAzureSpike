@@ -1,18 +1,20 @@
-﻿using Microsoft.IdentityModel.Protocols;
+﻿using System;
+using System.Collections.Generic;
+using System.IdentityModel.Tokens;
+using System.Linq;
+using System.Security.Claims;
+using System.Web.Helpers;
+using IdentityServer3.Core.Configuration;
+using IdentityServer3.Core.Resources;
+using IdentityServerAzureSpike.Shared;
+using IdentityServerAzureSpike.SiteA;
+using Microsoft.IdentityModel.Protocols;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OpenIdConnect;
 using Owin;
-using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens;
-using System.Linq;
-using System.Security.Claims;
-using IdentityServerAzureSpike.SiteA;
-using Thinktecture.IdentityModel;
 using Thinktecture.IdentityModel.Client;
-
 
 [assembly: OwinStartup(typeof(Startup))]
 
@@ -22,6 +24,7 @@ namespace IdentityServerAzureSpike.SiteA
     {
          public void Configuration(IAppBuilder app)
         {
+            AntiForgeryConfig.UniqueClaimTypeIdentifier = IdentityServer3.Core.Constants.ClaimTypes.Subject;
             JwtSecurityTokenHandler.InboundClaimTypeMap = new Dictionary<string, string>();
 
             app.UseCookieAuthentication(new CookieAuthenticationOptions
@@ -31,14 +34,15 @@ namespace IdentityServerAzureSpike.SiteA
 
             app.UseOpenIdConnectAuthentication(new OpenIdConnectAuthenticationOptions
                 {
-                    ClientId = "katanaclient",
-                    Authority = IdentityServerAzureSpike.Shared.Constants.IdentityServer,
-                    RedirectUri = "http://sitea.demo.local",
-                    PostLogoutRedirectUri = "http://sitea.demo.local",
+                    ClientId = "SiteA",
+                    Authority = Constants.IdentityServerUri,
+                    RedirectUri = Constants.SiteAUri,
+                    PostLogoutRedirectUri = Constants.SiteAUri + "/logout",
                     ResponseType = "code id_token token",
                     Scope = "openid email profile read write offline_access",
 
                     SignInAsAuthenticationType = "Cookies",
+                    UseTokenLifetime = false,
 
                     Notifications = new OpenIdConnectAuthenticationNotifications
                     {
@@ -58,7 +62,7 @@ namespace IdentityServerAzureSpike.SiteA
 
                                 // get userinfo data
                                 var userInfoClient = new UserInfoClient(
-                                    new Uri(IdentityServerAzureSpike.Shared.Constants.UserInfoEndpoint),
+                                    new Uri(Constants.UserInfoEndpoint),
                                     n.ProtocolMessage.AccessToken);
 
                                 var userInfo = await userInfoClient.GetAsync();
@@ -66,9 +70,9 @@ namespace IdentityServerAzureSpike.SiteA
 
                                 // get access and refresh token
                                 var tokenClient = new OAuth2Client(
-                                    new Uri(IdentityServerAzureSpike.Shared.Constants.TokenEndpoint),
-                                    "katanaclient",
-                                    "secret");
+                                    new Uri(Constants.TokenEndpoint),
+                                    Constants.SiteAUri,
+                                    Constants.Secret);
 
                                 var response = await tokenClient.RequestAuthorizationCodeAsync(n.Code, n.RedirectUri);
 

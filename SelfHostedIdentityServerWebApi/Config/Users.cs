@@ -3,7 +3,7 @@ using System.Security.Claims;
 using IdentityServer3.Core;
 using IdentityServer3.Core.Services.InMemory;
 
-namespace SelfHostedIdentityServerWebApi.Config
+namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
 {
     public class Users
     {
