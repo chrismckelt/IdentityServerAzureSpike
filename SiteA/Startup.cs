@@ -41,7 +41,7 @@ namespace IdentityServerAzureSpike.SiteA
                     Authority = Shared.Constants.IdentityServerCoreUri,
                     RedirectUri = Constants.SiteARedirectUri,
                     PostLogoutRedirectUri = Constants.SiteARedirectUri + "/?Logout=true",
-                    ResponseType = "code id_token token",
+                    ResponseType = IdentityServer3.Core.Constants.ResponseTypes.CodeIdTokenToken,
                     Scope = "openid email profile read write offline_access",
                     SignInAsAuthenticationType = "Cookies",
                     
