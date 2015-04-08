@@ -1,4 +1,7 @@
 using Microsoft.WindowsAzure.ServiceRuntime;
+using Serilog;
+using Thinktecture.IdentityServer.Core.Logging;
+using Thinktecture.IdentityServer.Core.Logging.LogProviders;
 
 namespace IdentityServerAzureSpike.SiteB
 {
@@ -6,8 +9,14 @@ namespace IdentityServerAzureSpike.SiteB
     {
         public override bool OnStart()
         {
-            // For information on handling configuration changes
-            // see the MSDN topic at http://go.microsoft.com/fwlink/?LinkId=166357.
+            // serilog to azure console & file
+            Log.Logger = new LoggerConfiguration()
+            .WriteTo
+            .ColoredConsole(outputTemplate: "{Timestamp:HH:mm} [{Level}] ({Name}) {NewLine} {Message}{NewLine}{Exception}")
+            .WriteTo.File(@"c:\logs\sitea.log")
+            .CreateLogger();
+
+            LogProvider.SetCurrentLogProvider(new SerilogLogProvider());
 
             return base.OnStart();
         }

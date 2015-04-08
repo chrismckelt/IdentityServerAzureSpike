@@ -17,10 +17,14 @@ namespace IdentityServerAzureSpike.Shared
         public const string SiteARedirectCallbackUri = SiteAUri + "/callback";
 
         public const string SiteB = "SiteB";
+        public const string SiteBService = "SiteB_Service";
         public const string SiteBUri = "http://siteB.demo.local:9557";
+        public const string SiteBRedirectBouncedFromIdentityServerUri = SiteBUri + "/BouncedFromIdentityServer";
+        public const string SiteBRedirectCallbackUri = SiteBUri + "/callback";
         
         public const string SiteC = "SiteC";
         public const string SiteCUri = "http://siteC.demo.local:9558";
+
         public const string Secret = "secret";
 
         public const string AuthorizeEndpoint = IdentityServerCoreUri + "/connect/authorize";
@@ -36,9 +40,19 @@ namespace IdentityServerAzureSpike.Shared
         
         public static readonly List<string> RedirectUris = new List<string>()
         {
+            Constants.SiteAUri,
             Constants.SiteARedirectBouncedFromIdentityServerUri,
-            Constants.SiteARedirectCallbackUri
+            Constants.SiteARedirectCallbackUri,
+            Constants.SiteBUri,
+            Constants.SiteBRedirectBouncedFromIdentityServerUri,
+            Constants.SiteBRedirectCallbackUri
         };
 
+        public static class Cookie
+        {
+            public const string Name = "identity";
+            public const string Domain = "identity.demo.local";
+            public const string Path = "identity.demo.local";
+        }
     }
 }

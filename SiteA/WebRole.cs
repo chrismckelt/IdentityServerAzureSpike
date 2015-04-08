@@ -3,7 +3,7 @@ using Serilog;
 using Thinktecture.IdentityServer.Core.Logging;
 using Thinktecture.IdentityServer.Core.Logging.LogProviders;
 
-namespace IdentityServerAzureSpike.SiteA
+namespace IdentityServerAzureSpike.SiteB
 {
     public class WebRole : RoleEntryPoint
     {
@@ -13,7 +13,7 @@ namespace IdentityServerAzureSpike.SiteA
             Log.Logger = new LoggerConfiguration()
             .WriteTo
             .ColoredConsole(outputTemplate: "{Timestamp:HH:mm} [{Level}] ({Name}) {NewLine} {Message}{NewLine}{Exception}")
-            .WriteTo.File(@"c:\logs\sitea.log")
+            .WriteTo.File(@"c:\logs\SiteB.log")
             .CreateLogger();
 
             LogProvider.SetCurrentLogProvider(new SerilogLogProvider());

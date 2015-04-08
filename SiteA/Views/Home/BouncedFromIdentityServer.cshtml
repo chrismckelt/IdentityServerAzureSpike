@@ -1,12 +1,11 @@
-﻿@model IEnumerable<System.Security.Claims.Claim>
-<br/>
+﻿<br />
 <div class="panel panel-default">
     <div class="panel-heading">Claims</div>
     <div class="panel-body">
         <h3>User.Identity.Name = @User.Identity.Name</h3>
-        <br/>
+        <br />
         <dl class="dl-horizontal">
-            @foreach (var claim in Model)
+            @foreach (var claim in System.Security.Claims.ClaimsPrincipal.Current.Claims)
             {
                 <dt>@claim.Type</dt>
                 <dd>@claim.Value</dd>

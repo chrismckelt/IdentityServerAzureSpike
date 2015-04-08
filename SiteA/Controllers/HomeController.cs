@@ -5,7 +5,7 @@ using System.Web.Mvc;
 using IdentityServerAzureSpike.Shared;
 using Thinktecture.IdentityModel.Client;
 
-namespace IdentityServerAzureSpike.SiteA.Controllers
+namespace IdentityServerAzureSpike.SiteB.Controllers
 {
     public class HomeController : Controller
     {
@@ -36,9 +36,9 @@ namespace IdentityServerAzureSpike.SiteA.Controllers
             var client = new OAuth2Client(new Uri(Constants.AuthorizeEndpoint));
 
             var url = client.CreateCodeFlowUrl(
-                clientId: Constants.SiteAService,
+                clientId: Constants.SiteBService,
                 scope: scopes,
-                redirectUri: Constants.SiteARedirectCallbackUri,
+                redirectUri: Constants.SiteBRedirectCallbackUri,
                 state: state,
                 nonce: nonce);
 
@@ -59,7 +59,7 @@ namespace IdentityServerAzureSpike.SiteA.Controllers
             // also possible to pass post logout redirect url via properties
             //var properties = new AuthenticationProperties
             //{
-            //    RedirectUri = "http://sitea.demo.local:9556"
+            //    RedirectUri = "http://SiteB.demo.local:9556"
             //};
 
             Request.GetOwinContext().Authentication.SignOut();

@@ -9,7 +9,7 @@ using System.Web.Mvc;
 using Newtonsoft.Json.Linq;
 using Thinktecture.IdentityModel.Client;
 
-namespace IdentityServerAzureSpike.SiteA.Controllers
+namespace IdentityServerAzureSpike.SiteB.Controllers
 {
     [Authorize]
     public class AppController : Controller
@@ -35,7 +35,7 @@ namespace IdentityServerAzureSpike.SiteA.Controllers
         {
             var client = new OAuth2Client(
                 new Uri(Shared.Constants.TokenEndpoint),
-                Shared.Constants.SiteAService,
+                Shared.Constants.SiteBService,
                 Shared.Constants.Secret);
 
             var principal = User as ClaimsPrincipal;
@@ -51,7 +51,7 @@ namespace IdentityServerAzureSpike.SiteA.Controllers
         {
             var accessToken = (User as ClaimsPrincipal).FindFirst("access_token").Value;
             var client = new HttpClient();
-            client.SetBasicAuthentication(Shared.Constants.SiteAService, Shared.Constants.Secret);
+            client.SetBasicAuthentication(Shared.Constants.SiteB, Shared.Constants.Secret);
 
             var postBody = new Dictionary<string, string>
             {
@@ -68,7 +68,7 @@ namespace IdentityServerAzureSpike.SiteA.Controllers
         {
             var refreshToken = (User as ClaimsPrincipal).FindFirst("refresh_token").Value;
             var client = new HttpClient();
-            client.SetBasicAuthentication(Shared.Constants.SiteAService,
+            client.SetBasicAuthentication(Shared.Constants.SiteBService,
                 Shared.Constants.Secret);
 
             var postBody = new Dictionary<string, string>

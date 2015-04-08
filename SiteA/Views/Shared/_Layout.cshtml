@@ -3,49 +3,83 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Site A</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <style>
+        .jumbotron {
+            background-color:azure;
+            color: inherit;
+            margin-bottom: 30px;
+            padding: 30px 15px;
+        }
+    </style>
 </head>
 <body>
-<div class="navbar navbar-inverse navbar-fixed-top">
+<!-- Fixed navbar -->
+<nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            @Html.ActionLink("Home", "Index", "Home", null, new {@class = "navbar-brand"})
+            <a class="navbar-brand" href="http://SiteA.demo.local:9556/">Site A</a>
         </div>
-        <div class="navbar-collapse collapse">
+        <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="list-group-item">@Html.ActionLink("Identity Server login page", "BouncedFromIdentityServer", "Home")</li>
-                <li class="list-group-item">@Html.ActionLink("Site A login page", "LocalLogin", "Home", null, new { @class = "navbar-brand" })</li>
-                <li class="list-group-item">@Html.ActionLink("Application Area", "Index", "App", null, new { @class = "navbar-brand" })</li>
+                <li>@Html.ActionLink("Identity Server login", "BouncedFromIdentityServer", "Home", new {@class = "navbar-brand"})</li>
+                <li>@Html.ActionLink("Local login", "LocalLogin", "Home", null, new {@class = "navbar-brand"})</li>
+                <li>@Html.ActionLink("MVC controller redirects", "Index", "App", new {@class = "navbar-brand"})</li>
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <li class="list-group-item">@Html.ActionLink("Signout", "Signout", "Home")</li>
+                    <li>@Html.ActionLink("Signout", "Signout", "Home", new {@class = "navbar-brand"})</li>
                 }
             </ul>
-        </div>
+            <ul class="nav navbar-nav navbar-right">
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Sites <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="https://identity.demo.local/help">Identity Server</a>
+                        </li>
+                        <li>
+                            <a href="http://SiteB.demo.local:9556/">Site A</a>
+                        </li>
+                        <li>
+                            <a href="http://siteb.demo.local:9557">Site B</a>
+                        </li>
+                        <li>
+                            <a href="http://sitec.demo.local:9557">Site C</a>
+                        </li>
+                        <li>
+                            <a href="https://identity.demo.local/core/permissions">Permissions</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!--/.nav-collapse -->
     </div>
-</div>
-<div class="container body-content">
-    <br/>
-    <div>
+</nav>
+
+<div class="container">
+    <div class="jumbotron">
+        <h1>Site A</h1>
         @RenderBody()
     </div>
-    <hr/>
     <footer>
-        <h4>Rendered at @DateTime.Now.ToLongTimeString()</h4>
+        <p>
+            Rendered at <strong>@DateTime.Now.ToLongTimeString()</strong>
+        </p>
     </footer>
-</div>
-
+</div> <!-- /container -->
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")
-@RenderSection("scripts", required: false)
+@RenderSection("scripts", false)
 </body>
 </html>

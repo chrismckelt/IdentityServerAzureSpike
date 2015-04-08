@@ -11,7 +11,7 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
         {
             var list =  new List<Client>
             {
-                new Client
+                 new Client
                 {
                     Flow = Flows.Hybrid, // can serve all apps
                     ClientId = Constants.SiteA,
@@ -23,6 +23,7 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
                         new ClientSecret(Constants.Secret.Sha256())
                     },
                     ScopeRestrictions = Constants.RequiredScopes,
+                    
                     RedirectUris = Constants.RedirectUris,
                     PostLogoutRedirectUris =  Shared.Constants.RedirectUris,
                     AlwaysSendClientClaims = true,
@@ -44,7 +45,40 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
                     AlwaysSendClientClaims = true,
                     IncludeJwtId = true,
                 },
-
+                new Client
+                {
+                    Flow = Flows.Hybrid, // can serve all apps
+                    ClientId = Constants.SiteB,
+                    ClientName = Constants.SiteB,
+                    ClientUri = Constants.SiteBUri,
+                    Enabled = true,
+                    ClientSecrets = new List<ClientSecret>
+                    {
+                        new ClientSecret(Constants.Secret.Sha256())
+                    },
+                    ScopeRestrictions = Constants.RequiredScopes,
+                    
+                    RedirectUris = Constants.RedirectUris,
+                    PostLogoutRedirectUris =  Shared.Constants.RedirectUris,
+                    AlwaysSendClientClaims = true,
+                    IncludeJwtId = true,
+                },
+                new Client
+                {
+                    Flow = Flows.AuthorizationCode, // for existing mvc apps
+                    ClientId = Constants.SiteBService,
+                    ClientName = Constants.SiteBService,
+                    Enabled = true,
+                    ScopeRestrictions = Constants.RequiredScopes,
+                    RedirectUris = Constants.RedirectUris,
+                    PostLogoutRedirectUris =  Shared.Constants.RedirectUris,
+                    ClientSecrets = new List<ClientSecret>
+                    {
+                        new ClientSecret(Constants.Secret.Sha256())
+                    },                    
+                    AlwaysSendClientClaims = true,
+                    IncludeJwtId = true,
+                }
             };
 
             list.AddRange(Old());

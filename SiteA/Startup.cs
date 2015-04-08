@@ -25,21 +25,20 @@ namespace IdentityServerAzureSpike.SiteA
 
             app.UseCookieAuthentication(new CookieAuthenticationOptions
                 {
-                    AuthenticationType = "Cookies"
+                    AuthenticationType = "Cookies",
+                    CookieName = Shared.Constants.Cookie.Name,
+                    CookieDomain = Shared.Constants.Cookie.Domain,
+                    CookiePath = Shared.Constants.Cookie.Path
+
                 });
-            app.UseCookieAuthentication(new CookieAuthenticationOptions
-            {
-                AuthenticationType = "TempState",
-                AuthenticationMode = AuthenticationMode.Passive
-            });
-            
+
              app.UseOpenIdConnectAuthentication(new OpenIdConnectAuthenticationOptions
                 {
                     
                     ClientId = Shared.Constants.SiteA, // must match IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config.Clients
                     Authority = Shared.Constants.IdentityServerCoreUri,
-                    RedirectUri = Shared.Constants.SiteARedirectBouncedFromIdentityServerUri,
-                    PostLogoutRedirectUri = Shared.Constants.SiteARedirectBouncedFromIdentityServerUri,
+                    RedirectUri = Shared.Constants.SiteBRedirectCallbackUri,
+                    PostLogoutRedirectUri = Shared.Constants.SiteAUri,
                     ResponseType = Thinktecture.IdentityServer.Core.Constants.ResponseTypes.CodeIdTokenToken,
                     Scope = Shared.Constants.RequiredScopesString,
                     SignInAsAuthenticationType = "Cookies",

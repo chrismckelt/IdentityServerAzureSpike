@@ -12,7 +12,7 @@ using IdentityServerAzureSpike.Shared;
 using Newtonsoft.Json.Linq;
 using Thinktecture.IdentityModel.Client;
 
-namespace IdentityServerAzureSpike.SiteA.Controllers
+namespace IdentityServerAzureSpike.SiteB.Controllers
 {
 	public class CallbackController : Controller
 	{
@@ -43,7 +43,7 @@ namespace IdentityServerAzureSpike.SiteA.Controllers
         {
             var client = new OAuth2Client(
                 new Uri(Constants.TokenEndpoint),
-                Constants.SiteAService,
+                Constants.SiteBService,
                 Constants.Secret);
 
             var code = Request.QueryString["code"];
@@ -52,7 +52,7 @@ namespace IdentityServerAzureSpike.SiteA.Controllers
 
             var response = await client.RequestAuthorizationCodeAsync(
                 code,
-                Constants.SiteARedirectBouncedFromIdentityServerUri);
+                Constants.SiteBRedirectBouncedFromIdentityServerUri);
 
             await ValidateResponseAndSignInAsync(response, tempState.Item2);
 
@@ -98,7 +98,7 @@ namespace IdentityServerAzureSpike.SiteA.Controllers
             
             var parameters = new TokenValidationParameters
             {
-                ValidAudience = Shared.Constants.SiteAService,
+                ValidAudience = Shared.Constants.SiteBService,
                 ValidIssuer = Constants.IdentityServerCoreUri,
                 IssuerSigningToken = new X509SecurityToken(Certificate.Get())
             };
