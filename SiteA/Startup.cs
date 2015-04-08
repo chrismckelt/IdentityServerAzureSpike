@@ -4,7 +4,6 @@ using System.IdentityModel.Tokens;
 using System.Linq;
 using System.Security.Claims;
 using System.Web.Helpers;
-using IdentityServer3.Core;
 using IdentityServerAzureSpike.SiteA;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
@@ -21,23 +20,27 @@ namespace IdentityServerAzureSpike.SiteA
     {
          public void Configuration(IAppBuilder app)
         {
-            AntiForgeryConfig.UniqueClaimTypeIdentifier = Constants.ClaimTypes.ClientId;
+            AntiForgeryConfig.UniqueClaimTypeIdentifier = Thinktecture.IdentityServer.Core.Constants.ClaimTypes.ClientId;
             JwtSecurityTokenHandler.InboundClaimTypeMap = new Dictionary<string, string>();
 
             app.UseCookieAuthentication(new CookieAuthenticationOptions
                 {
                     AuthenticationType = "Cookies"
                 });
-
+            app.UseCookieAuthentication(new CookieAuthenticationOptions
+            {
+                AuthenticationType = "TempState",
+                AuthenticationMode = AuthenticationMode.Passive
+            });
             
              app.UseOpenIdConnectAuthentication(new OpenIdConnectAuthenticationOptions
                 {
                     
                     ClientId = Shared.Constants.SiteA, // must match IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config.Clients
                     Authority = Shared.Constants.IdentityServerCoreUri,
-                    RedirectUri = Shared.Constants.SiteARedirectUri,
-                    PostLogoutRedirectUri = Shared.Constants.SiteARedirectUri,
-                    ResponseType = Constants.ResponseTypes.CodeIdTokenToken,
+                    RedirectUri = Shared.Constants.SiteARedirectBouncedFromIdentityServerUri,
+                    PostLogoutRedirectUri = Shared.Constants.SiteARedirectBouncedFromIdentityServerUri,
+                    ResponseType = Thinktecture.IdentityServer.Core.Constants.ResponseTypes.CodeIdTokenToken,
                     Scope = Shared.Constants.RequiredScopesString,
                     SignInAsAuthenticationType = "Cookies",
                     
@@ -81,8 +84,8 @@ namespace IdentityServerAzureSpike.SiteA
                         {
                             var nid = new ClaimsIdentity(
                                 n.AuthenticationTicket.Identity.AuthenticationType,
-                                Constants.ClaimTypes.GivenName,
-                                Constants.ClaimTypes.Role);
+                                JwtClaimTypes.GivenName,
+                                JwtClaimTypes.Role);
 
                             // get userinfo data
                             var userInfoClient = new UserInfoClient(

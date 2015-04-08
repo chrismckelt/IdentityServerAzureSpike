@@ -3,11 +3,11 @@ using System.Diagnostics;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
-using IdentityServer3.Core.Logging;
-using IdentityServer3.Core.Logging.LogProviders;
 using Microsoft.Owin.Hosting;
 using Microsoft.WindowsAzure.ServiceRuntime;
 using Serilog;
+using Thinktecture.IdentityServer.Core.Logging;
+using Thinktecture.IdentityServer.Core.Logging.LogProviders;
 
 namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi
 {
@@ -36,29 +36,27 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi
             // Set the maximum number of concurrent connections
             ServicePointManager.DefaultConnectionLimit = 12;
 
+            // serilog to azure console & file
             Log.Logger = new LoggerConfiguration()
             .WriteTo         
             .ColoredConsole(outputTemplate: "{Timestamp:HH:mm} [{Level}] ({Name}) {NewLine} {Message}{NewLine}{Exception}")
-            .WriteTo.File(@"c:\temp\identitydemo.log")
+            .WriteTo.File(@"c:\logs\identitydemo.log")
             .CreateLogger();
 
             LogProvider.SetCurrentLogProvider(new SerilogLogProvider());
 
             try
             {
+                // ssl
                 var endpoint = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["SelfHostedIdentityServerWebApiEndpoint1"];
                 string baseUri = String.Format("{0}://{1}", endpoint.Protocol, endpoint.IPEndpoint);
                 var options = new StartOptions(url: baseUri);
-                
-           //     options.Urls.Add("https://+:443/");
-                //options.Urls.Add("http://+:80/");
-               // options.Urls.Add("http://+:9555/");
                 _app = WebApp.Start<Startup>(options);
 
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                Log.Error("SSL setup",ex);
             }
 
             Trace.TraceInformation("SelfHostedIdentityServerWebApi has been started");
@@ -74,7 +72,12 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi
             this._runCompleteEvent.WaitOne();
 
             base.OnStop();
-
+            if (_app != null)
+            {
+                Trace.TraceInformation("WebApp disposing...");
+                _app.Dispose();
+                Trace.TraceInformation("WebApp disposed");
+            }
             Trace.TraceInformation("SelfHostedIdentityServerWebApi has stopped");
         }
 

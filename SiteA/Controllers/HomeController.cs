@@ -1,6 +1,9 @@
-﻿using System.Security.Claims;
+﻿using System;
+using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
+using IdentityServerAzureSpike.Shared;
+using Thinktecture.IdentityModel.Client;
 
 namespace IdentityServerAzureSpike.SiteA.Controllers
 {
@@ -11,11 +14,44 @@ namespace IdentityServerAzureSpike.SiteA.Controllers
             return View();
         }
 
+        public ActionResult LocalLogin()
+        {
+            return View();
+        }
+
         [Authorize]
         [Route]
-        public ActionResult Claims()
+        public ActionResult BouncedFromIdentityServer()
         {
             return View((User as ClaimsPrincipal).Claims);
+        }
+
+        [HttpPost]
+        public ActionResult LoginOnThisSite(string scopes)
+        {
+            var state = Guid.NewGuid().ToString("N");
+            var nonce = Guid.NewGuid().ToString("N");
+            SetTempState(state, nonce);
+
+            var client = new OAuth2Client(new Uri(Constants.AuthorizeEndpoint));
+
+            var url = client.CreateCodeFlowUrl(
+                clientId: Constants.SiteAService,
+                scope: scopes,
+                redirectUri: Constants.SiteARedirectCallbackUri,
+                state: state,
+                nonce: nonce);
+
+            return Redirect(url);
+        }
+
+        private void SetTempState(string state, string nonce)
+        {
+            var tempId = new ClaimsIdentity("TempState");
+            tempId.AddClaim(new Claim("state", state));
+            tempId.AddClaim(new Claim("nonce", nonce));
+
+            Request.GetOwinContext().Authentication.SignIn(tempId);
         }
 
         public ActionResult Signout()

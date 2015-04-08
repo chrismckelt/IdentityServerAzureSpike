@@ -35,9 +35,6 @@
     <Reference Include="Finsa.WebApi.HelpPage.AnyHost">
       <HintPath>..\packages\Finsa.WebApi.HelpPage.AnyHost.0.1.6-alpha\lib\net45\Finsa.WebApi.HelpPage.AnyHost.dll</HintPath>
     </Reference>
-    <Reference Include="IdentityServer3">
-      <HintPath>..\packages\IdentityServer3.2.0.0-beta1\lib\net45\IdentityServer3.dll</HintPath>
-    </Reference>
     <Reference Include="IdentityServer3.AccessTokenValidation">
       <HintPath>..\packages\IdentityServer3.AccessTokenValidation.2.0.0-beta1\lib\net45\IdentityServer3.AccessTokenValidation.dll</HintPath>
     </Reference>
@@ -155,6 +152,9 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="Thinktecture.IdentityServer3">
+      <HintPath>..\packages\Thinktecture.IdentityServer3.1.4.1\lib\net45\Thinktecture.IdentityServer3.dll</HintPath>
+    </Reference>
     <Reference Include="WebApi.OutputCache.Core">
       <HintPath>..\packages\Strathweb.CacheOutput.WebApi2.0.6\lib\net45\WebApi.OutputCache.Core.dll</HintPath>
     </Reference>
@@ -163,7 +163,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Config\Certificate.cs" />
     <Compile Include="Config\Clients.cs" />
     <Compile Include="Config\Users.cs" />
     <Compile Include="Controllers\HelpController.cs" />

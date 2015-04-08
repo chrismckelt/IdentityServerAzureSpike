@@ -1,14 +1,14 @@
 ﻿using System.IO;
 using System.Security.Cryptography.X509Certificates;
 
-namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
+namespace IdentityServerAzureSpike.Shared
 {
-    static class Certificate
+    public static class Certificate
     {
         public static X509Certificate2 Get()
         {
             var assembly = typeof(Certificate).Assembly;
-            using (var stream = assembly.GetManifestResourceStream("IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config.IdentityDemoLocalSSL.pfx"))
+            using (var stream = assembly.GetManifestResourceStream("IdentityServerAzureSpike.Shared.IdentityDemoLocalSSL.pfx"))
             {
                 return new X509Certificate2(ReadStream(stream));
             }

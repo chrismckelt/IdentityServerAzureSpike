@@ -26,7 +26,7 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Controllers
             Info.MyCustomerUrl = "https://github.com/chrismckelt/IdentityServerAzureSpike";
             Info.MyCompanyUrl = "https://github.com/chrismckelt/IdentityServerAzureSpike";
             Info.IntroductionMarkdown =
-                "[Identity Server Discovery Document](.well-known/openid-configuration)    " +
+                "[Identity Server Discovery Document](/core/.well-known/openid-configuration)    " +
                 "<br/><br/>" +
                 "[Read Me](https://github.com/chrismckelt/IdentityServerAzureSpike/blob/master/ReadMe.md)    ";
         }

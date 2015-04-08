@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using IdentityServer3.Core.Models;
-using IdentityServer3.Core.Services;
+using Thinktecture.IdentityServer.Core.Models;
+using Thinktecture.IdentityServer.Core.Services;
 
 namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Extensions
 {

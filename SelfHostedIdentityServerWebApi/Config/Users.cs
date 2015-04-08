@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Security.Claims;
-using IdentityServer3.Core;
-using IdentityServer3.Core.Services.InMemory;
+using Thinktecture.IdentityServer.Core;
+using Thinktecture.IdentityServer.Core.Services.InMemory;
 
 namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
 {
@@ -11,7 +11,7 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
         {
             return new List<InMemoryUser>
             {
-                new InMemoryUser{Subject = "chris", Username = "chris", Password = "secretsauce", 
+                new InMemoryUser{Subject = "chris", Username = "chris", Password = "password", 
                     Claims = new Claim[]
                     {
                         new Claim(Constants.ClaimTypes.GivenName, "Chris"),
@@ -19,7 +19,7 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
                         new Claim(Constants.ClaimTypes.Email, "chris@mckelt.com")
                     }
                 },
-                new InMemoryUser{Subject = "blair", Username = "blair", Password = "secretsauce", 
+                new InMemoryUser{Subject = "blair", Username = "blair", Password = "password", 
                     Claims = new Claim[]
                     {
                         new Claim(Constants.ClaimTypes.GivenName, "Blair"),

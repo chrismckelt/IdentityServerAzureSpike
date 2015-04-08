@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Security.Claims;
-using IdentityServer3.Core.Models;
 using IdentityServerAzureSpike.Shared;
+using Thinktecture.IdentityServer.Core.Models;
 
 namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
 {
@@ -13,34 +13,34 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
             {
                 new Client
                 {
+                    Flow = Flows.Hybrid, // can serve all apps
                     ClientId = Constants.SiteA,
                     ClientName = Constants.SiteA,
                     ClientUri = Constants.SiteAUri,
                     Enabled = true,
-                    ClientSecrets = new List<Secret>
+                    ClientSecrets = new List<ClientSecret>
                     {
-                        new Secret(Constants.Secret.Sha256())
+                        new ClientSecret(Constants.Secret.Sha256())
                     },
-                    
-                    Flow = Flows.Hybrid,
+                    ScopeRestrictions = Constants.RequiredScopes,
                     RedirectUris = Constants.RedirectUris,
                     PostLogoutRedirectUris =  Shared.Constants.RedirectUris,
-                    AllowAccessToAllScopes = true,
                     AlwaysSendClientClaims = true,
                     IncludeJwtId = true,
                 },
                 new Client
                 {
+                    Flow = Flows.AuthorizationCode, // for existing mvc apps
                     ClientId = Constants.SiteAService,
                     ClientName = Constants.SiteAService,
                     Enabled = true,
-                    ClientSecrets = new List<Secret>
+                    ScopeRestrictions = Constants.RequiredScopes,
+                    RedirectUris = Constants.RedirectUris,
+                    PostLogoutRedirectUris =  Shared.Constants.RedirectUris,
+                    ClientSecrets = new List<ClientSecret>
                     {
-                        new Secret(Constants.Secret.Sha256())
-                    },
-                    
-                    Flow = Flows.ClientCredentials,
-                    AllowAccessToAllScopes = true,
+                        new ClientSecret(Constants.Secret.Sha256())
+                    },                    
                     AlwaysSendClientClaims = true,
                     IncludeJwtId = true,
                 },
@@ -63,9 +63,9 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
                     Enabled = true,
 
                     ClientId = "codeclient",
-                    ClientSecrets = new List<Secret>
+                    ClientSecrets = new List<ClientSecret>
                     { 
-                        new Secret("secret".Sha256())
+                        new ClientSecret("secret".Sha256())
                     },
 
                     Flow = Flows.AuthorizationCode,
@@ -81,13 +81,13 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
                         // MVC code client manual
                         "https://localhost:44312/callback",
                     },
-
-                    AllowedScopes = new List<string>
+                      
+                    ScopeRestrictions = new List<string>
                     {
-                        IdentityServer3.Core.Constants.StandardScopes.OpenId,
-                        IdentityServer3.Core.Constants.StandardScopes.Profile,
-                        IdentityServer3.Core.Constants.StandardScopes.Email,
-                        IdentityServer3.Core.Constants.StandardScopes.OfflineAccess,
+                        Thinktecture.IdentityServer.Core.Constants.StandardScopes.OpenId,
+                        Thinktecture.IdentityServer.Core.Constants.StandardScopes.Profile,
+                        Thinktecture.IdentityServer.Core.Constants.StandardScopes.Email,
+                        Thinktecture.IdentityServer.Core.Constants.StandardScopes.OfflineAccess,
                         "read",
                         "write"
                     },
@@ -101,9 +101,9 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
                     Enabled = true,
 
                     ClientId = "implicitclient",
-                    ClientSecrets = new List<Secret>
+                    ClientSecrets = new List<ClientSecret>
                     { 
-                        new Secret("secret".Sha256())
+                        new ClientSecret("secret".Sha256())
                     },
 
                     Flow = Flows.Implicit,
@@ -151,9 +151,9 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
                     ClientName = "Hybrid Native Client Demo",
                     Enabled = true,
                     ClientId = "hybridclient",
-                    ClientSecrets = new List<Secret>
+                    ClientSecrets = new List<ClientSecret>
                     { 
-                        new Secret("secret".Sha256())
+                        new ClientSecret("secret".Sha256())
                     },
 
                     Flow = Flows.Hybrid,
@@ -175,9 +175,9 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
                     ClientName = "Katana Hybrid Client Demo",
                     Enabled = true,
                     ClientId = "katanaclient",
-                    ClientSecrets = new List<Secret>
+                    ClientSecrets = new List<ClientSecret>
                     { 
-                        new Secret("secret".Sha256())
+                        new ClientSecret("secret".Sha256())
                     },
 
                     Flow = Flows.Hybrid,
@@ -204,9 +204,9 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
                     ClientName = "Client Credentials Flow Client",
                     Enabled = true,
                     ClientId = "client",
-                    ClientSecrets = new List<Secret>
+                    ClientSecrets = new List<ClientSecret>
                     { 
-                        new Secret("secret".Sha256())
+                        new ClientSecret("secret".Sha256())
                     },
 
                     Flow = Flows.ClientCredentials,
@@ -223,9 +223,9 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
                     ClientName = "Custom Grant Client",
                     Enabled = true,
                     ClientId = "customclient",
-                    ClientSecrets = new List<Secret>
+                    ClientSecrets = new List<ClientSecret>
                     { 
-                        new Secret("secret".Sha256())
+                        new ClientSecret("secret".Sha256())
                     },
 
                     Flow = Flows.Custom
@@ -236,9 +236,9 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
                     ClientName = "Resource Owner Flow Client",
                     Enabled = true,
                     ClientId = "roclient",
-                    ClientSecrets = new List<Secret>
+                    ClientSecrets = new List<ClientSecret>
                     { 
-                        new Secret("secret".Sha256())
+                        new ClientSecret("secret".Sha256())
                     },
 
                     Flow = Flows.ResourceOwner,

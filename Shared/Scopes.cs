@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using IdentityServer3.Core.Models;
+using Thinktecture.IdentityServer.Core.Models;
 
 namespace IdentityServerAzureSpike.Shared
 {
@@ -61,8 +61,8 @@ namespace IdentityServerAzureSpike.Shared
                         
                         Claims = new List<ScopeClaim>
                         {
-                            new ScopeClaim(IdentityServer3.Core.Constants.ClaimTypes.Name),
-                            new ScopeClaim(IdentityServer3.Core.Constants.ClaimTypes.Role)
+                            new ScopeClaim(Thinktecture.IdentityServer.Core.Constants.ClaimTypes.Name),
+                            new ScopeClaim(Thinktecture.IdentityServer.Core.Constants.ClaimTypes.Role)
                         }
                     }
                 };

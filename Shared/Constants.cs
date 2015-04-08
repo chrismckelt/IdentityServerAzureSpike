@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace IdentityServerAzureSpike.Shared
 {
@@ -12,7 +13,8 @@ namespace IdentityServerAzureSpike.Shared
         public const string SiteA = "SiteA";
         public const string SiteAService = "SiteA_Service";
         public const string SiteAUri = "http://siteA.demo.local:9556";
-        public const string SiteARedirectUri = SiteAUri + "/claims";
+        public const string SiteARedirectBouncedFromIdentityServerUri = SiteAUri + "/BouncedFromIdentityServer";
+        public const string SiteARedirectCallbackUri = SiteAUri + "/callback";
 
         public const string SiteB = "SiteB";
         public const string SiteBUri = "http://siteB.demo.local:9557";
@@ -27,13 +29,15 @@ namespace IdentityServerAzureSpike.Shared
         public const string UserInfoEndpoint = IdentityServerCoreUri + "/connect/userinfo";
         public const string IdentityTokenValidationEndpoint = IdentityServerCoreUri + "/connect/identitytokenvalidation";
         public const string TokenRevocationEndpoint = IdentityServerCoreUri + "/connect/revocation";
+        public const string PersmissionsEndpoint = IdentityServerCoreUri + "/permissions";
 
         public const string RequiredScopesString = "openid email profile read write offline_access";
-        public static readonly string[] RequiredScopes = new[] { "openid email profile read write offline_access" };
+        public static readonly List<string> RequiredScopes = RequiredScopesString.Split().ToList();
         
         public static readonly List<string> RedirectUris = new List<string>()
         {
-            Constants.SiteARedirectUri
+            Constants.SiteARedirectBouncedFromIdentityServerUri,
+            Constants.SiteARedirectCallbackUri
         };
 
     }
