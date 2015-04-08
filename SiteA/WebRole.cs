@@ -3,7 +3,7 @@ using Serilog;
 using Thinktecture.IdentityServer.Core.Logging;
 using Thinktecture.IdentityServer.Core.Logging.LogProviders;
 
-namespace IdentityServerAzureSpike.SiteB
+namespace IdentityServerAzureSpike.SiteA
 {
     public class WebRole : RoleEntryPoint
     {

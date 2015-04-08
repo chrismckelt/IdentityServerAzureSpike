@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Owin.Security.Cookies;
 
 namespace IdentityServerAzureSpike.Shared
 {
@@ -38,11 +39,18 @@ namespace IdentityServerAzureSpike.Shared
         public const string RequiredScopesString = "openid email profile read write offline_access";
         public static readonly List<string> RequiredScopes = RequiredScopesString.Split().ToList();
         
-        public static readonly List<string> RedirectUris = new List<string>()
+        public static readonly List<string> RedirectSiteAUris = new List<string>()
         {
             Constants.SiteAUri,
             Constants.SiteARedirectBouncedFromIdentityServerUri,
             Constants.SiteARedirectCallbackUri,
+            Constants.SiteBUri,
+            Constants.SiteBRedirectBouncedFromIdentityServerUri,
+            Constants.SiteBRedirectCallbackUri
+        };
+
+        public static readonly List<string> RedirectSiteBUris = new List<string>()
+        {
             Constants.SiteBUri,
             Constants.SiteBRedirectBouncedFromIdentityServerUri,
             Constants.SiteBRedirectCallbackUri
@@ -53,6 +61,17 @@ namespace IdentityServerAzureSpike.Shared
             public const string Name = "identity";
             public const string Domain = "identity.demo.local";
             public const string Path = "identity.demo.local";
+
+            public static CookieAuthenticationOptions Build()
+            {
+                return new CookieAuthenticationOptions
+                {
+                    AuthenticationType = "Cookies",
+                    CookieName = Shared.Constants.Cookie.Name,
+                    CookieDomain = Shared.Constants.Cookie.Domain,
+                  //  CookiePath = Shared.Constants.Cookie.Path
+                };
+            }
         }
     }
 }

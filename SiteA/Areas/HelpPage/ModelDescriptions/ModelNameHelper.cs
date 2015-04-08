@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 
-namespace IdentityServerAzureSpike.SiteB.Areas.HelpPage.ModelDescriptions
+namespace IdentityServerAzureSpike.SiteA.Areas.HelpPage.ModelDescriptions
 {
     internal static class ModelNameHelper
     {

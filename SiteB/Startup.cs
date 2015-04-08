@@ -24,14 +24,7 @@ namespace IdentityServerAzureSpike.SiteB
             AntiForgeryConfig.UniqueClaimTypeIdentifier = Constants.ClaimTypes.ClientId;
             JwtSecurityTokenHandler.InboundClaimTypeMap = new Dictionary<string, string>();
 
-            app.UseCookieAuthentication(new CookieAuthenticationOptions
-            {
-                AuthenticationType = "Cookies",
-                CookieName = Shared.Constants.Cookie.Name,
-                CookieDomain = Shared.Constants.Cookie.Domain,
-                CookiePath = Shared.Constants.Cookie.Path
-
-            });
+            app.UseCookieAuthentication(Shared.Constants.Cookie.Build());
 
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
@@ -44,7 +37,7 @@ namespace IdentityServerAzureSpike.SiteB
                 ClientId = Shared.Constants.SiteB,
                 // must match IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config.Clients
                 Authority = Shared.Constants.IdentityServerCoreUri,
-                RedirectUri = Shared.Constants.SiteBRedirectCallbackUri,
+                RedirectUri = Shared.Constants.SiteBUri,
                 PostLogoutRedirectUri = Shared.Constants.SiteBUri,
                 ResponseType = Constants.ResponseTypes.CodeIdTokenToken,
                 Scope = Shared.Constants.RequiredScopesString,

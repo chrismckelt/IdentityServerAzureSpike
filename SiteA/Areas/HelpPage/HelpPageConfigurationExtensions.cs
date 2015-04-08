@@ -11,10 +11,11 @@ using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Description;
-using IdentityServerAzureSpike.SiteB.Areas.HelpPage.ModelDescriptions;
-using IdentityServerAzureSpike.SiteB.Areas.HelpPage.Models;
+using IdentityServerAzureSpike.SiteA.Areas.HelpPage.ModelDescriptions;
+using IdentityServerAzureSpike.SiteA.Areas.HelpPage.Models;
+using IdentityServerAzureSpike.SiteA.Areas.HelpPage.SampleGeneration;
 
-namespace IdentityServerAzureSpike.SiteB.Areas.HelpPage
+namespace IdentityServerAzureSpike.SiteA.Areas.HelpPage
 {
     public static class HelpPageConfigurationExtensions
     {

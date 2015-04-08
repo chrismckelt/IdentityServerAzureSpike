@@ -23,21 +23,20 @@ namespace IdentityServerAzureSpike.SiteA
             AntiForgeryConfig.UniqueClaimTypeIdentifier = Thinktecture.IdentityServer.Core.Constants.ClaimTypes.ClientId;
             JwtSecurityTokenHandler.InboundClaimTypeMap = new Dictionary<string, string>();
 
-            app.UseCookieAuthentication(new CookieAuthenticationOptions
-                {
-                    AuthenticationType = "Cookies",
-                    CookieName = Shared.Constants.Cookie.Name,
-                    CookieDomain = Shared.Constants.Cookie.Domain,
-                    CookiePath = Shared.Constants.Cookie.Path
+            app.UseCookieAuthentication(Shared.Constants.Cookie.Build());
 
-                });
+            app.UseCookieAuthentication(new CookieAuthenticationOptions
+            {
+                AuthenticationType = "TempState",
+                AuthenticationMode = AuthenticationMode.Passive
+            });
 
              app.UseOpenIdConnectAuthentication(new OpenIdConnectAuthenticationOptions
                 {
                     
                     ClientId = Shared.Constants.SiteA, // must match IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config.Clients
                     Authority = Shared.Constants.IdentityServerCoreUri,
-                    RedirectUri = Shared.Constants.SiteBRedirectCallbackUri,
+                    RedirectUri = Shared.Constants.SiteAUri,
                     PostLogoutRedirectUri = Shared.Constants.SiteAUri,
                     ResponseType = Thinktecture.IdentityServer.Core.Constants.ResponseTypes.CodeIdTokenToken,
                     Scope = Shared.Constants.RequiredScopesString,
@@ -108,6 +107,7 @@ namespace IdentityServerAzureSpike.SiteA
 
                             n.AuthenticationTicket = new AuthenticationTicket(nid,n.AuthenticationTicket.Properties);
                         },
+                        
                     }
                 });
         }

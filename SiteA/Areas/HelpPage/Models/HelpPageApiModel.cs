@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net.Http.Headers;
 using System.Web.Http.Description;
-using IdentityServerAzureSpike.SiteB.Areas.HelpPage.ModelDescriptions;
+using IdentityServerAzureSpike.SiteA.Areas.HelpPage.ModelDescriptions;
 
-namespace IdentityServerAzureSpike.SiteB.Areas.HelpPage.Models
+namespace IdentityServerAzureSpike.SiteA.Areas.HelpPage.Models
 {
     /// <summary>
     /// The model that represents an API displayed on the help page.

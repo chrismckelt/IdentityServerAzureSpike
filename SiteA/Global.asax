@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="IdentityServerAzureSpike.SiteB.Global" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="IdentityServerAzureSpike.SiteA.Global" Language="C#" %>

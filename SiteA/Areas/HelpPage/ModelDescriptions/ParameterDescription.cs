@@ -1,7 +1,6 @@
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace IdentityServerAzureSpike.SiteB.Areas.HelpPage.ModelDescriptions
+namespace IdentityServerAzureSpike.SiteA.Areas.HelpPage.ModelDescriptions
 {
     public class ParameterDescription
     {

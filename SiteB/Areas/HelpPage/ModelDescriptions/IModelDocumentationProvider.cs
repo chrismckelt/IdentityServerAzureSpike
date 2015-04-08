@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 
-namespace IdentityServerAzureSpike.SiteA.Areas.HelpPage.ModelDescriptions
+namespace IdentityServerAzureSpike.SiteB.Areas.HelpPage.ModelDescriptions
 {
     public interface IModelDocumentationProvider
     {

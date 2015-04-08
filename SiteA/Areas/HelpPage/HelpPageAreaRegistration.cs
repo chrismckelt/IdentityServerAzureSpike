@@ -1,7 +1,8 @@
 using System.Web.Http;
 using System.Web.Mvc;
+using IdentityServerAzureSpike.SiteA.Areas.HelpPage.App_Start;
 
-namespace IdentityServerAzureSpike.SiteB.Areas.HelpPage
+namespace IdentityServerAzureSpike.SiteA.Areas.HelpPage
 {
     public class HelpPageAreaRegistration : AreaRegistration
     {

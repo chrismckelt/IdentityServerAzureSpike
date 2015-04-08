@@ -28,23 +28,7 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi
         {
             var factory = InMemoryFactory.Create(Users.Get(), Clients.Get(), Scopes.Get());
 
-            var allowedOrigins = new List<string>
-            {
-                "*",
-                "/connect/consent",
-                Shared.Constants.IdentityServerCoreUri,
-                Shared.Constants.IdentityServerIdentityUri
-            };
-
-            //[Warning] CORS request made for path: /connect/consent from origin: https://identity.demo.local but rejected because invalid CORS path
-            //https://github.com/IdentityServer/IdentityServer3/issues/1138
-            ICorsPolicyService corsPolicyService = new DefaultCorsPolicyService
-            {
-                AllowAll = true,
-                AllowedOrigins = allowedOrigins
-            };
-
-            factory.CorsPolicyService = new Registration<ICorsPolicyService>(corsPolicyService);
+            var allowedOrigins = SetupCors(factory);
 
             var options = new IdentityServerOptions
             {
@@ -63,14 +47,12 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi
                     EnableLocalLogin = true,
                     EnableLoginHint = true,
                     EnablePostSignOutAutoRedirect = true,
-                    CookieOptions = new CookieOptions
+                    InvalidSignInRedirectUrl = Shared.Constants.SiteAUri + "/INVALID_LOGIN=YOU",  
+                    CookieOptions = new CookieOptions()
                     {
-                        AllowRememberMe = true,
-                        Path = "/",
-                        IsPersistent = true,
-                        SecureMode = CookieSecureMode.SameAsRequest
+                        SecureMode = CookieSecureMode.SameAsRequest,
                     }
-                }
+                },
             };
 
             appBuilder.Map("/core", builder =>
@@ -84,6 +66,31 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi
 
                 builder.UseIdentityServerBearerTokenAuthentication(bearerOptions);
             });
+        }
+
+        private static List<string> SetupCors(IdentityServerServiceFactory factory)
+        {
+            var allowedOrigins = new List<string>
+            {
+                "*",
+                "/connect/consent",
+                Shared.Constants.IdentityServerCoreUri,
+                Shared.Constants.IdentityServerIdentityUri,
+            };
+
+            //[Warning] CORS request made for path: /connect/consent from origin: https://identity.demo.local but rejected because invalid CORS path
+            //https://github.com/IdentityServer/IdentityServer3/issues/1138
+            allowedOrigins.AddRange(Shared.Constants.RedirectSiteAUris);
+            allowedOrigins.AddRange(Shared.Constants.RedirectSiteBUris);
+
+            ICorsPolicyService corsPolicyService = new DefaultCorsPolicyService
+            {
+                AllowAll = true,
+                AllowedOrigins = allowedOrigins
+            };
+
+            factory.CorsPolicyService = new Registration<ICorsPolicyService>(corsPolicyService);
+            return allowedOrigins;
         }
 
         private static void SetupWebApi(IAppBuilder appBuilder)
@@ -102,6 +109,7 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi
             config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/json"));
             config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/json"));
             config.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.Always;
+            config.SuppressDefaultHostAuthentication(); 
             config.EnableCors();
             appBuilder.UseWebApi(config);
         }

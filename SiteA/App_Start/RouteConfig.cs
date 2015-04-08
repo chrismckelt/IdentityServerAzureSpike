@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace IdentityServerAzureSpike.SiteB
+namespace IdentityServerAzureSpike.SiteA
 {
     public class RouteConfig
     {

@@ -1,4 +1,4 @@
-namespace IdentityServerAzureSpike.SiteB.Areas.HelpPage.ModelDescriptions
+namespace IdentityServerAzureSpike.SiteA.Areas.HelpPage.ModelDescriptions
 {
     public class SimpleTypeModelDescription : ModelDescription
     {

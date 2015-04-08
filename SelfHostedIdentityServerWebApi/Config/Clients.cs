@@ -24,8 +24,8 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
                     },
                     ScopeRestrictions = Constants.RequiredScopes,
                     
-                    RedirectUris = Constants.RedirectUris,
-                    PostLogoutRedirectUris =  Shared.Constants.RedirectUris,
+                    RedirectUris = Constants.RedirectSiteAUris,
+                    PostLogoutRedirectUris =  Shared.Constants.RedirectSiteAUris,
                     AlwaysSendClientClaims = true,
                     IncludeJwtId = true,
                 },
@@ -36,8 +36,8 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
                     ClientName = Constants.SiteAService,
                     Enabled = true,
                     ScopeRestrictions = Constants.RequiredScopes,
-                    RedirectUris = Constants.RedirectUris,
-                    PostLogoutRedirectUris =  Shared.Constants.RedirectUris,
+                    RedirectUris = Constants.RedirectSiteAUris,
+                    PostLogoutRedirectUris =  Shared.Constants.RedirectSiteAUris,
                     ClientSecrets = new List<ClientSecret>
                     {
                         new ClientSecret(Constants.Secret.Sha256())
@@ -58,8 +58,8 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
                     },
                     ScopeRestrictions = Constants.RequiredScopes,
                     
-                    RedirectUris = Constants.RedirectUris,
-                    PostLogoutRedirectUris =  Shared.Constants.RedirectUris,
+                    RedirectUris = Constants.RedirectSiteAUris,
+                    PostLogoutRedirectUris =  Shared.Constants.RedirectSiteAUris,
                     AlwaysSendClientClaims = true,
                     IncludeJwtId = true,
                 },
@@ -70,8 +70,8 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
                     ClientName = Constants.SiteBService,
                     Enabled = true,
                     ScopeRestrictions = Constants.RequiredScopes,
-                    RedirectUris = Constants.RedirectUris,
-                    PostLogoutRedirectUris =  Shared.Constants.RedirectUris,
+                    RedirectUris = Constants.RedirectSiteAUris,
+                    PostLogoutRedirectUris =  Shared.Constants.RedirectSiteAUris,
                     ClientSecrets = new List<ClientSecret>
                     {
                         new ClientSecret(Constants.Secret.Sha256())

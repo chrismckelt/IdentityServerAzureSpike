@@ -1,10 +1,10 @@
 using System;
 using System.Web.Http;
 using System.Web.Mvc;
-using IdentityServerAzureSpike.SiteB.Areas.HelpPage.ModelDescriptions;
-using IdentityServerAzureSpike.SiteB.Areas.HelpPage.Models;
+using IdentityServerAzureSpike.SiteA.Areas.HelpPage.ModelDescriptions;
+using IdentityServerAzureSpike.SiteA.Areas.HelpPage.Models;
 
-namespace IdentityServerAzureSpike.SiteB.Areas.HelpPage.Controllers
+namespace IdentityServerAzureSpike.SiteA.Areas.HelpPage.Controllers
 {
     /// <summary>
     /// The controller that will handle requests for the help page.

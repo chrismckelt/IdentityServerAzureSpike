@@ -1,6 +1,6 @@
 using System;
 
-namespace IdentityServerAzureSpike.SiteB.Areas.HelpPage
+namespace IdentityServerAzureSpike.SiteA.Areas.HelpPage.SampleGeneration
 {
     /// <summary>
     /// This represents an image sample on the help page. There's a display template named ImageSample associated with this class.

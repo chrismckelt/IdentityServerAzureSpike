@@ -42,7 +42,7 @@ namespace IdentityServerAzureSpike.SiteB.Controllers
         {
             var client = new OAuth2Client(
                 new Uri(Constants.TokenEndpoint),
-                Constants.SiteAService,
+                Constants.SiteB,
                 Constants.Secret);
 
             var code = Request.QueryString["code"];
@@ -97,7 +97,7 @@ namespace IdentityServerAzureSpike.SiteB.Controllers
             
             var parameters = new TokenValidationParameters
             {
-                ValidAudience = Shared.Constants.SiteAService,
+                ValidAudience = Shared.Constants.SiteB,
                 ValidIssuer = Constants.IdentityServerCoreUri,
                 IssuerSigningToken = new X509SecurityToken(Certificate.Get())
             };

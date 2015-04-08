@@ -1,6 +1,6 @@
 ﻿using System.Web.Optimization;
 
-namespace IdentityServerAzureSpike.SiteB
+namespace IdentityServerAzureSpike.SiteA
 {
     public class BundleConfig
     {

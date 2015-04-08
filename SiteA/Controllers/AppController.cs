@@ -9,7 +9,7 @@ using System.Web.Mvc;
 using Newtonsoft.Json.Linq;
 using Thinktecture.IdentityModel.Client;
 
-namespace IdentityServerAzureSpike.SiteB.Controllers
+namespace IdentityServerAzureSpike.SiteA.Controllers
 {
     [Authorize]
     public class AppController : Controller

@@ -1,6 +1,6 @@
 using System;
 
-namespace IdentityServerAzureSpike.SiteB.Areas.HelpPage.ModelDescriptions
+namespace IdentityServerAzureSpike.SiteA.Areas.HelpPage.ModelDescriptions
 {
     /// <summary>
     /// Describes a type model.

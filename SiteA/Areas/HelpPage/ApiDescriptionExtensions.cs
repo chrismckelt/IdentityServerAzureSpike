@@ -3,7 +3,7 @@ using System.Text;
 using System.Web;
 using System.Web.Http.Description;
 
-namespace IdentityServerAzureSpike.SiteB.Areas.HelpPage
+namespace IdentityServerAzureSpike.SiteA.Areas.HelpPage
 {
     public static class ApiDescriptionExtensions
     {

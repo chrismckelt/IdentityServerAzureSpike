@@ -1,7 +1,6 @@
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace IdentityServerAzureSpike.SiteA.Areas.HelpPage.ModelDescriptions
+namespace IdentityServerAzureSpike.SiteB.Areas.HelpPage.ModelDescriptions
 {
     public class EnumTypeModelDescription : ModelDescription
     {

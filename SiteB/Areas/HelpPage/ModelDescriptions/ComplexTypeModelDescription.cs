@@ -1,6 +1,6 @@
 using System.Collections.ObjectModel;
 
-namespace IdentityServerAzureSpike.SiteA.Areas.HelpPage.ModelDescriptions
+namespace IdentityServerAzureSpike.SiteB.Areas.HelpPage.ModelDescriptions
 {
     public class ComplexTypeModelDescription : ModelDescription
     {

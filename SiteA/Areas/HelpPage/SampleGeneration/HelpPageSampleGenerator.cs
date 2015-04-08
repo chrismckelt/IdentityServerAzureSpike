@@ -13,7 +13,7 @@ using System.Web.Http.Description;
 using System.Xml.Linq;
 using Newtonsoft.Json;
 
-namespace IdentityServerAzureSpike.SiteB.Areas.HelpPage
+namespace IdentityServerAzureSpike.SiteA.Areas.HelpPage.SampleGeneration
 {
     /// <summary>
     /// This class will generate the samples for the help page.

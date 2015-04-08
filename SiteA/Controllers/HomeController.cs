@@ -5,7 +5,7 @@ using System.Web.Mvc;
 using IdentityServerAzureSpike.Shared;
 using Thinktecture.IdentityModel.Client;
 
-namespace IdentityServerAzureSpike.SiteB.Controllers
+namespace IdentityServerAzureSpike.SiteA.Controllers
 {
     public class HomeController : Controller
     {
