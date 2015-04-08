@@ -23,13 +23,26 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
                     },
                     
                     Flow = Flows.Hybrid,
-                    
-                    RedirectUris = Shared.Constants.RedirectUris,
+                    RedirectUris = Constants.RedirectUris,
                     PostLogoutRedirectUris =  Shared.Constants.RedirectUris,
                     AllowAccessToAllScopes = true,
                     AlwaysSendClientClaims = true,
                     IncludeJwtId = true,
+                },
+                new Client
+                {
+                    ClientId = Constants.SiteAService,
+                    ClientName = Constants.SiteAService,
+                    Enabled = true,
+                    ClientSecrets = new List<Secret>
+                    {
+                        new Secret(Constants.Secret.Sha256())
+                    },
                     
+                    Flow = Flows.ClientCredentials,
+                    AllowAccessToAllScopes = true,
+                    AlwaysSendClientClaims = true,
+                    IncludeJwtId = true,
                 },
 
             };

@@ -4,12 +4,8 @@ using System.IdentityModel.Tokens;
 using System.Linq;
 using System.Security.Claims;
 using System.Web.Helpers;
-using IdentityServer3.Core.Configuration;
-using IdentityServer3.Core.Models;
-using IdentityServer3.Core.Resources;
-using IdentityServerAzureSpike.Shared;
+using IdentityServer3.Core;
 using IdentityServerAzureSpike.SiteA;
-using Microsoft.IdentityModel.Protocols;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
@@ -25,7 +21,7 @@ namespace IdentityServerAzureSpike.SiteA
     {
          public void Configuration(IAppBuilder app)
         {
-            AntiForgeryConfig.UniqueClaimTypeIdentifier = IdentityServer3.Core.Constants.ClaimTypes.ClientId;
+            AntiForgeryConfig.UniqueClaimTypeIdentifier = Constants.ClaimTypes.ClientId;
             JwtSecurityTokenHandler.InboundClaimTypeMap = new Dictionary<string, string>();
 
             app.UseCookieAuthentication(new CookieAuthenticationOptions
@@ -39,10 +35,10 @@ namespace IdentityServerAzureSpike.SiteA
                     
                     ClientId = Shared.Constants.SiteA, // must match IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config.Clients
                     Authority = Shared.Constants.IdentityServerCoreUri,
-                    RedirectUri = Constants.SiteARedirectUri,
-                    PostLogoutRedirectUri = Constants.SiteARedirectUri,
-                    ResponseType = IdentityServer3.Core.Constants.ResponseTypes.CodeIdTokenToken,
-                    Scope = "openid email profile read write offline_access",
+                    RedirectUri = Shared.Constants.SiteARedirectUri,
+                    PostLogoutRedirectUri = Shared.Constants.SiteARedirectUri,
+                    ResponseType = Constants.ResponseTypes.CodeIdTokenToken,
+                    Scope = Shared.Constants.RequiredScopesString,
                     SignInAsAuthenticationType = "Cookies",
                     
                     Notifications = new OpenIdConnectAuthenticationNotifications
@@ -63,14 +59,14 @@ namespace IdentityServerAzureSpike.SiteA
 
                             // get userinfo data
                             var userInfoClient = new UserInfoClient(
-                                new Uri(Constants.UserInfoEndpoint),
+                                new Uri(Shared.Constants.UserInfoEndpoint),
                                 n.ProtocolMessage.AccessToken);
 
                             var userInfo = await userInfoClient.GetAsync();
                             userInfo.Claims.ToList().ForEach(ui => claims.Add(new Claim(ui.Item1, ui.Item2)));
 
                             // get access and refresh token
-                            var tokenClient = new OAuth2Client(new Uri(Constants.TokenEndpoint),Constants.SiteA,Constants.Secret);
+                            var tokenClient = new OAuth2Client(new Uri(Shared.Constants.TokenEndpoint),Shared.Constants.SiteA,Shared.Constants.Secret);
 
                             var response = await tokenClient.RequestAuthorizationCodeAsync(n.Code, n.RedirectUri);
 
@@ -80,6 +76,35 @@ namespace IdentityServerAzureSpike.SiteA
                             claims.Add(new Claim("id_token", n.ProtocolMessage.IdToken));
 
                             n.AuthenticationTicket = new AuthenticationTicket(new ClaimsIdentity(claims.Distinct(), n.AuthenticationTicket.Identity.AuthenticationType), n.AuthenticationTicket.Properties);
+                        },
+                        SecurityTokenValidated = async n =>
+                        {
+                            var nid = new ClaimsIdentity(
+                                n.AuthenticationTicket.Identity.AuthenticationType,
+                                Constants.ClaimTypes.GivenName,
+                                Constants.ClaimTypes.Role);
+
+                            // get userinfo data
+                            var userInfoClient = new UserInfoClient(
+                                new Uri(n.Options.Authority + "/connect/userinfo"),
+                                n.ProtocolMessage.AccessToken);
+
+                            var userInfo = await userInfoClient.GetAsync();
+                            userInfo.Claims.ToList().ForEach(ui => nid.AddClaim(new Claim(ui.Item1, ui.Item2)));
+
+                            // keep the id_token for logout
+                            nid.AddClaim(new Claim("id_token", n.ProtocolMessage.IdToken));
+
+                            // add access token for sample API
+                            nid.AddClaim(new Claim("access_token", n.ProtocolMessage.AccessToken));
+
+                            // keep track of access token expiration
+                            nid.AddClaim(new Claim("expires_at", DateTimeOffset.Now.AddSeconds(int.Parse(n.ProtocolMessage.ExpiresIn)).ToString()));
+
+                            // add some other app specific claim
+                            nid.AddClaim(new Claim("app_specific", "some data"));
+
+                            n.AuthenticationTicket = new AuthenticationTicket(nid,n.AuthenticationTicket.Properties);
                         },
                     }
                 });

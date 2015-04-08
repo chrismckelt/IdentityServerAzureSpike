@@ -10,6 +10,7 @@ namespace IdentityServerAzureSpike.Shared
         public const string IdentityServerIdentityUri = "https://identity.demo.local/identity";
 
         public const string SiteA = "SiteA";
+        public const string SiteAService = "SiteA_Service";
         public const string SiteAUri = "http://siteA.demo.local:9556";
         public const string SiteARedirectUri = SiteAUri + "/claims";
 
@@ -27,7 +28,8 @@ namespace IdentityServerAzureSpike.Shared
         public const string IdentityTokenValidationEndpoint = IdentityServerCoreUri + "/connect/identitytokenvalidation";
         public const string TokenRevocationEndpoint = IdentityServerCoreUri + "/connect/revocation";
 
-        public static readonly string[] RequiredScopes = new[] { "openid profile email phone" };
+        public const string RequiredScopesString = "openid email profile read write offline_access";
+        public static readonly string[] RequiredScopes = new[] { "openid email profile read write offline_access" };
         
         public static readonly List<string> RedirectUris = new List<string>()
         {

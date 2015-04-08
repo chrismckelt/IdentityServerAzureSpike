@@ -38,6 +38,7 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi
                 SigningCertificate = Certificate.Get(),
                 Factory = factory,
                 RequireSsl = false,
+                
                 AuthenticationOptions = new AuthenticationOptions()
                 {
                     EnableLocalLogin = true,

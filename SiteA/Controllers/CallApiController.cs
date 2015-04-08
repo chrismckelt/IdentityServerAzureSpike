@@ -1,13 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
+using IdentityServer3.Core.Models;
+using IdentityServerAzureSpike.Shared;
 using Newtonsoft.Json.Linq;
 using Thinktecture.IdentityModel.Client;
+using TokenResponse = Thinktecture.IdentityModel.Client.TokenResponse;
 
 namespace IdentityServerAzureSpike.SiteA.Controllers
 {
@@ -39,18 +39,18 @@ namespace IdentityServerAzureSpike.SiteA.Controllers
             var client = new HttpClient();
             client.SetBearerToken(token);
 
-            var json = await client.GetStringAsync("https://localhost:44321/identity");
+            var json = await client.GetStringAsync(Constants.IdentityServerIdentityUri);
             return JArray.Parse(json).ToString();
         }
 
         private async Task<TokenResponse> GetTokenAsync()
         {
             var client = new OAuth2Client(
-                new Uri(Shared.Constants.TokenEndpoint),
-                "mvc_service",
-                "secret");
+                new Uri(Constants.TokenEndpoint),
+                Constants.SiteAService,
+                Constants.Secret);
 
-            return await client.RequestClientCredentialsAsync("sampleApi");
+            return await client.RequestClientCredentialsAsync("read");
         }
     }
 }
