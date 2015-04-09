@@ -86,9 +86,11 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi
             config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/json"));
             config.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.Always;
             config.SuppressDefaultHostAuthentication();
+            config.SuppressHostPrincipal();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
-            config.EnableCors();
             appBuilder.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
+            config.EnableCors();
+            
             appBuilder.UseWebApi(config);
         }
 

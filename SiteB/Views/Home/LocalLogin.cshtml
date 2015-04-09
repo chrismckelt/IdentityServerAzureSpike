@@ -1,7 +1,6 @@
 ﻿@using System.Web.Mvc.Html
 @using IdentityServerAzureSpike.Shared
 @{
-    ViewBag.Title = "Site B login form";
     ViewBag.Scope = Constants.RequiredScopesString;
 }
 
@@ -9,17 +8,31 @@
     <h1>Login via Site A login form</h1>
     <h2>code flow sample client</h2>
 </div>
-
+<hr/>
 <div class="row">
     <div class="col-md-8">
-        <h3>Scopes</h3>
-        @using (Html.BeginForm("LoginOnThisSite", "Home"))
+        <h3>Login via Code Flow</h3>
+        @using (Html.BeginForm("PostCodeFlow", "CodeFlow"))
         {
-            <p>
-                <input type="text" name="scopes" style="width: 200px" value="@ViewBag.Scope" />
-            </p>
+            <div class="form-control form-group-sm">
+                <input type="text" name="scopes" class="text-capitalize col-xs-push-4" value="@ViewBag.Scope" />
 
-            <button name="OK">OK</button>
+                <button name="OKPostCodeFlow">OK</button>
+            </div>
+        }
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <h3>Login via Implicit Form Post (Redirected via Query String)</h3>
+        @using (Html.BeginForm("PostImplicit", "ImplicitFlow"))
+        {
+            <div class="form-control form-group-sm">
+                <input type="text" name="scopesHardCodeInController" class="text-capitalize col-xs-push-4" value="@ViewBag.Scope" />
+
+                <button name="OKPostImplicit">OK</button>
+            </div>
         }
     </div>
 </div>

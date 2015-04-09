@@ -69,7 +69,7 @@ namespace IdentityServerAzureSpike.Shared.Controllers
             var parameters = new TokenValidationParameters
             {
                 ValidAudience = SiteFlow,
-                ValidIssuer = Constants.IdentityServerCoreUri,
+                ValidIssuer = Constants.IdentityServerUri,
                 IssuerSigningToken = new X509SecurityToken(Certificate.Get())
             };
 

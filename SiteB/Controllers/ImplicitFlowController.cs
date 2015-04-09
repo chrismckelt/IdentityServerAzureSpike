@@ -1,11 +1,9 @@
-﻿using System.Web.Mvc;
-using IdentityServerAzureSpike.Shared;
+﻿using IdentityServerAzureSpike.Shared;
 using IdentityServerAzureSpike.Shared.Controllers;
 
 namespace IdentityServerAzureSpike.SiteB.Controllers
 {
-    [Authorize]
-    public class AppController : AppControllerBase
+    public class ImplicitFlowController : ImplicitFlowControllerBase
     {
         public override string SiteName
         {

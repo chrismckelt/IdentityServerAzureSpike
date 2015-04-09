@@ -13,7 +13,7 @@ namespace IdentityServerAzureSpike.SiteB
             Log.Logger = new LoggerConfiguration()
             .WriteTo
             .ColoredConsole(outputTemplate: "{Timestamp:HH:mm} [{Level}] ({Name}) {NewLine} {Message}{NewLine}{Exception}")
-            .WriteTo.File(@"c:\logs\sitea.log")
+            .WriteTo.File(@"c:\logs\SiteB.log")
             .CreateLogger();
 
             LogProvider.SetCurrentLogProvider(new SerilogLogProvider());

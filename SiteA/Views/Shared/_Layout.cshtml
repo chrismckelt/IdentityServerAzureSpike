@@ -36,13 +36,15 @@
                 {
                     <li>&nbsp;</li>
                     <li>@Html.ActionLink("Identity Server login", "LoginViaIdentityServerCodeFlow", "Home", new {@class = "navbar-brand"})</li>
-                    <li>@Html.ActionLink("Local login", "LocalLogin", "Home", null, new { @class = "navbar-brand" })</li>
+					<li>&nbsp;</li>
+                    <li>@Html.ActionLink("HTML Forms", "LocalLogin", "Home", null, new { @class = "navbar-brand" })</li>
+					<li>&nbsp;</li>
                     <li>@Html.ActionLink("MVC controller redirects", "Index", "App", new {@class = "navbar-brand"})</li>
                     <li>&nbsp;</li>
                 }
             </ul>
             <ul class="nav navbar-nav navbar-right">
-
+          
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Sites <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
@@ -50,16 +52,13 @@
                             <a href="https://identity.demo.local/help">Identity Server</a>
                         </li>
                         <li>
-                            <a href="http://Sitea.demo.local:9556/" class="active">Site A</a>
+                            <a href="http://Sitea.demo.local:9556/">Site A</a>
                         </li>
                         <li>
                             <a href="http://siteb.demo.local:9557">Site B</a>
                         </li>
                         <li>
                             <a href="http://sitec.demo.local:9557">Site C</a>
-                        </li>
-                        <li>
-                            <a href="https://identity.demo.local/core/permissions">Permissions</a>
                         </li>
                     </ul>
                 </li>
@@ -68,14 +67,32 @@
                         Authenticated
                         @if (User.Identity.IsAuthenticated)
                         {
-                            <strong>true</strong>
+                            <span class="label label-success">True</span>
                         }
                         @if (!User.Identity.IsAuthenticated)
                         {
-                            <strong>false</strong>
+                            <span class="label label-warning">False</span>
                         }
                     </a>
                 </li>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Account<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="https://identity.demo.local/help">User Info</a>
+                            </li>
+                            <li>
+                                <a href="https://identity.demo.local/core/permissions">Permissions</a>
+                            </li>
+                            <li>
+                                <a href="https://identity.demo.local/core/permissions">Revocation</a>
+                            </li>
+                        </ul>
+                    </li>
+                }
+
                 @if (User.Identity.IsAuthenticated)
                 {
                     <li>@Html.ActionLink("Signout", "Signout", "Home", new {@class = "navbar-brand"})</li>

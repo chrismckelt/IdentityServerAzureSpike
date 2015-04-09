@@ -42,8 +42,8 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
                     {
                         new ClientSecret(Constants.Secret.Sha256())
                     },                    
-                    AlwaysSendClientClaims = true,
-                    IncludeJwtId = true,
+                   RequireConsent = true,
+                   AccessTokenType = AccessTokenType.Reference
                 },
                  new Client
                 {
@@ -86,14 +86,14 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
                     ClientName = Constants.SiteBCodeFlow,
                     Enabled = true,
                     ScopeRestrictions = Constants.RequiredScopes,
-                    RedirectUris = Constants.RedirectSiteAUris,
-                    PostLogoutRedirectUris =  Shared.Constants.RedirectSiteAUris,
+                    RedirectUris = Constants.RedirectSiteBUris,
+                    PostLogoutRedirectUris =  Shared.Constants.RedirectSiteBUris,
                     ClientSecrets = new List<ClientSecret>
                     {
                         new ClientSecret(Constants.Secret.Sha256())
                     },                    
-                    AlwaysSendClientClaims = true,
-                    IncludeJwtId = true,
+                    RequireConsent = true,
+                    AccessTokenType = AccessTokenType.Reference
                 },
                  new Client
                 {
@@ -102,8 +102,8 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
                     ClientName = Constants.SiteBImplicitFlow,
                     Enabled = true,
                     ScopeRestrictions = Constants.RequiredScopes,
-                    RedirectUris = Constants.RedirectSiteAUris,
-                    PostLogoutRedirectUris =  Constants.RedirectSiteAUris,
+                    RedirectUris = Constants.RedirectSiteBUris,
+                    PostLogoutRedirectUris =  Constants.RedirectSiteBUris,
                     ClientSecrets = new List<ClientSecret>
                     {
                         new ClientSecret(Constants.Secret.Sha256())

@@ -17,16 +17,16 @@ namespace IdentityServerAzureSpike.Shared
         public const string SiteAImplicitFlow = "SiteA_ImplicitFlow";
         public const string SiteAUri = "http://sitea.demo.local:9556";
         public const string SiteARedirectBouncedFromIdentityServerUri = SiteAUri + "/BouncedFromIdentityServer";
-        public const string SiteACodeFlowCallBackUri = SiteAUri + "/codeflow/callback";
-        public const string SiteAImplicitCallBackUri = SiteAUri + "/implicit/callback";
+        public const string SiteACodeFlowCallBackUri = SiteAUri + "/callback";
+        public const string SiteAImplicitCallBackUri = SiteAUri + "/callback";
 
         public const string SiteBHybrid = "SiteB_Hybrid";
         public const string SiteBCodeFlow = "SiteB_CodeFlow";
         public const string SiteBImplicitFlow = "SiteB_ImplicitFlow";
-        public const string SiteBUri = "http://siteb.demo.local:9557";
+        public const string SiteBUri = "http://SiteB.demo.local:9557";
         public const string SiteBRedirectBouncedFromIdentityServerUri = SiteBUri + "/BouncedFromIdentityServer";
-        public const string SiteBCodeFlowCallbackUri = SiteBUri + "/callback";
-        public const string SiteBImplicitCallBackUri = SiteBUri + "/LoginViaFormPost/SignInCallback";
+        public const string SiteBCodeFlowCallBackUri = SiteBUri + "/callback";
+        public const string SiteBImplicitCallBackUri = SiteBUri + "/callback";
         
         public const string SiteC = "SiteC";
         public const string SiteCUri = "http://sitec.demo.local:9558";
@@ -56,7 +56,7 @@ namespace IdentityServerAzureSpike.Shared
         {
             Constants.SiteBUri,
             Constants.SiteBRedirectBouncedFromIdentityServerUri,
-            Constants.SiteBCodeFlowCallbackUri,
+            Constants.SiteBCodeFlowCallBackUri,
             Constants.SiteBImplicitCallBackUri
         };
 
