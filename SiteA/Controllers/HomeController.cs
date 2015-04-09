@@ -19,7 +19,15 @@ namespace IdentityServerAzureSpike.SiteA.Controllers
             return View();
         }
 
+
         [Authorize]
+        [Route]
+        public ActionResult LoginViaIdentityServerCodeFlow()
+        {
+            return View("Index");
+        }
+
+        
         [Route]
         public ActionResult BouncedFromIdentityServer()
         {

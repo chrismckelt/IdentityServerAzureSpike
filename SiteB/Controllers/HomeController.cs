@@ -19,7 +19,15 @@ namespace IdentityServerAzureSpike.SiteB.Controllers
             return View();
         }
 
+
         [Authorize]
+        [Route]
+        public ActionResult LoginViaIdentityServerCodeFlow()
+        {
+            return View("Index");
+        }
+
+        
         [Route]
         public ActionResult BouncedFromIdentityServer()
         {
@@ -36,9 +44,9 @@ namespace IdentityServerAzureSpike.SiteB.Controllers
             var client = new OAuth2Client(new Uri(Constants.AuthorizeEndpoint));
 
             var url = client.CreateCodeFlowUrl(
-                clientId: Constants.SiteAService,
+                clientId: Constants.SiteBService,
                 scope: scopes,
-                redirectUri: Constants.SiteARedirectCallbackUri,
+                redirectUri: Constants.SiteBRedirectCallbackUri,
                 state: state,
                 nonce: nonce);
 
@@ -59,7 +67,7 @@ namespace IdentityServerAzureSpike.SiteB.Controllers
             // also possible to pass post logout redirect url via properties
             //var properties = new AuthenticationProperties
             //{
-            //    RedirectUri = "http://sitea.demo.local:9556"
+            //    RedirectUri = "http://SiteB.demo.local:9556"
             //};
 
             Request.GetOwinContext().Authentication.SignOut();

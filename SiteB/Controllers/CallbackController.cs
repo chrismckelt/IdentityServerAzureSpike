@@ -51,7 +51,7 @@ namespace IdentityServerAzureSpike.SiteB.Controllers
 
             var response = await client.RequestAuthorizationCodeAsync(
                 code,
-                Constants.SiteARedirectBouncedFromIdentityServerUri);
+                Constants.SiteBRedirectBouncedFromIdentityServerUri);
 
             await ValidateResponseAndSignInAsync(response, tempState.Item2);
 

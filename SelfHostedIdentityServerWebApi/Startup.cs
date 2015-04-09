@@ -6,6 +6,7 @@ using System.Web.Http;
 using Finsa.WebApi.HelpPage.AnyHost;
 using IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config;
 using IdentityServerAzureSpike.Shared;
+using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Owin;
@@ -68,6 +69,29 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi
             });
         }
 
+        private static void SetupWebApi(IAppBuilder appBuilder)
+        {
+            // Configure Web API for self-host. 
+            var config = new HttpConfiguration();
+            config.Routes.MapHttpRoute("DefaultApi", "api/{controller}/{id}", new {id = RouteParameter.Optional});
+            config.MapHttpAttributeRoutes(new HelpDirectRouteProvider());
+            config.Formatters.Clear();
+            config.Formatters.Add(new JsonMediaTypeFormatter());
+            config.Formatters.JsonFormatter.SerializerSettings = new JsonSerializerSettings
+            {
+                ContractResolver = new CamelCasePropertyNamesContractResolver()
+            };
+            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
+            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/json"));
+            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/json"));
+            config.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.Always;
+            config.SuppressDefaultHostAuthentication();
+            config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
+            config.EnableCors();
+            appBuilder.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
+            appBuilder.UseWebApi(config);
+        }
+
         private static List<string> SetupCors(IdentityServerServiceFactory factory)
         {
             var allowedOrigins = new List<string>
@@ -91,27 +115,6 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi
 
             factory.CorsPolicyService = new Registration<ICorsPolicyService>(corsPolicyService);
             return allowedOrigins;
-        }
-
-        private static void SetupWebApi(IAppBuilder appBuilder)
-        {
-            // Configure Web API for self-host. 
-            var config = new HttpConfiguration();
-            config.Routes.MapHttpRoute("DefaultApi", "api/{controller}/{id}", new {id = RouteParameter.Optional});
-            config.MapHttpAttributeRoutes(new HelpDirectRouteProvider());
-            config.Formatters.Clear();
-            config.Formatters.Add(new JsonMediaTypeFormatter());
-            config.Formatters.JsonFormatter.SerializerSettings = new JsonSerializerSettings
-            {
-                ContractResolver = new CamelCasePropertyNamesContractResolver()
-            };
-            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
-            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/json"));
-            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/json"));
-            config.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.Always;
-            config.SuppressDefaultHostAuthentication(); 
-            config.EnableCors();
-            appBuilder.UseWebApi(config);
         }
     }
 }

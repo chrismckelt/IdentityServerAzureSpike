@@ -67,8 +67,8 @@ namespace IdentityServerAzureSpike.Shared
                 return new CookieAuthenticationOptions
                 {
                     AuthenticationType = "Cookies",
-                    CookieName = Shared.Constants.Cookie.Name,
-                    CookieDomain = Shared.Constants.Cookie.Domain,
+                    //CookieName = Shared.Constants.Cookie.Name,
+                   // CookieDomain = Shared.Constants.Cookie.Domain,
                   //  CookiePath = Shared.Constants.Cookie.Path
                 };
             }
