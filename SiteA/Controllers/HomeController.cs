@@ -44,9 +44,9 @@ namespace IdentityServerAzureSpike.SiteA.Controllers
             var client = new OAuth2Client(new Uri(Constants.AuthorizeEndpoint));
 
             var url = client.CreateCodeFlowUrl(
-                clientId: Constants.SiteBService,
+                clientId: Constants.SiteAService,
                 scope: scopes,
-                redirectUri: Constants.SiteBRedirectCallbackUri,
+                redirectUri: Constants.SiteARedirectCallbackUri,
                 state: state,
                 nonce: nonce);
 
@@ -67,7 +67,7 @@ namespace IdentityServerAzureSpike.SiteA.Controllers
             // also possible to pass post logout redirect url via properties
             //var properties = new AuthenticationProperties
             //{
-            //    RedirectUri = "http://SiteB.demo.local:9556"
+            //    RedirectUri = "http://SiteA.demo.local:9556"
             //};
 
             Request.GetOwinContext().Authentication.SignOut();

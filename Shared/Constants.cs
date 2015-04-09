@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Owin.Security.Cookies;
 
@@ -59,17 +60,18 @@ namespace IdentityServerAzureSpike.Shared
         public static class Cookie
         {
             public const string Name = "identity";
-            public const string Domain = "identity.demo.local";
-            public const string Path = "identity.demo.local";
+            public const string Domain = "demo.local";
+            public const string Path = "identity";
 
             public static CookieAuthenticationOptions Build()
             {
                 return new CookieAuthenticationOptions
                 {
                     AuthenticationType = "Cookies",
-                    //CookieName = Shared.Constants.Cookie.Name,
-                   // CookieDomain = Shared.Constants.Cookie.Domain,
-                  //  CookiePath = Shared.Constants.Cookie.Path
+                    CookieHttpOnly = false,
+                    CookieSecure = CookieSecureOption.Never,
+                    //ExpireTimeSpan = TimeSpan.FromHours(1),
+                    CookieDomain = Shared.Constants.Cookie.Domain,
                 };
             }
         }

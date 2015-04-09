@@ -10,7 +10,7 @@
     @Scripts.Render("~/bundles/modernizr")
     <style>
         .jumbotron {
-            background-color:azure;
+            background-color: azure;
             color: inherit;
             margin-bottom: 30px;
             padding: 30px 15px;
@@ -34,13 +34,11 @@
             <ul class="nav navbar-nav">
                 @if (!User.Identity.IsAuthenticated)
                 {
-                    <li>@Html.ActionLink("Identity Server login", "LoginViaIdentityServerCodeFlow", "Home", new { @class = "navbar-brand" })</li>
-                    <li>@Html.ActionLink("Local login", "LocalLogin", "Home", null, new { @class = "navbar-brand" })</li>
-                    <li>@Html.ActionLink("MVC controller redirects", "Index", "App", new { @class = "navbar-brand" })</li>
-                }
-                @if (User.Identity.IsAuthenticated)
-                {
-                    <li>@Html.ActionLink("Signout", "Signout", "Home", new {@class = "navbar-brand"})</li>
+                    <li>&nbsp;</li>
+                    <li>@Html.ActionLink("Identity Server login", "LoginViaIdentityServerCodeFlow", "Home", new {@class = "navbar-brand"})</li>
+                    <li>@Html.ActionLink("Local login", "LocalLogin", "Home", null, new {@class = "navbar-brand"})</li>
+                    <li>@Html.ActionLink("MVC controller redirects", "Index", "App", new {@class = "navbar-brand"})</li>
+                    <li>&nbsp;</li>
                 }
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -52,7 +50,7 @@
                             <a href="https://identity.demo.local/help">Identity Server</a>
                         </li>
                         <li>
-                            <a href="http://SiteB.demo.local:9556/">Site A</a>
+                            <a href="http://Sitea.demo.local:9556/" class="active">Site A</a>
                         </li>
                         <li>
                             <a href="http://siteb.demo.local:9557">Site B</a>
@@ -65,11 +63,28 @@
                         </li>
                     </ul>
                 </li>
+                <li>
+                    <a href="https://identity.demo.local/core/permissions">
+                        Authenticated
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <strong>true</strong>
+                        }
+                        @if (!User.Identity.IsAuthenticated)
+                        {
+                            <strong>false</strong>
+                        }
+                    </a>
+                </li>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li>@Html.ActionLink("Signout", "Signout", "Home", new {@class = "navbar-brand"})</li>
+                }
             </ul>
         </div><!--/.nav-collapse -->
     </div>
 </nav>
-
+<br/>
 <div class="container">
     <div class="jumbotron">
         <h1>Site A</h1>

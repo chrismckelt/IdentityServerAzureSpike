@@ -221,27 +221,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\HelpPage\HelpPage.css" />
-    <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ComplexTypeModelDescription.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\DictionaryModelDescription.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\EnumTypeModelDescription.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ImageSample.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\InvalidSample.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\KeyValuePairModelDescription.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ModelDescriptionLink.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Parameters.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Samples.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\SimpleTypeModelDescription.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\TextSample.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\Index.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\ResourceModel.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Web.config" />
-    <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -290,90 +269,6 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\HelpPage\Controllers\HelpController.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\HelpPage\HelpPageAreaRegistration.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\HelpPage\HelpPageConfigurationExtensions.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\HelpPage\ModelDescriptions\CollectionModelDescription.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\HelpPage\ModelDescriptions\ComplexTypeModelDescription.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\HelpPage\ModelDescriptions\DictionaryModelDescription.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\HelpPage\ModelDescriptions\EnumTypeModelDescription.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\HelpPage\ModelDescriptions\EnumValueDescription.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\HelpPage\ModelDescriptions\IModelDocumentationProvider.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\HelpPage\ModelDescriptions\KeyValuePairModelDescription.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelDescription.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelDescriptionGenerator.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelNameAttribute.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelNameHelper.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\HelpPage\ModelDescriptions\ParameterAnnotation.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\HelpPage\ModelDescriptions\ParameterDescription.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\HelpPage\ModelDescriptions\SimpleTypeModelDescription.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\HelpPage\Models\HelpPageApiModel.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\HelpPage\SampleGeneration\HelpPageSampleGenerator.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\HelpPage\SampleGeneration\HelpPageSampleKey.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\HelpPage\SampleGeneration\ImageSample.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\HelpPage\SampleGeneration\InvalidSample.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\HelpPage\SampleGeneration\ObjectGenerator.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Controllers\AppController.cs" />
     <Compile Include="Controllers\CallbackController.cs" />
     <Compile Include="Controllers\HelpController.cs" />
@@ -394,7 +289,9 @@
       <Name>Shared</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Areas\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
