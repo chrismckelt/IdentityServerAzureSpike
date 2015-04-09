@@ -34,7 +34,7 @@ namespace IdentityServerAzureSpike.SiteB
              app.UseOpenIdConnectAuthentication(new OpenIdConnectAuthenticationOptions
                 {
                     
-                    ClientId = Shared.Constants.SiteB, // must match IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config.Clients
+                    ClientId = Shared.Constants.SiteBHybrid, // must match IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config.Clients
                     Authority = Shared.Constants.IdentityServerCoreUri,
                     RedirectUri = Shared.Constants.SiteBUri,
                     PostLogoutRedirectUri = Shared.Constants.SiteBUri,
@@ -67,7 +67,7 @@ namespace IdentityServerAzureSpike.SiteB
                             userInfo.Claims.ToList().ForEach(ui => claims.Add(new Claim(ui.Item1, ui.Item2)));
 
                             // get access and refresh token
-                            var tokenClient = new OAuth2Client(new Uri(Shared.Constants.TokenEndpoint),Shared.Constants.SiteB,Shared.Constants.Secret);
+                            var tokenClient = new OAuth2Client(new Uri(Shared.Constants.TokenEndpoint),Shared.Constants.SiteBHybrid,Shared.Constants.Secret);
 
                             var response = await tokenClient.RequestAuthorizationCodeAsync(n.Code, n.RedirectUri);
 

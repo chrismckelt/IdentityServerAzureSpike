@@ -12,20 +12,24 @@ namespace IdentityServerAzureSpike.Shared
         public const string IdentityServerCoreUri = "https://identity.demo.local/core";
         public const string IdentityServerIdentityUri = "https://identity.demo.local/identity";
 
-        public const string SiteA = "SiteA";
-        public const string SiteAService = "SiteA_Service";
-        public const string SiteAUri = "http://siteA.demo.local:9556";
+        public const string SiteAHybrid = "SiteA_Hybrid";
+        public const string SiteACodeFlow = "SiteA_CodeFlow";
+        public const string SiteAImplicitFlow = "SiteA_ImplicitFlow";
+        public const string SiteAUri = "http://sitea.demo.local:9556";
         public const string SiteARedirectBouncedFromIdentityServerUri = SiteAUri + "/BouncedFromIdentityServer";
-        public const string SiteARedirectCallbackUri = SiteAUri + "/callback";
+        public const string SiteACodeFlowCallBackUri = SiteAUri + "/codeflow/callback";
+        public const string SiteAImplicitCallBackUri = SiteAUri + "/implicit/callback";
 
-        public const string SiteB = "SiteB";
-        public const string SiteBService = "SiteB_Service";
-        public const string SiteBUri = "http://siteB.demo.local:9557";
+        public const string SiteBHybrid = "SiteB_Hybrid";
+        public const string SiteBCodeFlow = "SiteB_CodeFlow";
+        public const string SiteBImplicitFlow = "SiteB_ImplicitFlow";
+        public const string SiteBUri = "http://siteb.demo.local:9557";
         public const string SiteBRedirectBouncedFromIdentityServerUri = SiteBUri + "/BouncedFromIdentityServer";
-        public const string SiteBRedirectCallbackUri = SiteBUri + "/callback";
+        public const string SiteBCodeFlowCallbackUri = SiteBUri + "/callback";
+        public const string SiteBImplicitCallBackUri = SiteBUri + "/LoginViaFormPost/SignInCallback";
         
         public const string SiteC = "SiteC";
-        public const string SiteCUri = "http://siteC.demo.local:9558";
+        public const string SiteCUri = "http://sitec.demo.local:9558";
 
         public const string Secret = "secret";
 
@@ -44,17 +48,16 @@ namespace IdentityServerAzureSpike.Shared
         {
             Constants.SiteAUri,
             Constants.SiteARedirectBouncedFromIdentityServerUri,
-            Constants.SiteARedirectCallbackUri,
-            Constants.SiteBUri,
-            Constants.SiteBRedirectBouncedFromIdentityServerUri,
-            Constants.SiteBRedirectCallbackUri
+            Constants.SiteACodeFlowCallBackUri,
+            Constants.SiteAImplicitCallBackUri
         };
 
         public static readonly List<string> RedirectSiteBUris = new List<string>()
         {
             Constants.SiteBUri,
             Constants.SiteBRedirectBouncedFromIdentityServerUri,
-            Constants.SiteBRedirectCallbackUri
+            Constants.SiteBCodeFlowCallbackUri,
+            Constants.SiteBImplicitCallBackUri
         };
 
         public static class Cookie
@@ -75,5 +78,7 @@ namespace IdentityServerAzureSpike.Shared
                 };
             }
         }
+
+       
     }
 }

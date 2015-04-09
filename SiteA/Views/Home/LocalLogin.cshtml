@@ -12,14 +12,29 @@
 
 <div class="row">
     <div class="col-md-8">
-        <h3>Scopes</h3>
-        @using (Html.BeginForm("LoginOnThisSite", "Home"))
+        <h3>Login via Code Flow</h3>
+        @using (Html.BeginForm("PostCodeFlow", "CodeFlow"))
         {
-            <p>
-                <input type="text" name="scopes" style="width: 200px" value="@ViewBag.Scope" />
-            </p>
+            <div class="form-control form-group-sm">
+                <input type="text" name="scopes" style="width: 200px" value="@ViewBag.Scope"/>
 
-            <button name="OK">OK</button>
+                <button name="OK">OK</button>
+            </div>
+        }
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-8">
+        <h3>Login via Implicit Form Post</h3>
+        @using (Html.BeginForm("PostImplicit", "Implicit"))
+        {
+            <div class="form-control form-group-sm">
+                <input type="text" name="scopes" style="width: 200px" value="@ViewBag.Scope" />
+
+                <button name="OK">OK</button>
+            </div>
         }
     </div>
 </div>

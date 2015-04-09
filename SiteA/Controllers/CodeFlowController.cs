@@ -1,25 +1,23 @@
-﻿using System.Web.Mvc;
-using IdentityServerAzureSpike.Shared;
+﻿using IdentityServerAzureSpike.Shared;
 using IdentityServerAzureSpike.Shared.Controllers;
 
 namespace IdentityServerAzureSpike.SiteA.Controllers
 {
-    [Authorize]
-    public class AppController : AppControllerBase
+    public class CodeFlowController : CodeFlowControllerBase
     {
         public override string SiteName
         {
-            get { return Constants.SiteAImplicitFlow; }
+            get { return Constants.SiteACodeFlow; }
         }
 
         public override string SiteFlow
         {
-            get { return Constants.SiteAImplicitFlow; }
+            get { return Constants.SiteACodeFlow; }
         }
 
         public override string SiteRedirect
         {
-            get { return Constants.SiteAImplicitCallBackUri; }
+            get { return Constants.SiteACodeFlowCallBackUri; }
         }
     }
 }

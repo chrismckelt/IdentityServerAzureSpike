@@ -2,12 +2,11 @@
 using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
-using IdentityServerAzureSpike.Shared;
 using Thinktecture.IdentityModel.Client;
 
-namespace IdentityServerAzureSpike.SiteB.Controllers
+namespace IdentityServerAzureSpike.Shared.Controllers
 {
-    public class HomeController : Controller
+    public abstract class HomeControllerBase : ControllerBase
     {
         public ActionResult Index()
         {
@@ -18,7 +17,6 @@ namespace IdentityServerAzureSpike.SiteB.Controllers
         {
             return View();
         }
-
 
         [Authorize]
         [Route]
@@ -44,9 +42,9 @@ namespace IdentityServerAzureSpike.SiteB.Controllers
             var client = new OAuth2Client(new Uri(Constants.AuthorizeEndpoint));
 
             var url = client.CreateCodeFlowUrl(
-                clientId: Constants.SiteBCodeFlow,
+                clientId: SiteFlow,
                 scope: scopes,
-                redirectUri: Constants.SiteBCodeFlowCallbackUri,
+                redirectUri: SiteRedirect,
                 state: state,
                 nonce: nonce);
 

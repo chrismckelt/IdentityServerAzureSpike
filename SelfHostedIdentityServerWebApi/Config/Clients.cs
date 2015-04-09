@@ -14,8 +14,8 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
                  new Client
                 {
                     Flow = Flows.Hybrid, // can serve all apps
-                    ClientId = Constants.SiteA,
-                    ClientName = Constants.SiteA,
+                    ClientId = Constants.SiteAHybrid,
+                    ClientName = Constants.SiteAHybrid,
                     ClientUri = Constants.SiteAUri,
                     Enabled = true,
                     ClientSecrets = new List<ClientSecret>
@@ -32,8 +32,24 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
                 new Client
                 {
                     Flow = Flows.AuthorizationCode, // for existing mvc apps
-                    ClientId = Constants.SiteAService,
-                    ClientName = Constants.SiteAService,
+                    ClientId = Constants.SiteACodeFlow,
+                    ClientName = Constants.SiteACodeFlow,
+                    Enabled = true,
+                    ScopeRestrictions = Constants.RequiredScopes,
+                    RedirectUris = Constants.RedirectSiteAUris,
+                    PostLogoutRedirectUris =  Shared.Constants.RedirectSiteAUris,
+                    ClientSecrets = new List<ClientSecret>
+                    {
+                        new ClientSecret(Constants.Secret.Sha256())
+                    },                    
+                    AlwaysSendClientClaims = true,
+                    IncludeJwtId = true,
+                },
+                 new Client
+                {
+                    Flow = Flows.Implicit, // for javascript or form posted querystring clients
+                    ClientId = Constants.SiteAImplicitFlow,
+                    ClientName = Constants.SiteAImplicitFlow,
                     Enabled = true,
                     ScopeRestrictions = Constants.RequiredScopes,
                     RedirectUris = Constants.RedirectSiteAUris,
@@ -48,8 +64,8 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
                 new Client
                 {
                     Flow = Flows.Hybrid, // can serve all apps
-                    ClientId = Constants.SiteB,
-                    ClientName = Constants.SiteB,
+                    ClientId = Constants.SiteBHybrid,
+                    ClientName = Constants.SiteBHybrid,
                     ClientUri = Constants.SiteBUri,
                     Enabled = true,
                     ClientSecrets = new List<ClientSecret>
@@ -66,8 +82,8 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
                 new Client
                 {
                     Flow = Flows.AuthorizationCode, // for existing mvc apps
-                    ClientId = Constants.SiteBService,
-                    ClientName = Constants.SiteBService,
+                    ClientId = Constants.SiteBCodeFlow,
+                    ClientName = Constants.SiteBCodeFlow,
                     Enabled = true,
                     ScopeRestrictions = Constants.RequiredScopes,
                     RedirectUris = Constants.RedirectSiteAUris,
@@ -78,7 +94,23 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
                     },                    
                     AlwaysSendClientClaims = true,
                     IncludeJwtId = true,
-                }
+                },
+                 new Client
+                {
+                    Flow = Flows.Implicit, // for javascript or form posted querystring clients
+                    ClientId = Constants.SiteBImplicitFlow,
+                    ClientName = Constants.SiteBImplicitFlow,
+                    Enabled = true,
+                    ScopeRestrictions = Constants.RequiredScopes,
+                    RedirectUris = Constants.RedirectSiteAUris,
+                    PostLogoutRedirectUris =  Constants.RedirectSiteAUris,
+                    ClientSecrets = new List<ClientSecret>
+                    {
+                        new ClientSecret(Constants.Secret.Sha256())
+                    },                    
+                    AlwaysSendClientClaims = true,
+                    IncludeJwtId = true,
+                },
             };
 
             list.AddRange(Old());
