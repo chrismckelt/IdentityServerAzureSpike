@@ -1,8 +1,5 @@
 ﻿@using System.Web.Mvc.Html
 @using IdentityServerAzureSpike.Shared
-@{
-    ViewBag.Scope = Constants.RequiredScopesString;
-}
 
 <div class="jumbotron">
     <h1>Login via Site A login form</h1>
@@ -15,7 +12,7 @@
         @using (Html.BeginForm("PostCodeFlow", "CodeFlow"))
         {
             <div class="form-control form-group-sm">
-                <input type="text" name="scopes" class="text-capitalize col-xs-push-4" value="@ViewBag.Scope" />
+                <input type="text" name="scopes" class="text-capitalize col-xs-push-4" value="@Constants.Scopes.CodeFlow" />
 
                 <button name="OKPostCodeFlow">OK</button>
             </div>
@@ -29,7 +26,7 @@
         @using (Html.BeginForm("PostImplicit", "ImplicitFlow"))
         {
             <div class="form-control form-group-sm">
-                <input type="text" name="scopesHardCodeInController" class="text-capitalize col-xs-push-4" value="@ViewBag.Scope" />
+                <input type="text" name="scopesHardCodeInController" class="text-capitalize col-xs-push-4" value="@Constants.Scopes.Implicit" />
 
                 <button name="OKPostImplicit">OK</button>
             </div>

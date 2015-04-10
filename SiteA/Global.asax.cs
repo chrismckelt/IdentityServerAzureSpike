@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IdentityServerAzureSpike.Shared;
+using System;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;

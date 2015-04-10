@@ -39,7 +39,7 @@ namespace IdentityServerAzureSpike.SiteA
                     RedirectUri = Shared.Constants.SiteAUri,
                     PostLogoutRedirectUri = Shared.Constants.SiteAUri,
                     ResponseType = Thinktecture.IdentityServer.Core.Constants.ResponseTypes.CodeIdTokenToken,
-                    Scope = Shared.Constants.RequiredScopesString,
+                    Scope = Shared.Constants.Scopes.Full,
                     SignInAsAuthenticationType = "Cookies",
                     
                     Notifications = new OpenIdConnectAuthenticationNotifications

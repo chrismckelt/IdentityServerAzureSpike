@@ -34,12 +34,12 @@ namespace IdentityServerAzureSpike.SiteB
              app.UseOpenIdConnectAuthentication(new OpenIdConnectAuthenticationOptions
                 {
                     
-                    ClientId = Shared.Constants.SiteBHybrid, // must match IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config.Clients
+                    ClientId = Shared.Constants.SiteBImplicitFlow, // must match IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config.Clients
                     Authority = Shared.Constants.IdentityServerCoreUri,
-                    RedirectUri = Shared.Constants.SiteBRedirectBouncedFromIdentityServerUri,
+                    RedirectUri = Shared.Constants.SiteBImplicitFlow,
                     PostLogoutRedirectUri = Shared.Constants.SiteBRedirectBouncedFromIdentityServerUri,
-                    ResponseType = Thinktecture.IdentityServer.Core.Constants.ResponseTypes.CodeIdTokenToken,
-                    Scope = Shared.Constants.RequiredScopesString,
+                    ResponseType = Thinktecture.IdentityServer.Core.Constants.ResponseTypes.IdToken,
+                    Scope = Shared.Constants.Scopes.Implicit,
                     SignInAsAuthenticationType = "Cookies",
                     
                     Notifications = new OpenIdConnectAuthenticationNotifications

@@ -13,7 +13,7 @@
 using System.Web.Http;
 using Finsa.WebApi.HelpPage.AnyHost;
 
-namespace IdentityServerAzureSpike.SiteB.Controllers
+namespace IdentityServerAzureSpike.SiteA.Controllers
 {
     /// <summary>
     ///   The HELP controller.
@@ -27,7 +27,7 @@ namespace IdentityServerAzureSpike.SiteB.Controllers
         /// </summary>
         public HelpController()
         {
-            Info.MyServiceName = "Site B Help";
+            Info.MyServiceName = "Site A Help";
         }
     }
 }

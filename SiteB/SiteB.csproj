@@ -236,24 +236,43 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <Content Include="..\Shared\Views\App\CallService.cshtml">
+      <Link>Views\App\CallService.cshtml</Link>
+    </Content>
+    <Content Include="..\Shared\Views\App\Index.cshtml">
+      <Link>Views\App\Index.cshtml</Link>
+    </Content>
+    <Content Include="..\Shared\Views\CallApi\ShowApiResult.cshtml">
+      <Link>Views\CallApi\ShowApiResult.cshtml</Link>
+    </Content>
+    <Content Include="..\Shared\Views\Callback\Index.cshtml">
+      <Link>Views\Callback\Index.cshtml</Link>
+    </Content>
+    <Content Include="..\Shared\Views\Home\BouncedFromIdentityServer.cshtml">
+      <Link>Views\Home\BouncedFromIdentityServer.cshtml</Link>
+    </Content>
+    <Content Include="..\Shared\Views\Home\Index.cshtml">
+      <Link>Views\Home\Index.cshtml</Link>
+    </Content>
+    <Content Include="..\Shared\Views\Home\LocalLogin.cshtml">
+      <Link>Views\Home\LocalLogin.cshtml</Link>
+    </Content>
+    <Content Include="..\Shared\Views\Shared\_Layout.cshtml">
+      <Link>Views\Shared\_Layout.cshtml</Link>
+    </Content>
+    <Content Include="..\Shared\Views\Shared\Error.cshtml">
+      <Link>Views\Shared\Error.cshtml</Link>
+    </Content>
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
+    <Content Include="Scripts\app.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.1.3.js" />
     <Content Include="Scripts\jquery-2.1.3.min.js" />
-    <Content Include="Scripts\jquery-2.1.3.min.map" />
-    <Content Include="SiteBTest.html" />
+    <Content Include="Scripts\npm.js" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\App\CallService.cshtml" />
-    <Content Include="Views\App\Index.cshtml" />
-    <Content Include="Views\CallApi\ShowApiResult.cshtml" />
-    <Content Include="Views\Callback\Index.cshtml" />
+    <Content Include="Scripts\jquery-2.1.3.min.map" />
     <Content Include="Views\Callback\Token.cshtml" />
-    <Content Include="Views\Home\BouncedFromIdentityServer.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\LocalLogin.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -266,9 +285,15 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="..\Shared\App_Start\BundleConfig.cs">
+      <Link>App_Start\BundleConfig.cs</Link>
+    </Compile>
+    <Compile Include="..\Shared\App_Start\FilterConfig.cs">
+      <Link>App_Start\FilterConfig.cs</Link>
+    </Compile>
+    <Compile Include="..\Shared\App_Start\RouteConfig.cs">
+      <Link>App_Start\RouteConfig.cs</Link>
+    </Compile>
     <Compile Include="Controllers\AppController.cs" />
     <Compile Include="Controllers\CallbackController.cs" />
     <Compile Include="Controllers\CodeFlowController.cs" />

@@ -16,17 +16,17 @@ namespace IdentityServerAzureSpike.Shared
         public const string SiteACodeFlow = "SiteA_CodeFlow";
         public const string SiteAImplicitFlow = "SiteA_ImplicitFlow";
         public const string SiteAUri = "http://sitea.demo.local:9556";
-        public const string SiteARedirectBouncedFromIdentityServerUri = SiteAUri + "/BouncedFromIdentityServer";
-        public const string SiteACodeFlowCallBackUri = SiteAUri + "/callback";
-        public const string SiteAImplicitCallBackUri = SiteAUri + "/callback";
+        public const string SiteARedirectBouncedFromIdentityServerUri = SiteAUri + "/BouncedFromIdentityServer/";
+        public const string SiteACodeFlowCallBackUri = SiteAUri + "/callback/";
+        public const string SiteAImplicitCallBackUri = SiteAUri + "/callback/";
 
         public const string SiteBHybrid = "SiteB_Hybrid";
         public const string SiteBCodeFlow = "SiteB_CodeFlow";
         public const string SiteBImplicitFlow = "SiteB_ImplicitFlow";
         public const string SiteBUri = "http://SiteB.demo.local:9557";
-        public const string SiteBRedirectBouncedFromIdentityServerUri = SiteBUri + "/BouncedFromIdentityServer";
-        public const string SiteBCodeFlowCallBackUri = SiteBUri + "/callback";
-        public const string SiteBImplicitCallBackUri = SiteBUri + "/callback";
+        public const string SiteBRedirectBouncedFromIdentityServerUri = SiteBUri + "/BouncedFromIdentityServer/";
+        public const string SiteBCodeFlowCallBackUri = SiteBUri + "/callback/";
+        public const string SiteBImplicitCallBackUri = SiteBUri + "/callback/";
         
         public const string SiteC = "SiteC";
         public const string SiteCUri = "http://sitec.demo.local:9558";
@@ -41,8 +41,14 @@ namespace IdentityServerAzureSpike.Shared
         public const string TokenRevocationEndpoint = IdentityServerCoreUri + "/connect/revocation";
         public const string PersmissionsEndpoint = IdentityServerCoreUri + "/permissions";
 
-        public const string RequiredScopesString = "openid email profile read write offline_access";
-        public static readonly List<string> RequiredScopes = RequiredScopesString.Split().ToList();
+        public static class Scopes
+        {
+            public const string Full = "openid email profile read write offline_access";
+            public const string CodeFlow = "openid profile read write";
+            public const string Implicit = "openid email";
+        }
+
+        public static readonly List<string> RequiredScopes = Scopes.Full.Split().ToList();
         
         public static readonly List<string> RedirectSiteAUris = new List<string>()
         {

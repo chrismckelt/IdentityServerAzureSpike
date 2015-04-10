@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace IdentityServerAzureSpike.SiteB
+namespace IdentityServerAzureSpike.Shared
 {
     public class FilterConfig
     {

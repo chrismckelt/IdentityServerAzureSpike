@@ -1,6 +1,6 @@
 ﻿using System.Web.Optimization;
 
-namespace IdentityServerAzureSpike.SiteA
+namespace IdentityServerAzureSpike.Shared
 {
     public class BundleConfig
     {
@@ -22,6 +22,11 @@ namespace IdentityServerAzureSpike.SiteA
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            // custom
+            bundles.Add(new ScriptBundle("~/scripts/app").Include(
+                        "~/scripts/app.js"));
+            
         }
     }
 }
