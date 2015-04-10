@@ -45,8 +45,6 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi
                 },
                 AuthenticationOptions = new AuthenticationOptions
                 {
-                    EnableLocalLogin = true,
-                    EnableLoginHint = true,
                     EnablePostSignOutAutoRedirect = true,
                     InvalidSignInRedirectUrl = Shared.Constants.SiteAUri + "/INVALID_LOGIN=YOU",  
                     CookieOptions = new CookieOptions()
@@ -54,6 +52,13 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi
                         SecureMode = CookieSecureMode.SameAsRequest,
                     }
                 },
+                LoggingOptions = new LoggingOptions()
+                {
+                    EnableHttpLogging = true,
+                    EnableWebApiDiagnostics = true,
+                    IncludeSensitiveDataInLogs = true,
+                    WebApiDiagnosticsIsVerbose = true
+                }
             };
 
             appBuilder.Map("/core", builder =>
@@ -75,6 +80,22 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi
             var config = new HttpConfiguration();
             config.Routes.MapHttpRoute("DefaultApi", "api/{controller}/{id}", new {id = RouteParameter.Optional});
             config.MapHttpAttributeRoutes(new HelpDirectRouteProvider());
+            SetFormatters(config);
+
+            config.SuppressDefaultHostAuthentication();
+            config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
+
+            appBuilder.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
+            config.EnableCors();
+
+            config.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.Always;
+            config.EnableSystemDiagnosticsTracing();
+
+            appBuilder.UseWebApi(config);
+        }
+
+        private static void SetFormatters(HttpConfiguration config)
+        {
             config.Formatters.Clear();
             config.Formatters.Add(new JsonMediaTypeFormatter());
             config.Formatters.JsonFormatter.SerializerSettings = new JsonSerializerSettings
@@ -84,14 +105,6 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi
             config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
             config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/json"));
             config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/json"));
-            config.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.Always;
-            config.SuppressDefaultHostAuthentication();
-            config.SuppressHostPrincipal();
-            config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
-            appBuilder.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
-            config.EnableCors();
-            
-            appBuilder.UseWebApi(config);
         }
 
         private static List<string> SetupCors(IdentityServerServiceFactory factory)
@@ -102,6 +115,7 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi
                 "/connect/consent",
                 Shared.Constants.IdentityServerCoreUri,
                 Shared.Constants.IdentityServerIdentityUri,
+
             };
 
             //[Warning] CORS request made for path: /connect/consent from origin: https://identity.demo.local but rejected because invalid CORS path

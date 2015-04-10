@@ -74,8 +74,8 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
                     },
                     ScopeRestrictions = Constants.RequiredScopes,
                     
-                    RedirectUris = Constants.RedirectSiteAUris,
-                    PostLogoutRedirectUris =  Shared.Constants.RedirectSiteAUris,
+                    RedirectUris = Constants.RedirectSiteBUris,
+                    PostLogoutRedirectUris =  Shared.Constants.RedirectSiteBUris,
                     AlwaysSendClientClaims = true,
                     IncludeJwtId = true,
                 },

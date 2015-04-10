@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using IdentityServerAzureSpike.Shared;
+﻿using IdentityServerAzureSpike.Shared;
 using IdentityServerAzureSpike.Shared.Controllers;
-using Newtonsoft.Json.Linq;
-using Thinktecture.IdentityModel.Client;
 
 namespace IdentityServerAzureSpike.SiteB.Controllers
 {

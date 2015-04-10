@@ -7,12 +7,12 @@ namespace IdentityServerAzureSpike.SiteA.Controllers
     {
         public override string SiteName
         {
-            get { return Constants.SiteACodeFlow; }
+            get { return Constants.SiteAHybrid; }
         }
 
         public override string SiteFlow
         {
-            get { return Constants.SiteACodeFlow; }
+            get { return Constants.SiteAHybrid; }
         }
 
         public override string SiteRedirect

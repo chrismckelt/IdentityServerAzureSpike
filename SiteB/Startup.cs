@@ -36,8 +36,8 @@ namespace IdentityServerAzureSpike.SiteB
                     
                     ClientId = Shared.Constants.SiteBHybrid, // must match IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config.Clients
                     Authority = Shared.Constants.IdentityServerCoreUri,
-                    RedirectUri = Shared.Constants.SiteBUri,
-                    PostLogoutRedirectUri = Shared.Constants.SiteBUri,
+                    RedirectUri = Shared.Constants.SiteBRedirectBouncedFromIdentityServerUri,
+                    PostLogoutRedirectUri = Shared.Constants.SiteBRedirectBouncedFromIdentityServerUri,
                     ResponseType = Thinktecture.IdentityServer.Core.Constants.ResponseTypes.CodeIdTokenToken,
                     Scope = Shared.Constants.RequiredScopesString,
                     SignInAsAuthenticationType = "Cookies",

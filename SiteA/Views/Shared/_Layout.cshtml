@@ -32,16 +32,13 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                @if (!User.Identity.IsAuthenticated)
-                {
-                    <li>&nbsp;</li>
-                    <li>@Html.ActionLink("Identity Server login", "LoginViaIdentityServerCodeFlow", "Home", new {@class = "navbar-brand"})</li>
-					<li>&nbsp;</li>
-                    <li>@Html.ActionLink("HTML Forms", "LocalLogin", "Home", null, new { @class = "navbar-brand" })</li>
-					<li>&nbsp;</li>
-                    <li>@Html.ActionLink("MVC controller redirects", "Index", "App", new {@class = "navbar-brand"})</li>
-                    <li>&nbsp;</li>
-                }
+                <li>&nbsp;</li>
+                <li>@Html.ActionLink("Identity Server login", "LoginViaIdentityServerCodeFlow", "Home", new {@class = "navbar-brand"})</li>
+				<li>&nbsp;</li>
+                <li>@Html.ActionLink("HTML Forms", "LocalLogin", "Home", null, new { @class = "navbar-brand" })</li>
+				<li>&nbsp;</li>
+                <li>@Html.ActionLink("API Calls", "Index", "App", new {@class = "navbar-brand"})</li>
+                <li>&nbsp;</li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
           

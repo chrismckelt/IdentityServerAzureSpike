@@ -5,16 +5,13 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using Thinktecture.IdentityModel.Client;
 
 namespace IdentityServerAzureSpike.Shared.Controllers
 {
     public abstract class ImplicitFlowControllerBase : ControllerBase
     {
-
         public const string CookieName = "TempState";
 
-        [HttpGet]
         [HttpPost]
         public ActionResult PostImplicit()
         {
@@ -23,7 +20,7 @@ namespace IdentityServerAzureSpike.Shared.Controllers
 
             var url = Constants.AuthorizeEndpoint +
                 "?client_id=" + SiteFlow +
-                "&response_type=id_token" +
+                "&response_type=" + Thinktecture.IdentityServer.Core.Constants.ResponseTypes.IdTokenToken + 
                 "&scope=openid email" +
                 "&redirect_uri=" + SiteRedirect +
                 "&response_mode=form_post" +
