@@ -1,7 +1,4 @@
-﻿var site = {
-    name: "Site A",
-    description : "MVC"
-};
+﻿var site = siteA;
 
 function setSiteProperties()
 {

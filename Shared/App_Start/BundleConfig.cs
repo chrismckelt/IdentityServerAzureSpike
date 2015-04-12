@@ -24,6 +24,9 @@ namespace IdentityServerAzureSpike.Shared
                       "~/Content/site.css"));
 
             // custom
+            bundles.Add(new ScriptBundle("~/scripts/sites").Include(
+                        "~/scripts/sites.js"));
+
             bundles.Add(new ScriptBundle("~/scripts/app").Include(
                         "~/scripts/app.js"));
             

@@ -27,9 +27,20 @@ namespace IdentityServerAzureSpike.Shared
         public const string SiteBRedirectBouncedFromIdentityServerUri = SiteBUri + "/BouncedFromIdentityServer/";
         public const string SiteBCodeFlowCallBackUri = SiteBUri + "/callback/";
         public const string SiteBImplicitCallBackUri = SiteBUri + "/callback/";
-        
-        public const string SiteC = "SiteC";
+
         public const string SiteCUri = "http://sitec.demo.local:9558";
+        public const string SiteCImplicitFlow = "SiteC_ImplicitFlow";
+        public const string SiteCImplicitCallBackUri = SiteAUri + "/callback/";
+        
+        public const string SiteDCodeFlow = "SiteD_CodeFlow";
+        public const string SiteDUri = "http://SiteD.demo.local:9559";
+        public const string SiteDRedirectBouncedFromIdentityServerUri = SiteDUri + "/BouncedFromIdentityServer/";
+        public const string SiteDCodeFlowCallBackUri = SiteDUri + "/callback/";
+        public const string SiteDImplicitCallBackUri = SiteDUri + "/callback/";
+
+        public const string SiteEUri = "http://sitee.demo.local:9560";
+        public const string SiteEImplicitFlow = "SiteE_ImplicitFlow";
+        public const string SiteEImplicitCallBackUri = SiteAUri + "/callback/";
 
         public const string Secret = "secret";
 

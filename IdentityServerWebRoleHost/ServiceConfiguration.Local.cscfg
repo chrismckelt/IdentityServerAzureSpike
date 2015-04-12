@@ -19,4 +19,12 @@
     <Instances count="1" />
     <ConfigurationSettings />
   </Role>
+  <Role name="SiteD">
+    <Instances count="1" />
+    <ConfigurationSettings />
+  </Role>
+  <Role name="SiteE">
+    <Instances count="1" />
+    <ConfigurationSettings />
+  </Role>
 </ServiceConfiguration>

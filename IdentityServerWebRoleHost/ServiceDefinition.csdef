@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ServiceDefinition name="IdentityServerWebRoleApi" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2014-06.2.4">
   <!-- SelfHostedIdentityServerWebApi -->
-  <WorkerRole name="SelfHostedIdentityServerWebApi" vmsize="Small"   >
+  <WorkerRole name="SelfHostedIdentityServerWebApi" vmsize="Small">
     <Endpoints>
       <!--<InputEndpoint name="SelfHostedIdentityServerWebApiEndpoint1Public" protocol="http" port="9555"  />-->
       <InputEndpoint name="SelfHostedIdentityServerWebApiEndpoint1" protocol="https" port="443" certificate="identity.demo.local" />
@@ -49,5 +49,28 @@
       <InputEndpoint name="SiteCEndpoint1" protocol="http" port="9558" />
     </Endpoints>
   </WebRole>
-  
+  <WebRole name="SiteD" vmsize="Small">
+     <Sites>
+      <Site name="SiteD" physicalDirectory="..\..\..\SiteD">
+        <Bindings>
+          <Binding name="SiteD" endpointName="SiteDEndpoint1" hostHeader="sited.demo.local" />
+        </Bindings>
+      </Site>
+    </Sites>
+    <Endpoints>
+      <InputEndpoint name="SiteDEndpoint1" protocol="http" port="9559" />
+    </Endpoints>
+  </WebRole>
+  <WebRole name="SiteE" vmsize="Small">
+     <Sites>
+      <Site name="SiteE" physicalDirectory="..\..\..\SiteE">
+        <Bindings>
+          <Binding name="SiteE" endpointName="SiteEEndpoint1" hostHeader="sitee.demo.local" />
+        </Bindings>
+      </Site>
+    </Sites>
+    <Endpoints>
+      <InputEndpoint name="SiteEEndpoint1" protocol="http" port="9560" />
+    </Endpoints>
+  </WebRole>
 </ServiceDefinition>

@@ -28,21 +28,21 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a id="SiteNameLink" class="navbar-brand" href="#">Site A</a>
+            <a id="SiteNameLink" class="navbar-brand" href="#">Site</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li>&nbsp;</li>
                 <li>
-                    <a href="/Home/LoginViaIdentityServerCodeFlow?Length=4" class="navbar-brand">Identity Server login</a>
+                    <a href="Home/LoginViaIdentityServerCodeFlow?Length=4" class="navbar-brand">Identity Server login</a>
                 </li>
 				<li>&nbsp;</li>
                 <li>
-                    <a class="navbar-brand" href="/Home/LocalLogin">HTML Forms</a>
+                    <a class="navbar-brand" href="Home/LocalLogin">HTML Forms</a>
                 </li>
 				<li>&nbsp;</li>
                 <li>
-                    <a class="navbar-brand" href="/?Length=3">API Calls</a>
+                    <a class="navbar-brand" href="App">API Calls</a>
                 </li>
                 <li>&nbsp;</li>
             </ul>
@@ -117,6 +117,8 @@
 </div> <!-- /container -->
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/scripts/sites")
+@Scripts.Render("~/scripts/app")
 @RenderSection("scripts", false)
 </body>
 </html>

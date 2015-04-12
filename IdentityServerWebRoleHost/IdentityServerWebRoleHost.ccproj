@@ -70,6 +70,22 @@
       <RoleName>SiteC</RoleName>
       <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
     </ProjectReference>
+    <ProjectReference Include="..\SiteD\SiteD.csproj">
+      <Name>SiteD</Name>
+      <Project>{fb63412d-523b-4fb9-954e-775c533bb4de}</Project>
+      <Private>True</Private>
+      <RoleType>Web</RoleType>
+      <RoleName>SiteD</RoleName>
+      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
+    </ProjectReference>
+    <ProjectReference Include="..\SiteE\SiteE.csproj">
+      <Name>SiteE</Name>
+      <Project>{f3f5ea71-acf4-491b-b904-29fa4569fb49}</Project>
+      <Private>True</Private>
+      <RoleType>Web</RoleType>
+      <RoleName>SiteE</RoleName>
+      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="IdentityServerWebApiContent\" />
@@ -77,6 +93,8 @@
     <Folder Include="SiteAContent\" />
     <Folder Include="SiteBContent\" />
     <Folder Include="SiteCContent\" />
+    <Folder Include="SiteDContent\" />
+    <Folder Include="SiteEContent\" />
   </ItemGroup>
   <ItemGroup>
     <DiagnosticsConfiguration Include="IdentityServerWebApiContent\diagnostics.wadcfgx" />
@@ -84,6 +102,8 @@
     <DiagnosticsConfiguration Include="SiteAContent\diagnostics.wadcfgx" />
     <DiagnosticsConfiguration Include="SiteBContent\diagnostics.wadcfgx" />
     <DiagnosticsConfiguration Include="SiteCContent\diagnostics.wadcfgx" />
+    <DiagnosticsConfiguration Include="SiteDContent\diagnostics.wadcfgx" />
+    <DiagnosticsConfiguration Include="SiteEContent\diagnostics.wadcfgx" />
   </ItemGroup>
   <!-- Import the target files for this project template -->
   <PropertyGroup>

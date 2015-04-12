@@ -2,13 +2,39 @@
 
 ### Demo
 
--	Single Sign On/Out for customers under any *.website.com website 
--	4 Sites
-        1. Identity Server - OWIN Self Hosted WebApi in Azure Worker Role
-        2. Javascript & WebApi (Bearer Token) (relays to Identity Server)
-        3. MVC (relays to Identity Server)
-        4. JavaScript (direct call Identity Server)
-        
+-	Single Sign On/Out for customers under any *.website.com website
+-	6 Sites ( 1 Identity Server WebAPI host + 5 clients)
+
+```json
+{
+	{
+		name: "SiteA",
+		url: "http://sitea.demo.local:9556/",
+		title: "Site A - Hybrid  - MVC/API"
+	},
+	 {
+		name: "siteB",
+		url: "http://siteb.demo.local:9557/",
+		title: "Site B - Hybrid  - MVC/API"
+	},
+	 {
+		name: "siteC",
+		url: "http://sitec.demo.local:9558/",
+		title: "Site C - Hybrid  - JavaScript"
+	},
+	 {
+		name: "siteD",
+		url: "http://sited.demo.local:9559/",
+		title: "Site D - Code Flow  - MVC/API"
+	},
+	 {
+		name: "siteE",
+		url: "http://sited.demo.local:9560/",
+		title: "Site E - Implicit  - JavaScript"
+	}
+}
+```
+
     Session management handled by client sites (token refresh/expiry)
 
 ### Assumptions
@@ -37,8 +63,8 @@
 -	JWT ID Tokens signed using an X509 Certificate
 
 ### Out of Scope
--	Implementing 3rd party token providers – Google/Facebook/Windows Live
--	Cross domain authentication   
+-	Implementing 3rd party token providers ï¿½ Google/Facebook/Windows Live
+-	Cross domain authentication
 
 
 #Projects
