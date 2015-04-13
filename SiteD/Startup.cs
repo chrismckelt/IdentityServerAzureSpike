@@ -34,12 +34,12 @@ namespace IdentityServerAzureSpike.SiteD
              app.UseOpenIdConnectAuthentication(new OpenIdConnectAuthenticationOptions
                 {
                     
-                    ClientId = Shared.Constants.SiteAHybrid, // must match IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config.Clients
+                    ClientId = Shared.Constants.SiteDCodeFlow, // must match IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config.Clients
                     Authority = Shared.Constants.IdentityServerCoreUri,
-                    RedirectUri = Shared.Constants.SiteAUri,
-                    PostLogoutRedirectUri = Shared.Constants.SiteAUri,
-                    ResponseType = Thinktecture.IdentityServer.Core.Constants.ResponseTypes.CodeIdTokenToken,
-                    Scope = Shared.Constants.Scopes.Full,
+                    RedirectUri = Shared.Constants.SiteDUri,
+                    PostLogoutRedirectUri = Shared.Constants.SiteDUri,
+                    ResponseType = Thinktecture.IdentityServer.Core.Constants.ResponseTypes.CodeIdToken,
+                    Scope = Shared.Constants.Scopes.CodeFlow,
                     SignInAsAuthenticationType = "Cookies",
                     
                     Notifications = new OpenIdConnectAuthenticationNotifications
@@ -67,7 +67,7 @@ namespace IdentityServerAzureSpike.SiteD
                             userInfo.Claims.ToList().ForEach(ui => claims.Add(new Claim(ui.Item1, ui.Item2)));
 
                             // get access and refresh token
-                            var tokenClient = new OAuth2Client(new Uri(Shared.Constants.TokenEndpoint),Shared.Constants.SiteAHybrid,Shared.Constants.Secret);
+                            var tokenClient = new OAuth2Client(new Uri(Shared.Constants.TokenEndpoint), Shared.Constants.SiteDCodeFlow, Shared.Constants.Secret);
 
                             var response = await tokenClient.RequestAuthorizationCodeAsync(n.Code, n.RedirectUri);
 

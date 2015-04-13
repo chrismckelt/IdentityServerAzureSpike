@@ -35,3 +35,54 @@ var siteE = {
     title: "Site E - Implicit  - JavaScript",
     colour: "#A9E2F3"
 };
+
+
+var site = siteA;
+
+
+// app.js should be rendered prior to below execution
+function setSiteProperties() {
+    document.title = site.name;
+    $("#SiteNameLink").val(site.name);
+    $("#SiteHeader").val(site.name);
+}
+
+$(document).ready(function() {
+    console.log(site.name + " loaded");
+
+    setSiteProperties();
+
+    $(".jumbotron").css("background-color", site.colour);
+
+    switch (site.name) {
+    case(siteA.name || siteB.name || siteD.name):
+    {
+        $("#codegrantflow").hide();
+        $("#implicitgrantflow").hide();
+        break;
+    }
+    case siteA.name:
+    {
+        $("#codegrantflow").hide();
+        $("#implicitgrantflow").hide();
+        break;
+    }
+    case siteB.name:
+    {
+        $("#codegrantflow").hide();
+        $("#implicitgrantflow").hide();
+        break;
+    }
+    case siteD.name:
+    {
+        $("#codegrantflow").hide();
+        $("#implicitgrantflow").hide();
+        break;
+    }
+    default:
+    {
+        $("#hybridflow").hide();
+    }
+    }
+
+});
