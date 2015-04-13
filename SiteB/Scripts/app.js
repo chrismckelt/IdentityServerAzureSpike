@@ -11,6 +11,6 @@ $(document).ready(function () {
 
     setSiteProperties();
 
-    $('.jumbotron').css('background-color', 'mintcream');
+    $('.jumbotron').css('background-color', site.colour);
 
 });

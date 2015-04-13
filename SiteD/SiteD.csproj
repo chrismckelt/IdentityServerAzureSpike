@@ -179,7 +179,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Content Include="..\Shared\Scripts\sites.js">
+    <Content Include="..\Shared\Scripts\sites.js">
       <Link>Scripts\sites.js</Link>
     </Content>
     <Content Include="Content\bootstrap-theme.css" />

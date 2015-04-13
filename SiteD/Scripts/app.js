@@ -5,7 +5,7 @@ function setSiteProperties()
 {
   document.title = site.name;
   $('#SiteNameLink').val(site.name);
-  $('#SiteAHeader').val(site.name);
+  $('#SiteHeader').val(site.name);
 }
 
 $(document).ready(function () {
@@ -13,6 +13,6 @@ $(document).ready(function () {
 
     setSiteProperties();
 
-    $('.jumbotron').css('background-color', 'lightblue');
+    $('.jumbotron').css('background-color', site.colour);
 
 });
