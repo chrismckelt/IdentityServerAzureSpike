@@ -32,7 +32,7 @@ var siteC =
     name: "siteC",
     url: "http://sitec.demo.local:9558/",
     title: "Site C",
-    description: "Hybrid JavaScript",
+    description: "JavaScript",
     colour: "#A9F5BC"
 };
 var siteD =
@@ -47,7 +47,7 @@ var siteE = {
     name: "siteE",
     url: "http://sited.demo.local:9560/",
     title: "Site E",
-    description: "Implicit JavaScript",
+    description: "Implicit JavaScript Form Post",
     colour: "#A9E2F3"
 };
 ```
