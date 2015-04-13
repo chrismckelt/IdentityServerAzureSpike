@@ -1,4 +1,5 @@
-﻿using IdentityServerAzureSpike.Shared;
+﻿using System.Web.Mvc;
+using IdentityServerAzureSpike.Shared;
 
 namespace IdentityServerAzureSpike.SiteD.Controllers.CodeFlow
 {

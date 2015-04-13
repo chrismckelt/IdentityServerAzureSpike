@@ -29,7 +29,7 @@ namespace IdentityServerAzureSpike.Shared
         public const string SiteDCodeFlow = "SiteD_CodeFlow";
         public const string SiteDUri = "http://SiteD.demo.local:9559";
         public const string SiteDRedirectBouncedFromIdentityServerUri = SiteDUri + "/BouncedFromIdentityServer";
-        public const string SiteDCallBackUri = SiteDUri + "/codeflow/callback/";
+        public const string SiteDCallBackUri = SiteDUri + "/codeflow/";
 
         public const string SiteEUri = "http://sitee.demo.local:9560";
         public const string SiteEImplicitFlow = "SiteE_ImplicitFlow";
