@@ -83,4 +83,3 @@ var siteE = {
 -	Implementing 3rd party token providers � Google/Facebook/Windows Live
 -	Cross domain authentication
 
-
