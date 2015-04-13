@@ -13,35 +13,28 @@ namespace IdentityServerAzureSpike.Shared
         public const string IdentityServerIdentityUri = "https://identity.demo.local/identity";
 
         public const string SiteAHybrid = "SiteA_Hybrid";
-        public const string SiteACodeFlow = "SiteA_CodeFlow";
-        public const string SiteAImplicitFlow = "SiteA_ImplicitFlow";
         public const string SiteAUri = "http://sitea.demo.local:9556";
-        public const string SiteARedirectBouncedFromIdentityServerUri = SiteAUri + "/BouncedFromIdentityServer/";
-        public const string SiteACodeFlowCallBackUri = SiteAUri + "/callback/";
-        public const string SiteAImplicitCallBackUri = SiteAUri + "/callback/";
+        public const string SiteARedirectBouncedFromIdentityServerUri = SiteAUri + "/BouncedFromIdentityServer";
+        public const string SiteAImplicitCallBackUri = SiteAUri + "/appflow/callback/";
+        public const string SiteACodeFlowCallBackUri = SiteAUri + "/codeflow/callback/";
 
         public const string SiteBHybrid = "SiteB_Hybrid";
-        public const string SiteBCodeFlow = "SiteB_CodeFlow";
-        public const string SiteBImplicitFlow = "SiteB_ImplicitFlow";
         public const string SiteBUri = "http://SiteB.demo.local:9557";
-        public const string SiteBRedirectBouncedFromIdentityServerUri = SiteBUri + "/BouncedFromIdentityServer/";
-        public const string SiteBCodeFlowCallBackUri = SiteBUri + "/callback/";
-        public const string SiteBImplicitCallBackUri = SiteBUri + "/callback/";
+        public const string SiteBRedirectBouncedFromIdentityServerUri = SiteBUri + "/BouncedFromIdentityServer";
+        public const string SiteBCallBackUri = SiteBUri + "/callback/";
 
         public const string SiteCUri = "http://sitec.demo.local:9558";
         public const string SiteCImplicitFlow = "SiteC_ImplicitFlow";
-        public const string SiteCImplicitCallBackUri = SiteAUri + "/callback/";
         
         public const string SiteDCodeFlow = "SiteD_CodeFlow";
         public const string SiteDUri = "http://SiteD.demo.local:9559";
-        public const string SiteDRedirectBouncedFromIdentityServerUri = SiteDUri + "/BouncedFromIdentityServer/";
-        public const string SiteDCodeFlowCallBackUri = SiteDUri + "/callback/";
-        public const string SiteDImplicitCallBackUri = SiteDUri + "/callback/";
+        public const string SiteDRedirectBouncedFromIdentityServerUri = SiteDUri + "/BouncedFromIdentityServer";
+        public const string SiteDCallBackUri = SiteDUri + "/codeflow/callback/";
 
         public const string SiteEUri = "http://sitee.demo.local:9560";
         public const string SiteEImplicitFlow = "SiteE_ImplicitFlow";
-        public const string SiteEImplicitCallBackUri = SiteAUri + "/callback/";
-
+        public const string SiteEImplicitCallBackUri = SiteEUri + "/appflow/callback/";
+        
         public const string Secret = "secret";
 
         public const string AuthorizeEndpoint = IdentityServerCoreUri + "/connect/authorize";
@@ -66,15 +59,33 @@ namespace IdentityServerAzureSpike.Shared
             Constants.SiteAUri,
             Constants.SiteARedirectBouncedFromIdentityServerUri,
             Constants.SiteACodeFlowCallBackUri,
-            Constants.SiteAImplicitCallBackUri
+            Constants.SiteAImplicitCallBackUri,
         };
 
         public static readonly List<string> RedirectSiteBUris = new List<string>()
         {
             Constants.SiteBUri,
             Constants.SiteBRedirectBouncedFromIdentityServerUri,
-            Constants.SiteBCodeFlowCallBackUri,
-            Constants.SiteBImplicitCallBackUri
+            Constants.SiteBCallBackUri
+        };
+
+        public static readonly List<string> RedirectSiteCUris = new List<string>()
+        {
+            Constants.SiteCUri,
+            Constants.SiteCUri + "/?WelcomeBack=you",
+            Constants.SiteCUri + "/?LoggedOut=you", // match siteC app.js
+        };
+
+        public static readonly List<string> RedirectSiteDUris = new List<string>()
+        {
+            Constants.SiteDUri,
+            Constants.SiteDRedirectBouncedFromIdentityServerUri,
+            Constants.SiteDCallBackUri
+        };
+
+        public static readonly List<string> RedirectSiteEUris = new List<string>()
+        {
+            Constants.SiteEUri
         };
 
         public static class Cookie

@@ -1,76 +1,100 @@
-﻿var siteA = {
-    name: "SiteA",
+﻿var identityServer = {
+    name: "identityServer",
+    url: "https://identity.demo.local/",
+    coreUrl: "https://identity.demo.local/core/",
+    title: "Identity Server"
+};
+
+var siteA = {
+    name: "siteA",
     url: "http://sitea.demo.local:9556/",
-    enabled: true,
-    title: "Site A - Hybrid  - MVC/API",
+    title: "Site A",
+    description: "Hybrid MVC/API",
     colour: "#FAFAFA"
 };
 var siteB = {
     name: "siteB",
     url: "http://siteb.demo.local:9557/",
-    enabled: true,
-    title: "Site B - Hybrid  - MVC/API",
+    title: "Site B",
+    description: "Hybrid MVC/API",
     colour: "#F5F6CE"
 };
 var siteC =
 {
     name: "siteC",
     url: "http://sitec.demo.local:9558/",
-    enabled: true,
-    title: "Site C - Hybrid  - JavaScript",
+    title: "Site C",
+    description: "Implicit JavaScript",
     colour: "#A9F5BC"
 };
 var siteD =
 {
     name: "siteD",
     url: "http://sited.demo.local:9559/",
-    enabled: true,
-    title: "Site D - Code Flow  - MVC/API",
+    title: "Site D",
+    description: "Code Flow MVC/API",
     colour: "#F8E0F7"
 };
 var siteE = {
     name: "siteE",
     url: "http://sited.demo.local:9560/",
-    enabled: true,
-    title: "Site E - Implicit  - JavaScript",
+    title: "Site E",
+    description: "HAWK",
     colour: "#A9E2F3"
 };
 
-
+// app.js overwrites this value
 var site = siteA;
-
-
-// app.js should be rendered prior to below execution
-function setSiteProperties() {
-    document.title = site.name;
-    $("#SiteNameLink").val(site.name);
-    $("#SiteHeader").val(site.name);
-}
 
 $(document).ready(function() {
     console.log(site.name + " loaded");
-
     setSiteProperties();
+    $("#SiteDescriptions").dump(site);
 
     $(".jumbotron").css("background-color", site.colour);
 
-    switch (site.name) {
-    case(siteA.name || siteB.name || siteD.name):
-    {
-        $("#codegrantflow").hide();
-        $("#implicitgrantflow").hide();
-        break;
-    }
-        case siteD.name:
-            {
-                $("#codegrantflow").hide();
-                $("#implicitgrantflow").hide();
-                break;
+});
+
+function setSiteProperties() {
+    document.title = site.name;
+    $("#SiteNameLink").val(site.name);
+    $("#SiteHeader").append(site.name.replace('site', ' '));
+    $("#SiteHeader").append(' - ');
+    $("#SiteHeader").append(site.description);
+}
+
+
+
+(function ($) {
+    $.fn.dump = function (variable) {
+        return this.each(function () {
+            if (typeof variable == 'object') {
+                var string = $.dump.objectToString(variable, 0);
+                $(this).html(string);
+            } else {
+                $(this).html('<pre>' + variable.toString() + '</pre>');
             }
-    default:
-    {
-        $("#hybridflow").hide();
-    }
+        });
     }
 
-});
+    $.dump = {
+        objectToString: function (variable, i) {
+            var string = '';
+            if (typeof variable == 'object' && i < 3) { // 3 is to prevent endless recursion, set higher for more depth
+                string += '( <ul style="list-style:none;">';
+                var key;
+                for (key in variable) {
+                    if (variable.hasOwnProperty(key)) {
+                        string += '<li>' + key + ' => ';
+                        string += $.dump.objectToString(variable[key], i + 1);
+                        string += '</li>';
+                    }
+                }
+                string += '</ul> )';
+            } else {
+                string = variable.toString();
+            }
+            return string;
+        }
+    }
+})(jQuery)

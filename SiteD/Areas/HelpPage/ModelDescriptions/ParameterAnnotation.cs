@@ -1,0 +1,11 @@
+using System;
+
+namespace IdentityServerAzureSpike.SiteD.Areas.HelpPage.ModelDescriptions
+{
+    public class ParameterAnnotation
+    {
+        public Attribute AnnotationAttribute { get; set; }
+
+        public string Documentation { get; set; }
+    }
+}

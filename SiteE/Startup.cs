@@ -1,8 +1,12 @@
-﻿using IdentityServerAzureSpike.SiteE;
+﻿using System.Collections.Generic;
+using System.IdentityModel.Tokens;
+using System.Web.Helpers;
+using IdentityServerAzureSpike.SiteE;
 using Microsoft.Owin;
 using Owin;
+using Thinktecture.IdentityServer.Core;
 
-[assembly: OwinStartup(typeof(Startup))]
+[assembly: OwinStartup(typeof (Startup))]
 
 namespace IdentityServerAzureSpike.SiteE
 {
@@ -10,7 +14,13 @@ namespace IdentityServerAzureSpike.SiteE
     {
         public void Configuration(IAppBuilder app)
         {
+            AntiForgeryConfig.UniqueClaimTypeIdentifier = Constants.ClaimTypes.ClientId;
+            JwtSecurityTokenHandler.InboundClaimTypeMap = new Dictionary<string, string>();
+
+            app.UseKentorOwinCookieSaver();
+
+            app.UseCookieAuthentication(Shared.Constants.Cookie.Build());
 
         }
     }
-    }
+}

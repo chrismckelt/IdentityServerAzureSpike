@@ -34,37 +34,26 @@
             <ul class="nav navbar-nav">
                 <li>&nbsp;</li>
                 <li>
-                    <a id="hybridflow" href="Home/LoginViaIdentityServerCodeFlow?Length=4" class="navbar-brand">Identity Server login</a>
+                    <a href="https://identity.demo.local/help">Identity Server</a>
                 </li>
-				<li>&nbsp;</li>
                 <li>
-                    <a id="codegrantflow" class="navbar-brand" href="Home/LocalLogin">HTML Forms</a>
+                    <a href="http://Sitea.demo.local:9556/">Site A</a>
                 </li>
-				<li>&nbsp;</li>
                 <li>
-                    <a id="implicitgrantflow" class="navbar-brand" href="App">API Calls</a>
+                    <a href="http://siteb.demo.local:9557">Site B</a>
+                </li>
+                <li>
+                    <a href="http://sitec.demo.local:9558">Site C</a>
+                </li>
+                <li>
+                    <a href="http://sited.demo.local:9559">Site D</a>
+                </li>
+                <li>
+                    <a href="http://sitee.demo.local:9560">Site E</a>
                 </li>
                 <li>&nbsp;</li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Sites <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li>
-                            <a href="https://identity.demo.local/help">Identity Server</a>
-                        </li>
-                        <li>
-                            <a href="http://Sitea.demo.local:9556/">Site A</a>
-                        </li>
-                        <li>
-                            <a href="http://siteb.demo.local:9557">Site B</a>
-                        </li>
-                        <li>
-                            <a href="http://sitec.demo.local:9557">Site C</a>
-                        </li>
-                    </ul>
-                </li>
                 @if (User.Identity.IsAuthenticated)
                 {
                     <li class="dropdown">
@@ -97,16 +86,38 @@
                 </li>
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <li>@Html.ActionLink("Signout", "Signout", "Home", new {@class = "navbar-brand"})</li>
+                    <li>@Html.ActionLink("Signout", "SignOut", "Home")</li>
                 }
             </ul>
         </div><!--/.nav-collapse -->
     </div>
 </nav>
 <br/>
+
 <div class="container">
     <div class="jumbotron">
-        <h1 class="SiteHeader">Site </h1>
+        <h1 id="SiteHeader">Site </h1>
+		<br/>
+        <div class="list-group">
+        @if (Request.Url.AbsoluteUri.ToLowerInvariant().Contains("sitea") 
+		|| Request.Url.AbsoluteUri.ToLowerInvariant().Contains("siteb"))
+        {
+            @Html.ActionLink("Login", "LoginViaIdentityServerCodeFlow", "Home", null, htmlAttributes: new { @class = "list-group-item", id = "HybridLink" }); 
+        }
+		@if (Request.Url.AbsoluteUri.ToLowerInvariant().Contains("sitec"))
+        {
+            @Html.ActionLink("Form", "FormLogin", "Home", null, htmlAttributes: new {@class = "list-group-item", id = "CodeFlowLink"})
+		}
+
+		@if (Request.Url.AbsoluteUri.ToLowerInvariant().Contains("sitea") 
+		|| Request.Url.AbsoluteUri.ToLowerInvariant().Contains("siteb") 
+		|| Request.Url.AbsoluteUri.ToLowerInvariant().Contains("sitec"))
+        {
+            @Html.ActionLink("Api", "Index", "App", null, htmlAttributes: new {@class = "list-group-item"})
+        }
+        </div>
+	    <br/>
+		<br/>
         @RenderBody()
     </div>
     <footer>

@@ -80,7 +80,7 @@
     </ProjectReference>
     <ProjectReference Include="..\SiteE\SiteE.csproj">
       <Name>SiteE</Name>
-      <Project>{f3f5ea71-acf4-491b-b904-29fa4569fb49}</Project>
+      <Project>{ec7ea910-e3fa-4661-85a7-c0508fc589b4}</Project>
       <Private>True</Private>
       <RoleType>Web</RoleType>
       <RoleName>SiteE</RoleName>

@@ -50,7 +50,7 @@
     </Endpoints>
   </WebRole>
   <WebRole name="SiteD" vmsize="Small">
-     <Sites>
+    <Sites>
       <Site name="SiteD" physicalDirectory="..\..\..\SiteD">
         <Bindings>
           <Binding name="SiteD" endpointName="SiteDEndpoint1" hostHeader="sited.demo.local" />
@@ -62,7 +62,7 @@
     </Endpoints>
   </WebRole>
   <WebRole name="SiteE" vmsize="Small">
-     <Sites>
+    <Sites>
       <Site name="SiteE" physicalDirectory="..\..\..\SiteE">
         <Bindings>
           <Binding name="SiteE" endpointName="SiteEEndpoint1" hostHeader="sitee.demo.local" />

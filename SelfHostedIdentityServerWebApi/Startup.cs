@@ -63,6 +63,7 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi
 
             appBuilder.Map("/core", builder =>
             {
+                builder.UseKentorOwinCookieSaver();
                 builder.UseIdentityServer(options);
 
                 var bearerOptions = new IdentityServer3.AccessTokenValidation.IdentityServerBearerTokenAuthenticationOptions()
@@ -89,7 +90,7 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi
             config.EnableCors();
 
             config.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.Always;
-            config.EnableSystemDiagnosticsTracing();
+            //config.EnableSystemDiagnosticsTracing(); 
 
             appBuilder.UseWebApi(config);
         }

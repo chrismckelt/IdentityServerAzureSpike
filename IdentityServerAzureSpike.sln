@@ -22,7 +22,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelfHostedIdentityServerWeb
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiteD", "SiteD\SiteD.csproj", "{FB63412D-523B-4FB9-954E-775C533BB4DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiteE", "SiteE\SiteE.csproj", "{F3F5EA71-ACF4-491B-B904-29FA4569FB49}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiteE", "SiteE\SiteE.csproj", "{EC7EA910-E3FA-4661-85A7-C0508FC589B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{FB63412D-523B-4FB9-954E-775C533BB4DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB63412D-523B-4FB9-954E-775C533BB4DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB63412D-523B-4FB9-954E-775C533BB4DE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F3F5EA71-ACF4-491B-B904-29FA4569FB49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F3F5EA71-ACF4-491B-B904-29FA4569FB49}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F3F5EA71-ACF4-491B-B904-29FA4569FB49}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F3F5EA71-ACF4-491B-B904-29FA4569FB49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC7EA910-E3FA-4661-85A7-C0508FC589B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC7EA910-E3FA-4661-85A7-C0508FC589B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC7EA910-E3FA-4661-85A7-C0508FC589B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC7EA910-E3FA-4661-85A7-C0508FC589B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -38,6 +38,9 @@
     <Reference Include="IdentityServer3.AccessTokenValidation">
       <HintPath>..\packages\IdentityServer3.AccessTokenValidation.2.0.0-beta1\lib\net45\IdentityServer3.AccessTokenValidation.dll</HintPath>
     </Reference>
+    <Reference Include="Kentor.OwinCookieSaver">
+      <HintPath>..\packages\Kentor.OwinCookieSaver.1.0.2\lib\net45\Kentor.OwinCookieSaver.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.IdentityModel.Protocol.Extensions">
       <HintPath>..\packages\Microsoft.IdentityModel.Protocol.Extensions.1.0.2.202250711\lib\net45\Microsoft.IdentityModel.Protocol.Extensions.dll</HintPath>
     </Reference>
@@ -154,12 +157,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Certificate.cs" />
     <Compile Include="Constants.cs" />
-    <Compile Include="Controllers\AppControllerBase.cs" />
-    <Compile Include="Controllers\CallbackControllerBase.cs" />
+    <Compile Include="Controllers\CodeFlow\AppControllerBase.cs" />
+    <Compile Include="Controllers\CodeFlow\CallbackControllerBase.cs" />
     <Compile Include="Controllers\ControllerBase.cs" />
     <Compile Include="Controllers\HomeControllerBase.cs" />
-    <Compile Include="Controllers\CodeFlowControllerBase.cs" />
-    <Compile Include="Controllers\ImplicitFlowControllerBase.cs" />
+    <Compile Include="Controllers\CodeFlow\CodeFlowControllerBase.cs" />
+    <Compile Include="Controllers\Implicit\ImplicitFlowControllerBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scopes.cs" />
   </ItemGroup>
@@ -171,16 +174,16 @@
     <None Include="packages.config" />
     <Content Include="Scripts\sites.js" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\App\CallService.cshtml" />
-    <Content Include="Views\App\Index.cshtml" />
-    <Content Include="Views\CallApi\ShowApiResult.cshtml" />
-    <Content Include="Views\Callback\Index.cshtml" />
-    <Content Include="Views\Callback\Token.cshtml" />
+    <Content Include="Views\CodeFlow\App\CallService.cshtml" />
+    <Content Include="Views\CodeFlow\App\Index.cshtml" />
+    <Content Include="Views\CodeFlow\Callback\ShowApiResult.cshtml" />
+    <Content Include="Views\CodeFlow\Callback\Index.cshtml" />
+    <Content Include="Views\CodeFlow\Callback\Token.cshtml" />
     <Content Include="Views\Home\BouncedFromIdentityServer.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\LocalLogin.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Home\FormLogin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />

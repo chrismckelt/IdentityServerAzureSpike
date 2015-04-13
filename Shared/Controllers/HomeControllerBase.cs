@@ -13,7 +13,7 @@ namespace IdentityServerAzureSpike.Shared.Controllers
             return View();
         }
 
-        public ActionResult LocalLogin()
+        public ActionResult FormLogin()
         {
             return View();
         }

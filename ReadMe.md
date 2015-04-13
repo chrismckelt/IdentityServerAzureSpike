@@ -5,34 +5,51 @@
 -	Single Sign On/Out for customers under any *.website.com website
 -	6 Sites ( 1 Identity Server WebAPI host + 5 clients)
 
-```json
+```javascript
+var identityServer = {
+    name: "identityServer",
+    url: "https://identity.demo.local/",
+    coreUrl: "https://identity.demo.local/core/",
+    title: "Identity Server"
+};
+
+var siteA = {
+    name: "siteA",
+    url: "http://sitea.demo.local:9556/",
+    title: "Site A",
+    description: "Hybrid MVC/API",
+    colour: "#FAFAFA"
+};
+var siteB = {
+    name: "siteB",
+    url: "http://siteb.demo.local:9557/",
+    title: "Site B",
+    description: "Hybrid MVC/API",
+    colour: "#F5F6CE"
+};
+var siteC =
 {
-	{
-		name: "SiteA",
-		url: "http://sitea.demo.local:9556/",
-		title: "Site A - Hybrid  - MVC/API"
-	},
-	 {
-		name: "siteB",
-		url: "http://siteb.demo.local:9557/",
-		title: "Site B - Hybrid  - MVC/API"
-	},
-	 {
-		name: "siteC",
-		url: "http://sitec.demo.local:9558/",
-		title: "Site C - Hybrid  - JavaScript"
-	},
-	 {
-		name: "siteD",
-		url: "http://sited.demo.local:9559/",
-		title: "Site D - Code Flow  - MVC/API"
-	},
-	 {
-		name: "siteE",
-		url: "http://sited.demo.local:9560/",
-		title: "Site E - Implicit  - JavaScript"
-	}
-}
+    name: "siteC",
+    url: "http://sitec.demo.local:9558/",
+    title: "Site C",
+    description: "Hybrid JavaScript",
+    colour: "#A9F5BC"
+};
+var siteD =
+{
+    name: "siteD",
+    url: "http://sited.demo.local:9559/",
+    title: "Site D",
+    description: "Code Flow MVC/API",
+    colour: "#F8E0F7"
+};
+var siteE = {
+    name: "siteE",
+    url: "http://sited.demo.local:9560/",
+    title: "Site E",
+    description: "Implicit JavaScript",
+    colour: "#A9E2F3"
+};
 ```
 
     Session management handled by client sites (token refresh/expiry)
@@ -67,29 +84,3 @@
 -	Cross domain authentication
 
 
-#Projects
-
-## IdentityServerWebApi
-
-- WebApi web role facade over identity provider
-- Install-Package Thinktecture.IdentityServer3.AccessTokenValidation
-
-## IdentityServerWebApi
-
-- WebApi web role facade over identity provider
-- Install-Package Thinktecture.IdentityServer3
-
-## SiteA
-
-- MVC
-- Install-Package Thinktecture.IdentityServer3.AccessTokenValidation
-
-## SiteB
-
-- MVC
-- Install-Package Thinktecture.IdentityServer3.AccessTokenValidation
-
-## SiteC
-
-- JavaScript SPA
-- Install-Package Thinktecture.IdentityServer3.AccessTokenValidation

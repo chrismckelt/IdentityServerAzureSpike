@@ -38,6 +38,9 @@
     <Reference Include="IdentityServer3.AccessTokenValidation">
       <HintPath>..\packages\IdentityServer3.AccessTokenValidation.2.0.0-beta1\lib\net45\IdentityServer3.AccessTokenValidation.dll</HintPath>
     </Reference>
+    <Reference Include="Kentor.OwinCookieSaver">
+      <HintPath>..\packages\Kentor.OwinCookieSaver.1.0.2\lib\net45\Kentor.OwinCookieSaver.dll</HintPath>
+    </Reference>
     <Reference Include="MarkdownSharp">
       <HintPath>..\packages\MarkdownSharp.1.13.0.0\lib\35\MarkdownSharp.dll</HintPath>
     </Reference>

@@ -31,38 +31,6 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
                 },
                 new Client
                 {
-                    Flow = Flows.AuthorizationCode, // for existing mvc apps
-                    ClientId = Constants.SiteACodeFlow,
-                    ClientName = Constants.SiteACodeFlow,
-                    Enabled = true,
-                    ScopeRestrictions = Constants.RequiredScopes,
-                    RedirectUris = Constants.RedirectSiteAUris,
-                    PostLogoutRedirectUris =  Shared.Constants.RedirectSiteAUris,
-                    ClientSecrets = new List<ClientSecret>
-                    {
-                        new ClientSecret(Constants.Secret.Sha256())
-                    },                    
-                   RequireConsent = true,
-                   AccessTokenType = AccessTokenType.Reference
-                },
-                 new Client
-                {
-                    Flow = Flows.Implicit, // for javascript or form posted querystring clients
-                    ClientId = Constants.SiteAImplicitFlow,
-                    ClientName = Constants.SiteAImplicitFlow,
-                    Enabled = true,
-                    ScopeRestrictions = Constants.RequiredScopes,
-                    RedirectUris = Constants.RedirectSiteAUris,
-                    PostLogoutRedirectUris =  Shared.Constants.RedirectSiteAUris,
-                    ClientSecrets = new List<ClientSecret>
-                    {
-                        new ClientSecret(Constants.Secret.Sha256())
-                    },                    
-                    AlwaysSendClientClaims = true,
-                    IncludeJwtId = true,
-                },
-                new Client
-                {
                     Flow = Flows.Hybrid, // can serve all apps
                     ClientId = Constants.SiteBHybrid,
                     ClientName = Constants.SiteBHybrid,
@@ -79,31 +47,47 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
                     AlwaysSendClientClaims = true,
                     IncludeJwtId = true,
                 },
-                new Client
+                 new Client
                 {
-                    Flow = Flows.AuthorizationCode, // for existing mvc apps
-                    ClientId = Constants.SiteBCodeFlow,
-                    ClientName = Constants.SiteBCodeFlow,
+                    Flow = Flows.Implicit, // for javascript or form posted querystring clients
+                    ClientId = Constants.SiteCImplicitFlow,
+                    ClientName = Constants.SiteCImplicitFlow,
                     Enabled = true,
                     ScopeRestrictions = Constants.RequiredScopes,
-                    RedirectUris = Constants.RedirectSiteBUris,
-                    PostLogoutRedirectUris =  Shared.Constants.RedirectSiteBUris,
+                    RedirectUris = Constants.RedirectSiteCUris,
+                    PostLogoutRedirectUris =  Constants.RedirectSiteCUris,
                     ClientSecrets = new List<ClientSecret>
                     {
                         new ClientSecret(Constants.Secret.Sha256())
                     },                    
-                    RequireConsent = true,
-                    AccessTokenType = AccessTokenType.Reference
+                    AlwaysSendClientClaims = true,
+                    IncludeJwtId = true,
                 },
-                 new Client
+                  new Client
                 {
-                    Flow = Flows.Implicit, // for javascript or form posted querystring clients
-                    ClientId = Constants.SiteBImplicitFlow,
-                    ClientName = Constants.SiteBImplicitFlow,
+                    Flow = Flows.AuthorizationCode, // for mvc
+                    ClientId = Constants.SiteDCodeFlow,
+                    ClientName = Constants.SiteDCodeFlow,
                     Enabled = true,
                     ScopeRestrictions = Constants.RequiredScopes,
-                    RedirectUris = Constants.RedirectSiteBUris,
-                    PostLogoutRedirectUris =  Constants.RedirectSiteBUris,
+                    RedirectUris = Constants.RedirectSiteDUris,
+                    PostLogoutRedirectUris =  Constants.RedirectSiteDUris,
+                    ClientSecrets = new List<ClientSecret>
+                    {
+                        new ClientSecret(Constants.Secret.Sha256())
+                    },                    
+                    AlwaysSendClientClaims = true,
+                    IncludeJwtId = true,
+                },
+                  new Client
+                {
+                    Flow = Flows.Implicit, // HAWK
+                    ClientId = Constants.SiteEImplicitFlow,
+                    ClientName = Constants.SiteEImplicitFlow,
+                    Enabled = true,
+                    ScopeRestrictions = Constants.RequiredScopes,
+                    RedirectUris = Constants.RedirectSiteEUris,
+                    PostLogoutRedirectUris =  Constants.RedirectSiteEUris,
                     ClientSecrets = new List<ClientSecret>
                     {
                         new ClientSecret(Constants.Secret.Sha256())
