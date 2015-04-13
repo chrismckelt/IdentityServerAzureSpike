@@ -25,16 +25,16 @@ namespace IdentityServerAzureSpike.Shared
 
         public const string SiteCUri = "http://sitec.demo.local:9558";
         public const string SiteCImplicitFlow = "SiteC_ImplicitFlow";
-        
+
         public const string SiteDCodeFlow = "SiteD_CodeFlow";
         public const string SiteDUri = "http://SiteD.demo.local:9559";
         public const string SiteDRedirectBouncedFromIdentityServerUri = SiteDUri + "/BouncedFromIdentityServer";
-        public const string SiteDCallBackUri = SiteDUri + "/codeflow/";
+        public const string SiteDCallBackUri = SiteDUri + "/callback/";
 
         public const string SiteEUri = "http://sitee.demo.local:9560";
         public const string SiteEImplicitFlow = "SiteE_ImplicitFlow";
         public const string SiteEImplicitCallBackUri = SiteEUri + "/appflow/callback/";
-        
+
         public const string Secret = "secret";
 
         public const string AuthorizeEndpoint = IdentityServerCoreUri + "/connect/authorize";
@@ -53,7 +53,7 @@ namespace IdentityServerAzureSpike.Shared
         }
 
         public static readonly List<string> RequiredScopes = Scopes.Full.Split().ToList();
-        
+
         public static readonly List<string> RedirectSiteAUris = new List<string>()
         {
             Constants.SiteAUri,
@@ -107,6 +107,6 @@ namespace IdentityServerAzureSpike.Shared
             }
         }
 
-       
+
     }
 }

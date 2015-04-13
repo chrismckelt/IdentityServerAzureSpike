@@ -8,12 +8,12 @@ namespace IdentityServerAzureSpike.SiteB.Controllers.CodeFlow
     {
         public override string SiteName
         {
-            get { return Constants.SiteAHybrid; }
+            get { return Constants.SiteBHybrid; }
         }
 
         public override string SiteRedirect
         {
-            get { return Constants.SiteAImplicitCallBackUri; }
+            get { return Constants.SiteBRedirectBouncedFromIdentityServerUri; }
         }
     }
 }

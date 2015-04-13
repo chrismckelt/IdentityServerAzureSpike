@@ -39,7 +39,7 @@ var siteE = {
     name: "siteE",
     url: "http://sited.demo.local:9560/",
     title: "Site E",
-    description: "HAWK",
+    description: "Javascript form post implicit",
     colour: "#A9E2F3"
 };
 
@@ -64,10 +64,10 @@ function setSiteProperties() {
 }
 
 
-
-(function ($) {
-    $.fn.dump = function (variable) {
-        return this.each(function () {
+// pretty print javascript objects
+(function($) {
+    $.fn.dump = function(variable) {
+        return this.each(function() {
             if (typeof variable == 'object') {
                 var string = $.dump.objectToString(variable, 0);
                 $(this).html(string);
@@ -78,7 +78,7 @@ function setSiteProperties() {
     }
 
     $.dump = {
-        objectToString: function (variable, i) {
+        objectToString: function(variable, i) {
             var string = '';
             if (typeof variable == 'object' && i < 3) { // 3 is to prevent endless recursion, set higher for more depth
                 string += '( <ul style="list-style:none;">';
@@ -97,4 +97,4 @@ function setSiteProperties() {
             return string;
         }
     }
-})(jQuery)
+})(jQuery);

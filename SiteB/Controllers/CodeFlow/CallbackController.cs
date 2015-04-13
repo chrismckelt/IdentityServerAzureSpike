@@ -3,16 +3,16 @@ using IdentityServerAzureSpike.Shared.Controllers.CodeFlow;
 
 namespace IdentityServerAzureSpike.SiteB.Controllers.CodeFlow
 {
-    public class AppCallbackController : CallbackControllerBase
+    public class CallbackController : CallbackControllerBase
 	{
         public override string SiteName
         {
-            get { return Constants.SiteAHybrid; }
+            get { return Constants.SiteBHybrid; }
         }
 
         public override string SiteRedirect
         {
-            get { return Constants.SiteACodeFlowCallBackUri; }
+            get { return Constants.SiteBCallBackUri; }
         }
 	}
 }

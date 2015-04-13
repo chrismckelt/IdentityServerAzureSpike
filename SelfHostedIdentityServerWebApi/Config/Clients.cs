@@ -81,7 +81,7 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
                 },
                   new Client
                 {
-                    Flow = Flows.Implicit, // HAWK
+                    Flow = Flows.Implicit, // 
                     ClientId = Constants.SiteEImplicitFlow,
                     ClientName = Constants.SiteEImplicitFlow,
                     Enabled = true,

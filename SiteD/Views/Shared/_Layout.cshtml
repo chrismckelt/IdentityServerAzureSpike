@@ -97,21 +97,20 @@
 <div class="container">
     <div class="jumbotron">
         <h1 id="SiteHeader">Site </h1>
-		<br/>
+        <br/>
+        <div id="SiteDescription"></div>
+        <br/>
         <div class="list-group">
-        @if (Request.Url.AbsoluteUri.ToLowerInvariant().Contains("sitea") 
-		|| Request.Url.AbsoluteUri.ToLowerInvariant().Contains("siteb"))
+        @if (Request.Url.AbsoluteUri.ToLowerInvariant().Contains("sitea") || Request.Url.AbsoluteUri.ToLowerInvariant().Contains("siteb"))
         {
-            @Html.ActionLink("Login", "LoginViaIdentityServerCodeFlow", "Home", null, htmlAttributes: new { @class = "list-group-item", id = "HybridLink" }); 
+            @Html.ActionLink("Login", "LoginViaIdentityServerCodeFlow", "Home", null, htmlAttributes: new { @class = "list-group-item", id = "HybridLink" });
         }
-		@if (Request.Url.AbsoluteUri.ToLowerInvariant().Contains("sitec"))
+		@if (Request.Url.AbsoluteUri.ToLowerInvariant().Contains("sited"))
         {
             @Html.ActionLink("Form", "FormLogin", "Home", null, htmlAttributes: new {@class = "list-group-item", id = "CodeFlowLink"})
 		}
 
-		@if (Request.Url.AbsoluteUri.ToLowerInvariant().Contains("sitea") 
-		|| Request.Url.AbsoluteUri.ToLowerInvariant().Contains("siteb") 
-		|| Request.Url.AbsoluteUri.ToLowerInvariant().Contains("sitec"))
+		@if (Request.Url.AbsoluteUri.ToLowerInvariant().Contains("sitea") || Request.Url.AbsoluteUri.ToLowerInvariant().Contains("siteb") || Request.Url.AbsoluteUri.ToLowerInvariant().Contains("sitec"))
         {
             @Html.ActionLink("Api", "Index", "App", null, htmlAttributes: new {@class = "list-group-item"})
         }
