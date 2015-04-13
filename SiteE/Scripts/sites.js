@@ -49,7 +49,7 @@ var site = siteA;
 $(document).ready(function() {
     console.log(site.name + " loaded");
     setSiteProperties();
-    $("#SiteDescriptions").dump(site);
+    $("#SiteDescription").dump(site);
 
     $(".jumbotron").css("background-color", site.colour);
 

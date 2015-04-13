@@ -11,8 +11,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>IdentityServerAzureSpike.SiteA</RootNamespace>
-    <AssemblyName>IdentityServerAzureSpike.SiteA</AssemblyName>
+    <RootNamespace>IdentityServerAzureSpike.SiteE</RootNamespace>
+    <AssemblyName>IdentityServerAzureSpike.SiteE</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -294,6 +294,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Scripts\jquery-2.1.3.min.map" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Home\TestHtmlForm.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -342,10 +343,9 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="Controllers\Implicit\AppController.cs" />
-    <Compile Include="Controllers\Implicit\CallbackController.cs" />
     <Compile Include="Controllers\HelpController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Implicit\ImplicitFlowController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

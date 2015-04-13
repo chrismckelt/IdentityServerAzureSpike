@@ -13,7 +13,7 @@ namespace IdentityServerAzureSpike.SiteA.Controllers.CodeFlow
 
         public override string SiteRedirect
         {
-            get { return Constants.SiteAImplicitCallBackUri; }
+            get { return Constants.SiteACodeFlowCallBackUri; }
         }
     }
 }

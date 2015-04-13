@@ -1,10 +1,10 @@
 ﻿using IdentityServerAzureSpike.Shared;
-using IdentityServerAzureSpike.Shared.Controllers.CodeFlow;
+using IdentityServerAzureSpike.Shared.Controllers.Implicit;
 
 namespace IdentityServerAzureSpike.SiteE.Controllers.Implicit
 {
-    public class AppCallbackController : CallbackControllerBase
-	{
+    public class ImplicitFlowController : ImplicitFlowControllerBase
+    {
         public override string SiteName
         {
             get { return Constants.SiteEImplicitFlow; }
@@ -14,5 +14,5 @@ namespace IdentityServerAzureSpike.SiteE.Controllers.Implicit
         {
             get { return Constants.SiteEImplicitCallBackUri; }
         }
-	}
+    }
 }

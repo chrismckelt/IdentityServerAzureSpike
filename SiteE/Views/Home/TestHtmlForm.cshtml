@@ -1,0 +1,13 @@
+﻿@using IdentityServerAzureSpike.Shared
+<div class="row">
+    <div class="col-md-8">
+        <h3>Login via Implicit Form Post (Redirected via Query String)</h3>
+        <form id="ImplicitForm" method="post" action="/ImplicitFlow/" enctype="application/x-www-form-urlencoded">
+            <div class="form-group">
+                <input type="text" name="scopesHardCodeInController" class="form-control" value="@Constants.Scopes.Implicit" />
+                PostImplicit
+                <button name="OKPostImplicit">OK</button>
+            </div>
+        </form>
+    </div>
+</div>

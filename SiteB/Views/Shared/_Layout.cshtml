@@ -105,7 +105,7 @@
         {
             @Html.ActionLink("Login", "LoginViaIdentityServerCodeFlow", "Home", null, htmlAttributes: new { @class = "list-group-item", id = "HybridLink" });
         }
-		@if (Request.Url.AbsoluteUri.ToLowerInvariant().Contains("sited"))
+		@if (Request.Url.AbsoluteUri.ToLowerInvariant().Contains("sited") || Request.Url.AbsoluteUri.ToLowerInvariant().Contains("sitee"))
         {
             @Html.ActionLink("Form", "FormLogin", "Home", null, htmlAttributes: new {@class = "list-group-item", id = "CodeFlowLink"})
 		}

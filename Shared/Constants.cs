@@ -15,7 +15,6 @@ namespace IdentityServerAzureSpike.Shared
         public const string SiteAHybrid = "SiteA_Hybrid";
         public const string SiteAUri = "http://sitea.demo.local:9556";
         public const string SiteARedirectBouncedFromIdentityServerUri = SiteAUri + "/BouncedFromIdentityServer";
-        public const string SiteAImplicitCallBackUri = SiteAUri + "/appflow/callback/";
         public const string SiteACodeFlowCallBackUri = SiteAUri + "/codeflow/callback/";
 
         public const string SiteBHybrid = "SiteB_Hybrid";
@@ -33,7 +32,7 @@ namespace IdentityServerAzureSpike.Shared
 
         public const string SiteEUri = "http://sitee.demo.local:9560";
         public const string SiteEImplicitFlow = "SiteE_ImplicitFlow";
-        public const string SiteEImplicitCallBackUri = SiteEUri + "/appflow/callback/";
+        public const string SiteEImplicitCallBackUri = SiteEUri + "/implicitflow/callback/";
 
         public const string Secret = "secret";
 
@@ -59,7 +58,6 @@ namespace IdentityServerAzureSpike.Shared
             Constants.SiteAUri,
             Constants.SiteARedirectBouncedFromIdentityServerUri,
             Constants.SiteACodeFlowCallBackUri,
-            Constants.SiteAImplicitCallBackUri,
         };
 
         public static readonly List<string> RedirectSiteBUris = new List<string>()
@@ -85,7 +83,9 @@ namespace IdentityServerAzureSpike.Shared
 
         public static readonly List<string> RedirectSiteEUris = new List<string>()
         {
-            Constants.SiteEUri
+            Constants.SiteEUri,
+            Constants.SiteEImplicitCallBackUri,
+            Constants.SiteEImplicitCallBackUri
         };
 
         public static class Cookie
@@ -102,7 +102,7 @@ namespace IdentityServerAzureSpike.Shared
                     CookieHttpOnly = false,
                     CookieSecure = CookieSecureOption.Never,
                     //ExpireTimeSpan = TimeSpan.FromHours(1),
-                    CookieDomain = Shared.Constants.Cookie.Domain,
+                    CookieDomain = Domain,
                 };
             }
         }

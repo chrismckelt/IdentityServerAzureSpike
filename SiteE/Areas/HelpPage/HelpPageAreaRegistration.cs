@@ -1,5 +1,6 @@
 using System.Web.Http;
 using System.Web.Mvc;
+using IdentityServerAzureSpike.SiteE.Areas.HelpPage.App_Start;
 
 namespace IdentityServerAzureSpike.SiteE.Areas.HelpPage
 {
