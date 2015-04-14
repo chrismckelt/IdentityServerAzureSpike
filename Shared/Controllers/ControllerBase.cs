@@ -17,7 +17,7 @@ namespace IdentityServerAzureSpike.Shared.Controllers
         /// <returns></returns>
         protected async Task<Tuple<string, string>> GetTempStateAsync()
         {
-            var data = await Request.GetOwinContext().Authentication.AuthenticateAsync(Shared.Constants.Cookie.TempPassiveStateName);
+            var data = await Request.GetOwinContext().Authentication.AuthenticateAsync(Shared.Constants.Cookie.TempPassiveStateAuthenticationType);
 
             var state = data.Identity.FindFirst("state").Value;
             var nonce = data.Identity.FindFirst("nonce").Value;

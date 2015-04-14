@@ -19,7 +19,9 @@ namespace IdentityServerAzureSpike.SiteE
 
             app.UseKentorOwinCookieSaver();
 
-            app.UseCookieAuthentication(Shared.Constants.Cookie.Build());
+            app.UseCookieAuthentication(Shared.Constants.Cookie.BuildActive());
+
+            app.UseCookieAuthentication(Shared.Constants.Cookie.BuildPassive());
 
         }
     }

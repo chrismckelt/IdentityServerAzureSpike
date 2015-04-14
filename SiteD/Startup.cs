@@ -16,13 +16,9 @@ namespace IdentityServerAzureSpike.SiteD
             
             app.UseKentorOwinCookieSaver();
 
-            app.UseCookieAuthentication(Constants.Cookie.Build());
+            app.UseCookieAuthentication(Shared.Constants.Cookie.BuildActive());
 
-            app.UseCookieAuthentication(new CookieAuthenticationOptions
-            {
-                AuthenticationType = Constants.Cookie.TempPassiveStateName,
-                AuthenticationMode = AuthenticationMode.Passive
-            });
+            app.UseCookieAuthentication(Shared.Constants.Cookie.BuildPassive());
         }
     }
 }

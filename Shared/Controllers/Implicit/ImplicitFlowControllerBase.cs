@@ -11,7 +11,6 @@ namespace IdentityServerAzureSpike.Shared.Controllers.Implicit
     [Route("implicitflow")]
     public abstract class ImplicitFlowControllerBase : ControllerBase
     {
-        public const string CookieName = "TempState";
 
         [HttpPost]
         [ActionName("Index")]
@@ -42,7 +41,7 @@ namespace IdentityServerAzureSpike.Shared.Controllers.Implicit
 
             var claims = await ValidateIdentityTokenAsync(token, state);
 
-            var id = new ClaimsIdentity(claims, "Cookies");
+            var id = new ClaimsIdentity(claims, Shared.Constants.Cookie.AuthenticationType);
             Request.GetOwinContext().Authentication.SignIn(id);
 
             return Redirect("/");
@@ -54,11 +53,11 @@ namespace IdentityServerAzureSpike.Shared.Controllers.Implicit
             var result = await Request
                 .GetOwinContext()
                 .Authentication
-                .AuthenticateAsync(CookieName);
+                .AuthenticateAsync(Shared.Constants.Cookie.TempPassiveStateAuthenticationType);
 
             if (result == null)
             {
-                throw new InvalidOperationException(CookieName + "not found - No temp cookie");
+                throw new InvalidOperationException(Shared.Constants.Cookie.TempPassiveStateAuthenticationType + "not found - No temp cookie");
             }
 
             if (state != result.Identity.FindFirst("state").Value)
@@ -86,7 +85,7 @@ namespace IdentityServerAzureSpike.Shared.Controllers.Implicit
             Request
                 .GetOwinContext()
                 .Authentication
-                .SignOut(CookieName);
+                .SignOut(Shared.Constants.Cookie.TempPassiveStateAuthenticationType);
 
             return id.Claims;
         }
@@ -94,7 +93,7 @@ namespace IdentityServerAzureSpike.Shared.Controllers.Implicit
 
         private void SetTempCookie(string state, string nonce)
         {
-            var tempId = new ClaimsIdentity(CookieName);
+            var tempId = new ClaimsIdentity(Shared.Constants.Cookie.TempPassiveStateAuthenticationType);
             tempId.AddClaim(new Claim("state", state));
             tempId.AddClaim(new Claim("nonce", nonce));
 

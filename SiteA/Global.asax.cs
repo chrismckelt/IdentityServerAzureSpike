@@ -21,7 +21,7 @@ namespace IdentityServerAzureSpike.SiteA
 
         protected void Session_Start(object sender, EventArgs e)
         {
-
+            HttpContext.Current.Session["Workaround"] = 0;
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)

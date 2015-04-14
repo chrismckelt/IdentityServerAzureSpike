@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Owin;
+using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
+using Serilog;
 
 namespace IdentityServerAzureSpike.Shared
 {
@@ -41,7 +44,7 @@ namespace IdentityServerAzureSpike.Shared
                 public static readonly string Name = "SiteD_CodeFlow";
                 public static readonly string Uri = "http://SiteD.demo.local:9559";
                 public static readonly string RedirectUri = Uri + "/BouncedFromIdentityServer";
-                public static readonly string PostbackUri = "/callback/";
+                public static readonly string PostbackUri = Uri + "/callback/";
             }
             public static class E
             {
@@ -108,19 +111,70 @@ namespace IdentityServerAzureSpike.Shared
         {
             public const string Name = "identity";
             public const string Domain = "demo.local";
-            public const string Path = "identity";
-            public const string TempPassiveStateName = "TempPassiveState";
+            public const string TempPassiveStateAuthenticationType = "AuthenticationTypeCookies";
+            public const string AuthenticationType = "Cookies";
 
-            public static CookieAuthenticationOptions Build()
+            public static CookieAuthenticationOptions BuildActive()
             {
                 return new CookieAuthenticationOptions
                 {
                     CookieHttpOnly = false,
-                    CookieSecure = CookieSecureOption.Never,
-                    //ExpireTimeSpan = TimeSpan.FromHours(1),
+                    CookieSecure = CookieSecureOption.SameAsRequest,
+                    ExpireTimeSpan = TimeSpan.FromHours(1),
                     CookieDomain = Domain,
+                    AuthenticationMode = AuthenticationMode.Active,
+                    //AuthenticationType = AuthenticationType,
+                    //Provider = new CookieAuthenticationProvider //http://brockallen.com/2013/10/27/using-cookie-authentication-middleware-with-web-api-and-401-response-codes/
+                    //{
+                    //    OnException = err =>
+                    //    {
+                    //        Log.Error(err.Exception, "@Exception");
+                    //    }
+                    //}
+                   
                 };
             }
+
+            public static CookieAuthenticationOptions BuildPassive()
+            {
+                return new CookieAuthenticationOptions
+                {
+                    CookieName = Name,
+                    CookieHttpOnly = false,
+                    CookieSecure = CookieSecureOption.SameAsRequest,
+                    ExpireTimeSpan = TimeSpan.FromHours(1),
+                    CookieDomain = Domain,
+                    AuthenticationMode = AuthenticationMode.Passive,
+                    AuthenticationType = TempPassiveStateAuthenticationType,
+                    //Provider = new CookieAuthenticationProvider //http://brockallen.com/2013/10/27/using-cookie-authentication-middleware-with-web-api-and-401-response-codes/
+                    //{
+                    //    OnApplyRedirect = ctx =>
+                    //    {
+                    //        if (!IsAjaxRequest(ctx.Request))
+                    //        {
+                    //            ctx.Response.Redirect(ctx.RedirectUri);
+                    //        }
+                    //    },
+                    //    OnException = err =>
+                    //    {
+                    //        Log.Error(err.Exception, "@Exception");
+                    //    }
+                    //}
+
+                };
+            }
+
+            private static bool IsAjaxRequest(IOwinRequest request)
+            {
+                IReadableStringCollection query = request.Query;
+                if ((query != null) && (query["X-Requested-With"] == "XMLHttpRequest"))
+                {
+                    return true;
+                }
+                IHeaderDictionary headers = request.Headers;
+                return ((headers != null) && (headers["X-Requested-With"] == "XMLHttpRequest"));
+            }
+        
         }
 
 

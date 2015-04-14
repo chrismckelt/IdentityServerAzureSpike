@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Serilog;
 using Thinktecture.IdentityModel.Client;
 
 namespace IdentityServerAzureSpike.Shared.Controllers.CodeFlow
@@ -13,12 +14,11 @@ namespace IdentityServerAzureSpike.Shared.Controllers.CodeFlow
     public abstract class CodeFlowControllerBase : ControllerBase
     {
 
-        public const string CookieName = "TempState";
-
         [HttpPost]
         [ActionName("Index")]
         public ActionResult CodeFlowPostedDetails(string scopes)
         {
+            Log.Information("CodeFlowPostedDetails");
             var state = Guid.NewGuid().ToString("N");
             var nonce = Guid.NewGuid().ToString("N");
             SetTempCookie(state, nonce);
@@ -38,7 +38,8 @@ namespace IdentityServerAzureSpike.Shared.Controllers.CodeFlow
 
         private void SetTempCookie(string state, string nonce)
         {
-            var tempId = new ClaimsIdentity(CookieName);
+            Log.Information("SetTempCookie");
+            var tempId = new ClaimsIdentity(Shared.Constants.Cookie.TempPassiveStateAuthenticationType);
             tempId.AddClaim(new Claim("state", state));
             tempId.AddClaim(new Claim("nonce", nonce));
 

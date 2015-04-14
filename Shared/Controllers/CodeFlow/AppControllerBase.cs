@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Newtonsoft.Json.Linq;
+using Serilog;
 using Thinktecture.IdentityModel.Client;
 
 namespace IdentityServerAzureSpike.Shared.Controllers.CodeFlow
@@ -15,17 +16,29 @@ namespace IdentityServerAzureSpike.Shared.Controllers.CodeFlow
     [Route("App")]
     public abstract class AppControllerBase : ControllerBase
     {
+
+        public string GetToken()
+        {
+            var principal = User as ClaimsPrincipal;
+            var value = principal.FindFirst("access_token");
+            if (value != null) return value.Value;
+
+            return Convert.ToString(Session["access_token"]);
+        }
+
         public ActionResult Index()
         {
+            Log.Information("Index");
             return View("~/Views/CodeFlow/App/Index.cshtml");
         }
 
         public async Task<ActionResult> CallService()
         {
-            var principal = User as ClaimsPrincipal;
+            Log.Information("CallService");
 
             var client = new HttpClient();
-            client.SetBearerToken(principal.FindFirst("access_token").Value);
+            
+            client.SetBearerToken(GetToken());
 
             var result = await client.GetStringAsync(Shared.Constants.IdentityServerIdentityUri);
 
@@ -101,8 +114,8 @@ namespace IdentityServerAzureSpike.Shared.Controllers.CodeFlow
             claims.Add(new Claim("access_token", response.AccessToken));
             claims.Add(new Claim("expires_at", (DateTime.UtcNow.ToEpochTime() + response.ExpiresIn).ToDateTimeFromEpoch().ToString()));
             claims.Add(new Claim("refresh_token", response.RefreshToken));
-            
-            var newId = new ClaimsIdentity(claims, "Cookies");
+
+            var newId = new ClaimsIdentity(claims, Shared.Constants.Cookie.AuthenticationType);
             Request.GetOwinContext().Authentication.SignIn(newId);
         }
 	}

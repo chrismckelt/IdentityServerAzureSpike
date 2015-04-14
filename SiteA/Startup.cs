@@ -29,26 +29,25 @@ namespace IdentityServerAzureSpike.SiteA
             AntiForgeryConfig.UniqueClaimTypeIdentifier = Constants.ClaimTypes.ClientId;
             JwtSecurityTokenHandler.InboundClaimTypeMap = new Dictionary<string, string>();
 
+            //https://github.com/KentorIT/owin-cookie-saver 
+            // handle Microsoft's Owin implementation for System.Web
+            
             app.UseKentorOwinCookieSaver();
 
-            app.UseCookieAuthentication(Shared.Constants.Cookie.Build());
+            app.UseCookieAuthentication(Shared.Constants.Cookie.BuildActive());
 
-            app.UseCookieAuthentication(new CookieAuthenticationOptions
-            {
-                AuthenticationType = Shared.Constants.Cookie.TempPassiveStateName,
-                AuthenticationMode = AuthenticationMode.Passive
-            });
+            app.UseCookieAuthentication(Shared.Constants.Cookie.BuildPassive());
 
             app.UseOpenIdConnectAuthentication(new OpenIdConnectAuthenticationOptions
             {
-                ClientId = Shared.Constants.Sites.A.Name,
                 // must match IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config.Clients
+                ClientId = Shared.Constants.Sites.A.Name,
                 Authority = Shared.Constants.IdentityServerCoreUri,
                 RedirectUri = Shared. Constants.Sites.A.RedirectUri,
                 ResponseType = Constants.ResponseTypes.CodeIdTokenToken,
                 Scope = Shared.Constants.Scopes.Full,
-                SignInAsAuthenticationType = "Cookies",
-                Notifications = Util.SetOpenIdConnectAuthenticationNotifications()
+                SignInAsAuthenticationType = Shared.Constants.Cookie.AuthenticationType,
+                Notifications = Util.SetOpenIdConnectAuthenticationNotifications(Shared.Constants.Sites.A.Name),
             });
         }
 

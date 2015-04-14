@@ -31,13 +31,9 @@ namespace IdentityServerAzureSpike.SiteB
 
             app.UseKentorOwinCookieSaver();
 
-            app.UseCookieAuthentication(Shared.Constants.Cookie.Build());
+            app.UseCookieAuthentication(Shared.Constants.Cookie.BuildActive());
 
-            app.UseCookieAuthentication(new CookieAuthenticationOptions
-            {
-                AuthenticationType = Shared.Constants.Cookie.TempPassiveStateName,
-                AuthenticationMode = AuthenticationMode.Passive
-            });
+            app.UseCookieAuthentication(Shared.Constants.Cookie.BuildPassive());
 
             app.UseOpenIdConnectAuthentication(new OpenIdConnectAuthenticationOptions
             {
@@ -48,8 +44,8 @@ namespace IdentityServerAzureSpike.SiteB
                 PostLogoutRedirectUri = Shared.Constants.Sites.B.RedirectUri,
                 ResponseType = Constants.ResponseTypes.CodeIdTokenToken,
                 Scope = Shared.Constants.Scopes.Full,
-                SignInAsAuthenticationType = "Cookies",
-                Notifications = Util.SetOpenIdConnectAuthenticationNotifications()
+                SignInAsAuthenticationType = Shared.Constants.Cookie.AuthenticationType,
+                Notifications = Util.SetOpenIdConnectAuthenticationNotifications(Shared.Constants.Sites.B.Name)
             });
         }
     }

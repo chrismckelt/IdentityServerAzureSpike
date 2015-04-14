@@ -2,18 +2,23 @@
 using System.Collections.Generic;
 using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web.Http;
 using Finsa.WebApi.HelpPage.AnyHost;
+using IdentityServer3.AccessTokenValidation;
 using IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config;
 using IdentityServerAzureSpike.Shared;
+using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
+using Microsoft.WindowsAzure;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Owin;
 using Thinktecture.IdentityServer.Core.Configuration;
 using Thinktecture.IdentityServer.Core.Services;
 using Thinktecture.IdentityServer.Core.Services.Default;
+using AuthenticationOptions = Thinktecture.IdentityServer.Core.Configuration.AuthenticationOptions;
 
 namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi
 {
@@ -48,12 +53,14 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi
                 {
                     EnablePostSignOutAutoRedirect = true,
                     EnableSignOutPrompt = true,
-                    InvalidSignInRedirectUrl = Shared.Constants.Sites.A.Uri + "/?INVALID_LOGIN=YOU",  
+                    InvalidSignInRedirectUrl = Shared.Constants.Sites.A.Uri + "/?INVALID_LOGIN=YOU",                      
                     CookieOptions = new CookieOptions()
                     {
+                        Path = Constants.Cookie.Domain, // ->  this is the magic for child domains to work properly
                         SecureMode = CookieSecureMode.SameAsRequest,
-                        ExpireTimeSpan = TimeSpan.FromMinutes(5),
-                        Path = Constants.Cookie.Domain
+                        ExpireTimeSpan = TimeSpan.FromHours(1),
+                        IsPersistent = true,
+                        AllowRememberMe = true,
                     }
                 },
                 LoggingOptions = new LoggingOptions()
@@ -62,15 +69,25 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi
                     EnableWebApiDiagnostics = true,
                     IncludeSensitiveDataInLogs = true,
                     //WebApiDiagnosticsIsVerbose = true
+                },
+                EventsOptions = new EventsOptions
+                {
+                    RaiseFailureEvents = true,
+                    RaiseInformationEvents = true,
+                    RaiseSuccessEvents = true,
+                    RaiseErrorEvents = true
                 }
             };
 
             appBuilder.Map("/core", builder =>
             {
+
                 builder.UseKentorOwinCookieSaver();
 
-                builder.UseCookieAuthentication(Shared.Constants.Cookie.Build());
-                
+                builder.UseCookieAuthentication(Shared.Constants.Cookie.BuildActive());
+
+                builder.UseCookieAuthentication(Shared.Constants.Cookie.BuildPassive());
+
                 builder.UseIdentityServer(options);
             });
         }
@@ -123,6 +140,9 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi
             //https://github.com/IdentityServer/IdentityServer3/issues/1138
             allowedOrigins.AddRange(Shared.Constants.RedirectSiteAUris);
             allowedOrigins.AddRange(Shared.Constants.RedirectSiteBUris);
+            allowedOrigins.AddRange(Shared.Constants.RedirectSiteCUris);
+            allowedOrigins.AddRange(Shared.Constants.RedirectSiteDUris);
+            allowedOrigins.AddRange(Shared.Constants.RedirectSiteEUris);
 
             ICorsPolicyService corsPolicyService = new DefaultCorsPolicyService
             {

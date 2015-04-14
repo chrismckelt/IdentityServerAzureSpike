@@ -1,4 +1,5 @@
 ﻿using IdentityServerAzureSpike.Shared;
+using Serilog;
 
 namespace IdentityServerAzureSpike.SiteA.Controllers.CodeFlow
 {
@@ -11,7 +12,10 @@ namespace IdentityServerAzureSpike.SiteA.Controllers.CodeFlow
 
         public override string SiteRedirect
         {
-            get { return  Constants.Sites.A.PostbackUri; }
+            get
+            {
+                return  Constants.Sites.A.PostbackUri;
+            }
         }
     }
 }

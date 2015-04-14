@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Newtonsoft.Json.Linq;
+using Serilog;
 using Thinktecture.IdentityModel.Client;
 
 namespace IdentityServerAzureSpike.Shared.Controllers.CodeFlow
@@ -18,6 +19,7 @@ namespace IdentityServerAzureSpike.Shared.Controllers.CodeFlow
         [ActionName("Index")]
 		public async Task<ActionResult> Index()
 		{
+            Log.Information("Index");
             ViewBag.Code = Request.QueryString["code"] ?? "none";
             
             var state = Request.QueryString["state"];
@@ -41,6 +43,7 @@ namespace IdentityServerAzureSpike.Shared.Controllers.CodeFlow
         [ActionName("CallBack")]
         public async Task<ActionResult> CallBack()
         {
+            Log.Information("CallBack");
             var client = new OAuth2Client(
                 new Uri(Constants.TokenEndpoint),
                 SiteName,
@@ -48,7 +51,7 @@ namespace IdentityServerAzureSpike.Shared.Controllers.CodeFlow
 
             var code = Request.QueryString["code"];
             var tempState = await GetTempStateAsync();
-            Request.GetOwinContext().Authentication.SignOut("TempState");
+            Request.GetOwinContext().Authentication.SignOut(Shared.Constants.Cookie.TempPassiveStateAuthenticationType);
 
             var response = await client.RequestAuthorizationCodeAsync(
                 code,
@@ -88,7 +91,7 @@ namespace IdentityServerAzureSpike.Shared.Controllers.CodeFlow
                     claims.Add(new Claim("refresh_token", response.RefreshToken));
                 }
 
-                var id = new ClaimsIdentity(claims, "Cookies");
+                var id = new ClaimsIdentity(claims, Shared.Constants.Cookie.AuthenticationType);
                 Request.GetOwinContext().Authentication.SignIn(id);
             }
         }

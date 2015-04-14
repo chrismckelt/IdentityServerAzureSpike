@@ -35,6 +35,10 @@
     <Reference Include="Finsa.WebApi.HelpPage.AnyHost">
       <HintPath>..\packages\Finsa.WebApi.HelpPage.AnyHost.0.1.6-alpha\lib\net45\Finsa.WebApi.HelpPage.AnyHost.dll</HintPath>
     </Reference>
+    <Reference Include="IdentityServer3.AccessTokenValidation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\IdentityServer3.AccessTokenValidation.2.0.0-beta1\lib\net45\IdentityServer3.AccessTokenValidation.dll</HintPath>
+    </Reference>
     <Reference Include="Kentor.OwinCookieSaver">
       <HintPath>..\packages\Kentor.OwinCookieSaver.1.0.2\lib\net45\Kentor.OwinCookieSaver.dll</HintPath>
     </Reference>

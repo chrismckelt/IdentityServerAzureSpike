@@ -29,6 +29,7 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
                     RedirectUris = Constants.RedirectSiteAUris,
                     PostLogoutRedirectUris =  Shared.Constants.RedirectSiteAUris,
                     IncludeJwtId = true,
+                    AccessTokenType = AccessTokenType.Jwt
                 },
 
                 //b
@@ -48,6 +49,7 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
                     RedirectUris = Constants.RedirectSiteBUris,
                     PostLogoutRedirectUris =  Shared.Constants.RedirectSiteBUris,
                     AlwaysSendClientClaims = true,
+                    AccessTokenType = AccessTokenType.Jwt
                   
                 },
                 //c
@@ -78,7 +80,7 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
                     {
                         new ClientSecret(Constants.Secret.Sha256())
                     },                    
-                    AccessTokenType = AccessTokenType.Reference
+                    AccessTokenType = AccessTokenType.Jwt
                 },
                 //e
                   new Client

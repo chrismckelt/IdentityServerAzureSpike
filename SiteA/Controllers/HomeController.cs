@@ -1,5 +1,6 @@
 ﻿using IdentityServerAzureSpike.Shared;
 using IdentityServerAzureSpike.Shared.Controllers;
+using Serilog;
 
 namespace IdentityServerAzureSpike.SiteA.Controllers
 {
@@ -7,13 +8,21 @@ namespace IdentityServerAzureSpike.SiteA.Controllers
     {
         public override string SiteName
         {
-            get { return Constants.Sites.A.Name; }
+            get
+            {
+                Log.Information("Constants.Sites.A.Name");
+                return Constants.Sites.A.Name;
+            }
         }
 
 
         public override string SiteRedirect
         {
-            get { return  Constants.Sites.A.RedirectUri; }
+            get
+            {
+                Log.Information("Constants.Sites.A.RedirectUri");
+                return  Constants.Sites.A.RedirectUri;
+            }
         }
     }
 }

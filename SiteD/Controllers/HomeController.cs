@@ -12,7 +12,7 @@ namespace IdentityServerAzureSpike.SiteD.Controllers
 
         public override string SiteRedirect
         {
-            get { return Constants.Sites.D.Name; }
+            get { return Constants.Sites.D.PostbackUri; }
         }
     }
 }
