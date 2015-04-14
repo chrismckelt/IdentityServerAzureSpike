@@ -1,27 +1,28 @@
-using Microsoft.WindowsAzure.ServiceRuntime;
+﻿using System.IO;
 using Serilog;
 using Thinktecture.IdentityServer.Core.Logging;
 using Thinktecture.IdentityServer.Core.Logging.LogProviders;
 
-namespace IdentityServerAzureSpike.SiteB
+namespace IdentityServerAzureSpike.Shared
 {
-    public class WebRole : RoleEntryPoint
+    public static class LogUtil
     {
-        public override bool OnStart()
+        public static void SetupLogger(string logname)
         {
+            string file = @"c:\logs\" + logname + ".log";
+            File.Delete(file);
+
             // serilog to azure console & file
             Log.Logger = new LoggerConfiguration()
             .MinimumLevel.Debug()
             .WriteTo
             .ColoredConsole(outputTemplate: "{Timestamp:HH:mm} [{Level}] ({Name}) {NewLine} {Message}{NewLine}{Exception}")
-            .WriteTo.File(@"c:\logs\SiteB.log")
+            .WriteTo.File(file)
             .CreateLogger();
 
             var provider = new SerilogLogProvider();
             LogProvider.SetCurrentLogProvider(provider);
-            Log.Debug("SiteB starting..."); 
-
-            return base.OnStart();
+            Log.Debug(logname); 
         }
     }
 }

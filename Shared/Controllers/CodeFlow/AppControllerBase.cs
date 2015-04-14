@@ -52,7 +52,7 @@ namespace IdentityServerAzureSpike.Shared.Controllers.CodeFlow
         {
             var accessToken = (User as ClaimsPrincipal).FindFirst("access_token").Value;
             var client = new HttpClient();
-            client.SetBasicAuthentication(Shared.Constants.SiteBHybrid, Shared.Constants.Secret);
+            client.SetBasicAuthentication(Shared.Constants.Sites.B.Name, Shared.Constants.Secret);
 
             var postBody = new Dictionary<string, string>
             {

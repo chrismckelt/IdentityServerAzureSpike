@@ -4,6 +4,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Serilog;
 
 namespace IdentityServerAzureSpike.SiteA
 {
@@ -35,7 +36,8 @@ namespace IdentityServerAzureSpike.SiteA
 
         protected void Application_Error(object sender, EventArgs e)
         {
-
+            Exception exception = Server.GetLastError();
+            Log.Error("Application_Error", exception);
         }
 
         protected void Session_End(object sender, EventArgs e)

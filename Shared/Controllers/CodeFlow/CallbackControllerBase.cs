@@ -142,15 +142,5 @@ namespace IdentityServerAzureSpike.Shared.Controllers.CodeFlow
             var jwt = JObject.Parse(part);
             return jwt.ToString();
         }
-
-        private async Task<Tuple<string, string>> GetTempStateAsync()
-        {
-            var data = await Request.GetOwinContext().Authentication.AuthenticateAsync("TempState");
-
-            var state = data.Identity.FindFirst("state").Value;
-            var nonce = data.Identity.FindFirst("nonce").Value;
-
-            return Tuple.Create(state, nonce);
-        }
 	}
 }

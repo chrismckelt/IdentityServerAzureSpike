@@ -1,8 +1,10 @@
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
+using IdentityServerAzureSpike.Shared;
 using Microsoft.Owin.Hosting;
 using Microsoft.WindowsAzure.ServiceRuntime;
 using Serilog;
@@ -35,17 +37,8 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi
         {
             // Set the maximum number of concurrent connections
             ServicePointManager.DefaultConnectionLimit = 12;
-            
-            // serilog to azure console & file
-            Log.Logger = new LoggerConfiguration()
-            .MinimumLevel.Debug()
-            .WriteTo         
-            .ColoredConsole(outputTemplate: "{Timestamp:HH:mm} [{Level}] ({Name}) {NewLine} {Message}{NewLine}{Exception}")
-            .WriteTo.File(@"c:\logs\identitydemo.log")
-            .CreateLogger();
-
-            var provider = new SerilogLogProvider();
-            LogProvider.SetCurrentLogProvider(provider);
+           
+            LogUtil.SetupLogger("IdentityDemo");
 
             try
             {

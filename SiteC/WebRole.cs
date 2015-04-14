@@ -1,3 +1,4 @@
+using IdentityServerAzureSpike.Shared;
 using Microsoft.WindowsAzure.ServiceRuntime;
 
 namespace IdentityServerAzureSpike.SiteC
@@ -6,8 +7,7 @@ namespace IdentityServerAzureSpike.SiteC
     {
         public override bool OnStart()
         {
-            // For information on handling configuration changes
-            // see the MSDN topic at http://go.microsoft.com/fwlink/?LinkId=166357.
+            LogUtil.SetupLogger("SiteC"); 
 
             return base.OnStart();
         }

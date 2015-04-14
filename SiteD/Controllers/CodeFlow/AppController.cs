@@ -4,16 +4,16 @@ using IdentityServerAzureSpike.Shared;
 namespace IdentityServerAzureSpike.SiteD.Controllers.CodeFlow
 {
     [Authorize]
-    public class AppController : IdentityServerAzureSpike.Shared.Controllers.CodeFlow.AppControllerBase
+    public class AppController : Shared.Controllers.CodeFlow.AppControllerBase
     {
         public override string SiteName
         {
-            get { return Constants.SiteDCodeFlow; }
+            get { return Constants.Sites.D.Name; }
         }
 
         public override string SiteRedirect
         {
-            get { return Constants.SiteDCallBackUri; }
+            get { return Constants.Sites.D.PostbackUri; }
         }
     }
 }
