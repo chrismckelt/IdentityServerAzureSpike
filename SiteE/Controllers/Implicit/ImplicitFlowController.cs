@@ -7,12 +7,12 @@ namespace IdentityServerAzureSpike.SiteE.Controllers.Implicit
     {
         public override string SiteName
         {
-            get { return Constants.SiteEImplicitFlow; }
+            get { return Constants.Sites.E.Name; }
         }
 
         public override string SiteRedirect
         {
-            get { return Constants.SiteEImplicitCallBackUri; }
+            get { return Constants.Sites.E.PostbackUri; }
         }
     }
 }

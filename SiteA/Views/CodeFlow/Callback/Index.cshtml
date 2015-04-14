@@ -1,4 +1,5 @@
 ﻿@using System.Web.Mvc.Html
+@using IdentityServerAzureSpike.Shared
 
 @{
     ViewBag.Title = "Index";
@@ -17,8 +18,14 @@ Error: <strong>@ViewBag.Error</strong>
 
 @if (ViewBag.Code != "none")
 {
-    using (Html.BeginForm())
-    {
-        <input type="submit" value="Get token" />
-    }
+    <h3>Login via Code Flow</h3>
+    <form id="TokenRefreshForm" method="post" action="/CodeFlow/" enctype="application/x-www-form-urlencoded">
+        <div class="form-group">
+            <div></div>
+            <span class="alert alert-info">Refresh token</span>
+            <input type="submit" class="form-control"/>
+            <button name="TokenRefreshSubmit">OK</button>
+        </div>
+    </form>
+
 }

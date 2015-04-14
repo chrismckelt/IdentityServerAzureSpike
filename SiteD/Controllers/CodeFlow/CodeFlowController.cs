@@ -7,12 +7,12 @@ namespace IdentityServerAzureSpike.SiteD.Controllers.CodeFlow
     {
         public override string SiteName
         {
-            get { return Constants.SiteDCodeFlow; }
+            get { return Constants.Sites.D.Name; }
         }
 
         public override string SiteRedirect
         {
-            get { return Constants.SiteDCallBackUri; }
+            get { return Constants.Sites.D.PostbackUri; }
         }
     }
 }

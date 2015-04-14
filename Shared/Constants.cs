@@ -12,27 +12,44 @@ namespace IdentityServerAzureSpike.Shared
         public const string IdentityServerCoreUri = "https://identity.demo.local/core";
         public const string IdentityServerIdentityUri = "https://identity.demo.local/identity";
 
-        public const string SiteAHybrid = "SiteA_Hybrid";
-        public const string SiteAUri = "http://sitea.demo.local:9556";
-        public const string SiteARedirectBouncedFromIdentityServerUri = SiteAUri + "/BouncedFromIdentityServer";
-        public const string SiteACodeFlowCallBackUri = SiteAUri + "/codeflow/callback/";
 
-        public const string SiteBHybrid = "SiteB_Hybrid";
-        public const string SiteBUri = "http://SiteB.demo.local:9557";
-        public const string SiteBRedirectBouncedFromIdentityServerUri = SiteBUri + "/BouncedFromIdentityServer";
-        public const string SiteBCallBackUri = SiteBUri + "/callback/";
-
-        public const string SiteCUri = "http://sitec.demo.local:9558";
-        public const string SiteCImplicitFlow = "SiteC_ImplicitFlow";
-
-        public const string SiteDCodeFlow = "SiteD_CodeFlow";
-        public const string SiteDUri = "http://SiteD.demo.local:9559";
-        public const string SiteDRedirectBouncedFromIdentityServerUri = SiteDUri + "/BouncedFromIdentityServer";
-        public const string SiteDCallBackUri = SiteDUri + "/callback/";
-
-        public const string SiteEUri = "http://sitee.demo.local:9560";
-        public const string SiteEImplicitFlow = "SiteE_ImplicitFlow";
-        public const string SiteEImplicitCallBackUri = SiteEUri + "/implicitflow/callback/";
+        public static class Sites
+        {
+            public static class A
+            {
+                public static readonly string Name = "SiteA_Hybrid";
+                public static readonly string Uri = "http://sitea.demo.local:9556";
+                public static readonly string RedirectUri = Uri + "/BouncedFromIdentityServer";
+                public static readonly string PostbackUri = Uri + "/codeflow/callback/";
+            }
+            public static class B
+            {
+                public static readonly string Name = "SiteB_Hybrid";
+                public static readonly string Uri = "http://SiteB.demo.local:9557";
+                public static readonly string RedirectUri = Uri + "/BouncedFromIdentityServer";
+                public static readonly string PostbackUri = Uri + "/codeflow/callback/";
+            }
+            public static class C
+            {
+                public static readonly string Name = "SiteC_ImplicitFlow";
+                public static readonly string Uri = "http://sitec.demo.local:9558";
+                public static readonly string RedirectUri = Uri + "/?WelcomeBack=you";
+                public static readonly string PostbackUri = Uri + "/?LoggedOut=you";
+            }
+            public static class D
+            {
+                public static readonly string Name = "SiteD_CodeFlow";
+                public static readonly string Uri = "http://SiteD.demo.local:9559";
+                public static readonly string RedirectUri = Uri + "/BouncedFromIdentityServer";
+                public static readonly string PostbackUri = "/callback/";
+            }
+            public static class E
+            {
+                public static readonly string Name = "SiteC_ImplicitFlow";
+                public static readonly string Uri = "http://sitee.demo.local:9560";
+                public static readonly string PostbackUri = Uri + "/implicitflow/callback/";
+            }
+        }
 
         public const string Secret = "secret";
 
@@ -55,37 +72,36 @@ namespace IdentityServerAzureSpike.Shared
 
         public static readonly List<string> RedirectSiteAUris = new List<string>()
         {
-            Constants.SiteAUri,
-            Constants.SiteARedirectBouncedFromIdentityServerUri,
-            Constants.SiteACodeFlowCallBackUri,
+            Constants.Sites.A.Uri,
+            Constants.Sites.A.RedirectUri,
+             Constants.Sites.A.PostbackUri,
         };
 
         public static readonly List<string> RedirectSiteBUris = new List<string>()
         {
-            Constants.SiteBUri,
-            Constants.SiteBRedirectBouncedFromIdentityServerUri,
-            Constants.SiteBCallBackUri
+            Constants.Sites.B.Uri,
+            Constants.Sites.B.RedirectUri,
+            Constants.Sites.B.PostbackUri,
         };
 
         public static readonly List<string> RedirectSiteCUris = new List<string>()
         {
-            Constants.SiteCUri,
-            Constants.SiteCUri + "/?WelcomeBack=you",
-            Constants.SiteCUri + "/?LoggedOut=you", // match siteC app.js
+            Constants.Sites.C.Uri,
+            Constants.Sites.C.RedirectUri,
+            Constants.Sites.C.PostbackUri,
         };
 
         public static readonly List<string> RedirectSiteDUris = new List<string>()
         {
-            Constants.SiteDUri,
-            Constants.SiteDRedirectBouncedFromIdentityServerUri,
-            Constants.SiteDCallBackUri
+            Constants.Sites.D.Uri,
+            Constants.Sites.D.RedirectUri,
+            Constants.Sites.D.PostbackUri,
         };
 
         public static readonly List<string> RedirectSiteEUris = new List<string>()
         {
-            Constants.SiteEUri,
-            Constants.SiteEImplicitCallBackUri,
-            Constants.SiteEImplicitCallBackUri
+            Constants.Sites.E.Uri,
+            Constants.Sites.E.PostbackUri,            
         };
 
         public static class Cookie
@@ -93,12 +109,12 @@ namespace IdentityServerAzureSpike.Shared
             public const string Name = "identity";
             public const string Domain = "demo.local";
             public const string Path = "identity";
+            public const string TempPassiveStateName = "TempPassiveState";
 
             public static CookieAuthenticationOptions Build()
             {
                 return new CookieAuthenticationOptions
                 {
-                    AuthenticationType = "Cookies",
                     CookieHttpOnly = false,
                     CookieSecure = CookieSecureOption.Never,
                     //ExpireTimeSpan = TimeSpan.FromHours(1),

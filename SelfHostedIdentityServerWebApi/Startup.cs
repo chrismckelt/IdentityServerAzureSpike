@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
@@ -28,7 +29,6 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi
         private void SetupIdentityServer(IAppBuilder appBuilder)
         {
             var factory = InMemoryFactory.Create(Users.Get(), Clients.Get(), Scopes.Get());
-
             var allowedOrigins = SetupCors(factory);
 
             var options = new IdentityServerOptions
@@ -38,6 +38,7 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi
                 SigningCertificate = Certificate.Get(),
                 Factory = factory,
                 RequireSsl = false,
+                PublicOrigin = Constants.IdentityServerUri,
                 CorsPolicy = new CorsPolicy
                 {
                     AllowedOrigins = allowedOrigins,
@@ -46,10 +47,13 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi
                 AuthenticationOptions = new AuthenticationOptions
                 {
                     EnablePostSignOutAutoRedirect = true,
-                    InvalidSignInRedirectUrl = Shared.Constants.SiteAUri + "/INVALID_LOGIN=YOU",  
+                    EnableSignOutPrompt = true,
+                    InvalidSignInRedirectUrl = Shared.Constants.Sites.A.Uri + "/?INVALID_LOGIN=YOU",  
                     CookieOptions = new CookieOptions()
                     {
                         SecureMode = CookieSecureMode.SameAsRequest,
+                        ExpireTimeSpan = TimeSpan.FromMinutes(5),
+                        Path = Constants.Cookie.Domain
                     }
                 },
                 LoggingOptions = new LoggingOptions()
@@ -57,21 +61,17 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi
                     EnableHttpLogging = true,
                     EnableWebApiDiagnostics = true,
                     IncludeSensitiveDataInLogs = true,
-                    WebApiDiagnosticsIsVerbose = true
+                    //WebApiDiagnosticsIsVerbose = true
                 }
             };
 
             appBuilder.Map("/core", builder =>
             {
                 builder.UseKentorOwinCookieSaver();
+
+                builder.UseCookieAuthentication(Shared.Constants.Cookie.Build());
+                
                 builder.UseIdentityServer(options);
-
-                var bearerOptions = new IdentityServer3.AccessTokenValidation.IdentityServerBearerTokenAuthenticationOptions()
-                {
-                    Authority = Constants.IdentityServerCoreUri,
-                };
-
-                builder.UseIdentityServerBearerTokenAuthentication(bearerOptions);
             });
         }
 
