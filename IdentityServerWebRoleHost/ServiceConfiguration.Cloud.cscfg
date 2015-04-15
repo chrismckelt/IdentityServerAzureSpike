@@ -18,7 +18,9 @@
   </Role>
   <Role name="SiteC">
     <Instances count="1" />
-    <ConfigurationSettings />
+    <ConfigurationSettings>
+      <Setting name="Setting1" value="" />
+    </ConfigurationSettings>
   </Role>
   <Role name="SiteD">
     <Instances count="1" />

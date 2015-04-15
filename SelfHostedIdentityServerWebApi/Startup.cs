@@ -9,6 +9,7 @@ using Finsa.WebApi.HelpPage.AnyHost;
 using IdentityServer3.AccessTokenValidation;
 using IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config;
 using IdentityServerAzureSpike.Shared;
+using IdentityServerAzureSpike.Shared.Config;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
 using Microsoft.WindowsAzure;
@@ -53,7 +54,7 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi
                 {
                     EnablePostSignOutAutoRedirect = true,
                     EnableSignOutPrompt = true,
-                    InvalidSignInRedirectUrl = Shared.Constants.Sites.A.Uri + "/?INVALID_LOGIN=YOU",                      
+                    InvalidSignInRedirectUrl = DemoSites.Instance.A.Uri + "/?INVALID_LOGIN=YOU",                      
                     CookieOptions = new CookieOptions()
                     {
                         Path = Constants.Cookie.Domain, // ->  this is the magic for child domains to work properly
@@ -138,11 +139,6 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi
 
             //[Warning] CORS request made for path: /connect/consent from origin: https://identity.demo.local but rejected because invalid CORS path
             //https://github.com/IdentityServer/IdentityServer3/issues/1138
-            allowedOrigins.AddRange(Shared.Constants.RedirectSiteAUris);
-            allowedOrigins.AddRange(Shared.Constants.RedirectSiteBUris);
-            allowedOrigins.AddRange(Shared.Constants.RedirectSiteCUris);
-            allowedOrigins.AddRange(Shared.Constants.RedirectSiteDUris);
-            allowedOrigins.AddRange(Shared.Constants.RedirectSiteEUris);
 
             ICorsPolicyService corsPolicyService = new DefaultCorsPolicyService
             {

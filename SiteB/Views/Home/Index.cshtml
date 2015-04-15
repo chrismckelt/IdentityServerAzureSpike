@@ -1,24 +1,57 @@
-﻿@{
+﻿@using System.Web.Mvc.Html
+@{
     ViewBag.Title = "Home Page";
 }
 <div class="row">
-    <br/>
-    @if (User.Identity.IsAuthenticated)
-    {
-        <p>
-            <dl>
-                @foreach (var claim in System.Security.Claims.ClaimsPrincipal.Current.Claims)
+    <div id="tabs">
+        <ul>
+            <li><a href="#tabs-1">Actions</a></li>
+            <li><a href="#tabs-2">Claims</a></li>
+            <li><a href="#tabs-3">About</a></li>
+        </ul>
+        <div id="tabs-1">
+            <div class="list-group">
+                @if (Request.Url.AbsoluteUri.ToLowerInvariant().Contains("sitea") || Request.Url.AbsoluteUri.ToLowerInvariant().Contains("siteb"))
                 {
-                    <dt>@claim.Type</dt>
-                    <dd>@claim.Value</dd>
+                    @Html.ActionLink("Login", "LoginViaIdentityServerCodeFlow", "Home", null, htmlAttributes: new { @class = "list-group-item", id = "HybridLink" });
                 }
-            </dl>
-        </p>
-    }
-    else
-    {
-        <p>
-            Anonymous.
-        </p>
-    }
+                @if (Request.Url.AbsoluteUri.ToLowerInvariant().Contains("sited") || Request.Url.AbsoluteUri.ToLowerInvariant().Contains("sitee"))
+                {
+                    @Html.ActionLink("Form", "FormLogin", "Home", null, htmlAttributes: new { @class = "list-group-item", id = "CodeFlowLink" })
+                }
+
+                @if (Request.Url.AbsoluteUri.ToLowerInvariant().Contains("sitea") || Request.Url.AbsoluteUri.ToLowerInvariant().Contains("siteb") || Request.Url.AbsoluteUri.ToLowerInvariant().Contains("sitec"))
+                {
+                    @Html.ActionLink("Api", "Index", "App", null, htmlAttributes: new { @class = "list-group-item" })
+                }
+            </div>
+        </div>
+        <div id="tabs-2">
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                <p>
+                    <dl class="dl-horizontal">
+                        @foreach (var claim in System.Security.Claims.ClaimsPrincipal.Current.Claims)
+                        {
+                            <dt>@claim.Type</dt>
+                            <dd>@claim.Value</dd>
+                        }
+                    </dl>
+                </p>
+            }
+            else
+            {
+                <p>
+                    Anonymous.
+                </p>
+            }
+
+        </div>
+        <div id="tabs-3">
+            <div id="SiteDescription"></div>
+        </div>
+    </div>
+    <br/>
+
 </div>

@@ -149,18 +149,22 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Certificate.cs" />
+    <Compile Include="Config\Certificate.cs" />
+    <Compile Include="Config\DemoSite.cs" />
+    <Compile Include="Config\DemoSites.cs" />
     <Compile Include="Constants.cs" />
-    <Compile Include="Controllers\CodeFlow\AppControllerBase.cs" />
-    <Compile Include="Controllers\CodeFlow\CallbackControllerBase.cs" />
+    <Compile Include="Controllers\CodeFlow\AppController.cs" />
+    <Compile Include="Controllers\CodeFlow\CallbackController.cs" />
     <Compile Include="Controllers\ControllerBase.cs" />
-    <Compile Include="Controllers\HomeControllerBase.cs" />
-    <Compile Include="Controllers\CodeFlow\CodeFlowControllerBase.cs" />
-    <Compile Include="Controllers\Implicit\ImplicitFlowControllerBase.cs" />
-    <Compile Include="LogUtil.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\CodeFlow\CodeFlowController.cs" />
+    <Compile Include="Controllers\Implicit\ImplicitFlowController.cs" />
+    <Compile Include="GlobalBase.cs" />
+    <Compile Include="Utility\AuthUtil.cs" />
+    <Compile Include="Utility\LogUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Scopes.cs" />
-    <Compile Include="Util.cs" />
+    <Compile Include="Config\Scopes.cs" />
+    <Compile Include="Utility\NotificationsUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="..\lib\certificates\IdentityDemoLocalSSL.pfx">
@@ -190,6 +194,12 @@
     <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
     <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
   </Target>
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /E /Y "$(ProjectDir)Views" "$(SolutionDir)\SiteA\Views"
+xcopy /E /Y "$(ProjectDir)Views" "$(SolutionDir)\SiteB\Views"
+xcopy /E /Y "$(ProjectDir)Views" "$(SolutionDir)\SiteC\Views"
+xcopy /E /Y "$(ProjectDir)Views" "$(SolutionDir)\SiteD\Views"</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

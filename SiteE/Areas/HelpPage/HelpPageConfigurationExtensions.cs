@@ -13,7 +13,6 @@ using System.Web.Http.Controllers;
 using System.Web.Http.Description;
 using IdentityServerAzureSpike.SiteE.Areas.HelpPage.ModelDescriptions;
 using IdentityServerAzureSpike.SiteE.Areas.HelpPage.Models;
-using IdentityServerAzureSpike.SiteE.Areas.HelpPage.SampleGeneration;
 
 namespace IdentityServerAzureSpike.SiteE.Areas.HelpPage
 {

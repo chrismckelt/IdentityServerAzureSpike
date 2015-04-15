@@ -53,6 +53,8 @@ $(document).ready(function() {
 
     $(".jumbotron").css("background-color", site.colour);
 
+    $("#tabs").tabs();
+
 });
 
 function setSiteProperties() {

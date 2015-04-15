@@ -2,14 +2,20 @@
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using IdentityServerAzureSpike.Shared.Config;
+using IdentityServerAzureSpike.Shared.Utility;
 
 namespace IdentityServerAzureSpike.Shared.Controllers
 {
     public abstract class ControllerBase : Controller
     {
-        public abstract string SiteName { get;  }
-        public abstract string SiteRedirect { get;}
-
+        public DemoSite DemoSite
+        {
+            get
+            {
+                return AuthUtil.GetCurrentSite(HttpContext.GetOwinContext());
+            }
+        }
 
         /// <summary>
         /// temp cookie retrieval 
@@ -17,7 +23,8 @@ namespace IdentityServerAzureSpike.Shared.Controllers
         /// <returns></returns>
         protected async Task<Tuple<string, string>> GetTempStateAsync()
         {
-            var data = await Request.GetOwinContext().Authentication.AuthenticateAsync(Shared.Constants.Cookie.TempPassiveStateAuthenticationType);
+            var data = await Request.GetOwinContext().Authentication
+                .AuthenticateAsync(Shared.Constants.Cookie.AuthenticationType);
 
             var state = data.Identity.FindFirst("state").Value;
             var nonce = data.Identity.FindFirst("nonce").Value;

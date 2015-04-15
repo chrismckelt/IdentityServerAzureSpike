@@ -6,6 +6,8 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web.Helpers;
 using IdentityServerAzureSpike.Shared;
+using IdentityServerAzureSpike.Shared.Config;
+using IdentityServerAzureSpike.Shared.Utility;
 using IdentityServerAzureSpike.SiteA;
 using Microsoft.IdentityModel.Protocols;
 using Microsoft.Owin;
@@ -34,20 +36,20 @@ namespace IdentityServerAzureSpike.SiteA
             
             app.UseKentorOwinCookieSaver();
 
-            app.UseCookieAuthentication(Shared.Constants.Cookie.BuildActive());
+            //app.UseCookieAuthentication(Shared.Constants.Cookie.BuildActive());
 
-            app.UseCookieAuthentication(Shared.Constants.Cookie.BuildPassive());
+            //app.UseCookieAuthentication(Shared.Constants.Cookie.BuildPassive());
 
             app.UseOpenIdConnectAuthentication(new OpenIdConnectAuthenticationOptions
             {
                 // must match IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config.Clients
-                ClientId = Shared.Constants.Sites.A.Name,
+                ClientId = DemoSites.Instance.A.Name,
                 Authority = Shared.Constants.IdentityServerCoreUri,
-                RedirectUri = Shared. Constants.Sites.A.RedirectUri,
+                RedirectUri = DemoSites.Instance.A.RedirectUri,
                 ResponseType = Constants.ResponseTypes.CodeIdTokenToken,
                 Scope = Shared.Constants.Scopes.Full,
                 SignInAsAuthenticationType = Shared.Constants.Cookie.AuthenticationType,
-                Notifications = Util.SetOpenIdConnectAuthenticationNotifications(Shared.Constants.Sites.A.Name),
+                Notifications = Util.SetOpenIdConnectAuthenticationNotifications(DemoSites.Instance.A.Name),
             });
         }
 

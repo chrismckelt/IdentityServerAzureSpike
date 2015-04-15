@@ -302,11 +302,6 @@
     <Compile Include="..\Shared\App_Start\RouteConfig.cs">
       <Link>App_Start\RouteConfig.cs</Link>
     </Compile>
-    <Compile Include="Controllers\CodeFlow\AppController.cs" />
-    <Compile Include="Controllers\CodeFlow\CallbackController.cs" />
-    <Compile Include="Controllers\HelpController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\CodeFlow\CodeFlowController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -322,7 +317,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\" />
-    <Folder Include="Controllers\Implicit\" />
     <Folder Include="Views\Implicit\" />
   </ItemGroup>
   <PropertyGroup>
