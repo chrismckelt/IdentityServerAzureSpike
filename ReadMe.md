@@ -53,7 +53,7 @@ var siteE = {
 ```
 
     Session management handled by client sites (token refresh/expiry)
-
+	
 ### Assumptions
 
 -	All access is performed under a single parent domain *.website.com
@@ -76,10 +76,20 @@ var siteE = {
 
 -	Identity Server 3
 -	Authentication Protocol : Open ID Connect (authentication with a simple identity layer over OAuth 2.0 protocol)
--	Authorization Grant - Authorisation Code Grant Flow  | Implicit | Hybrid
+-	Authorization Grants - Hybrid | Authorisation Code Grant Flow  | Implicit 
 -	JWT ID Tokens signed using an X509 Certificate
 
-### Out of Scope
--	Implementing 3rd party token providers � Google/Facebook/Windows Live
+### Assumptions
+
+-	All access is performed under a single parent domain *.demo.local
+-	A domain identity cookie is set which contains token information accessible across all child sites.	
+
+### Not implemented
+-	3rd party token providers � Google/Facebook/Windows Live
 -	Cross domain authentication
+- 	Cross site token refresh/expiry
+
+### Install
+
+-	Run KickMe.bat in the root folder
 
