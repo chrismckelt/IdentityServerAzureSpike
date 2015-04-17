@@ -201,6 +201,8 @@
     <PostBuildEvent>xcopy /E /Y "$(ProjectDir)Views" "$(SolutionDir)\SiteA\Views"
 xcopy /E /Y "$(ProjectDir)Views" "$(SolutionDir)\SiteB\Views"
 xcopy /E /Y "$(ProjectDir)Views" "$(SolutionDir)\SiteC\Views"
+xcopy /E /Y "$(ProjectDir)Views" "$(SolutionDir)\SiteD\Views"
+xcopy /E /Y "$(ProjectDir)Views" "$(SolutionDir)\SiteE\Views"
 xcopy /E /Y "$(ProjectDir)Views" "$(SolutionDir)\SiteD\Views"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

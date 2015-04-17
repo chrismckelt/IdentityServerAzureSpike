@@ -1,24 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IdentityModel.Tokens;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
 using System.Web.Helpers;
-using IdentityServerAzureSpike.Shared;
 using IdentityServerAzureSpike.Shared.Config;
 using IdentityServerAzureSpike.Shared.Utility;
 using IdentityServerAzureSpike.SiteA;
-using Microsoft.IdentityModel.Protocols;
 using Microsoft.Owin;
-using Microsoft.Owin.Security;
-using Microsoft.Owin.Security.Cookies;
-using Microsoft.Owin.Security.Notifications;
 using Microsoft.Owin.Security.OpenIdConnect;
 using Owin;
-using Serilog;
-using Thinktecture.IdentityModel.Client;
-using Constants = Thinktecture.IdentityServer.Core.Constants;
+using Thinktecture.IdentityServer.Core;
 
 [assembly: OwinStartup(typeof (Startup))]
 

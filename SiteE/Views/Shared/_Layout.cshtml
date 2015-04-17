@@ -1,0 +1,116 @@
+﻿@using System.Web.Mvc.Html
+@using System.Web.Optimization
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site A</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        .jumbotron {
+            background-color: azure;
+            color: inherit;
+            margin-bottom: 30px;
+            padding: 30px 15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a id="SiteNameLink" class="navbar-brand" href="#">Site</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>&nbsp;</li>
+                    <li>
+                        <a href="https://identity.demo.local/help">Identity Server</a>
+                    </li>
+                    <li>
+                        <a href="http://Sitea.demo.local:9556/">Site A</a>
+                    </li>
+                    <li>
+                        <a href="http://siteb.demo.local:9557">Site B</a>
+                    </li>
+                    <li>
+                        <a href="http://sitec.demo.local:9558">Site C</a>
+                    </li>
+                    <li>
+                        <a href="http://sited.demo.local:9559">Site D</a>
+                    </li>
+                    <li>
+                        <a href="http://sitee.demo.local:9560">Site E</a>
+                    </li>
+                    <li>&nbsp;</li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Account<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="https://identity.demo.local/help">User Info</a>
+                                </li>
+                                <li>
+                                    <a href="https://identity.demo.local/core/permissions">Permissions</a>
+                                </li>
+                                <li>
+                                    <a href="https://identity.demo.local/core/Revocation">Revocation</a>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                    <li>
+                        <a href="https://identity.demo.local/core/permissions">
+                            Authenticated
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <span class="label label-success">True</span>
+                            }
+                            @if (!User.Identity.IsAuthenticated)
+                            {
+                                <span class="label label-warning">False</span>
+                            }
+                        </a>
+                    </li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Signout", "SignOut", "Home")</li>
+                    }
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+    <br />
+
+<div class="container">
+    <div class="jumbotron">
+        <h1 id="SiteHeader">Site </h1>
+		<br/>
+        @RenderBody()
+    </div>
+    <footer>
+        <p>
+            Rendered at <strong>@DateTime.Now.ToLongTimeString()</strong>
+        </p>
+    </footer>
+</div> <!-- /container -->
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/scripts/sites")
+@Scripts.Render("~/scripts/app")
+@RenderSection("scripts", false)
+</body>
+</html>
+
