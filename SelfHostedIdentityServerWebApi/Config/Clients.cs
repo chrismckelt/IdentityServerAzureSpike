@@ -27,8 +27,8 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
                     },
                     ScopeRestrictions = Constants.FullScopes,
                     
-                    RedirectUris = DemoSites.Instance.A.GetRedirectUris(),
-                    PostLogoutRedirectUris = DemoSites.Instance.A.GetRedirectUris(),
+                    RedirectUris = DemoSites.Instance.A.RedirectUris,
+                    PostLogoutRedirectUris = DemoSites.Instance.A.RedirectUris,
                     IncludeJwtId = true,
                     AlwaysSendClientClaims = true,
                 },
@@ -47,8 +47,8 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
                     },
                     ScopeRestrictions = Constants.FullScopes,
                     
-                    RedirectUris = DemoSites.Instance.B.GetRedirectUris(),
-                    PostLogoutRedirectUris =  DemoSites.Instance.B.GetRedirectUris(),
+                    RedirectUris = DemoSites.Instance.B.RedirectUris,
+                    PostLogoutRedirectUris =  DemoSites.Instance.B.RedirectUris,
                     IncludeJwtId = true,
                     AlwaysSendClientClaims = true,
                 },
@@ -59,8 +59,8 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
                     ClientId = DemoSites.Instance.C.Name,
                     ClientName = DemoSites.Instance.C.Name,
                     Enabled = true,
-                    RedirectUris = DemoSites.Instance.C.GetRedirectUris(),
-                    PostLogoutRedirectUris =  DemoSites.Instance.C.GetRedirectUris(),
+                    RedirectUris = DemoSites.Instance.C.RedirectUris,
+                    PostLogoutRedirectUris =  DemoSites.Instance.C.RedirectUris,
                     ClientSecrets = new List<ClientSecret>
                     {
                         new ClientSecret(Constants.Secret.Sha256())
@@ -77,8 +77,8 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
                     ClientName = DemoSites.Instance.D.Name,
                     Enabled = true,
                     
-                    RedirectUris = DemoSites.Instance.D.GetRedirectUris(),
-                    PostLogoutRedirectUris =  DemoSites.Instance.D.GetRedirectUris(),
+                    RedirectUris = DemoSites.Instance.D.RedirectUris,
+                    PostLogoutRedirectUris =  DemoSites.Instance.D.RedirectUris,
                     ClientSecrets = new List<ClientSecret>
                     {
                         new ClientSecret(Constants.Secret.Sha256())
@@ -94,8 +94,8 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
                     ClientId = DemoSites.Instance.E.Name,
                     ClientName = DemoSites.Instance.E.Name,
                     Enabled = true,
-                    RedirectUris = DemoSites.Instance.E.GetRedirectUris(),
-                    PostLogoutRedirectUris =  DemoSites.Instance.E.GetRedirectUris(),
+                    RedirectUris = DemoSites.Instance.E.RedirectUris,
+                    PostLogoutRedirectUris =  DemoSites.Instance.E.RedirectUris,
                     ClientSecrets = new List<ClientSecret>
                     {
                         new ClientSecret(Constants.Secret.Sha256())

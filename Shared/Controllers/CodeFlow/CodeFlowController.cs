@@ -10,7 +10,7 @@ using Thinktecture.IdentityModel.Client;
 
 namespace IdentityServerAzureSpike.Shared.Controllers.CodeFlow
 {
-    [Route("codeflow")]
+    [Route(Constants.RedirectUri.CodeFlow)]
     public abstract class CodeFlowController : ControllerBase
     {
 
@@ -28,7 +28,7 @@ namespace IdentityServerAzureSpike.Shared.Controllers.CodeFlow
             var url = client.CreateCodeFlowUrl(
                 clientId: DemoSite.Name,
                 scope: scopes,
-                redirectUri: DemoSite.RedirectUri,
+                redirectUri: DemoSite.CodeUri,
                 state: state,
                 nonce: nonce);
 

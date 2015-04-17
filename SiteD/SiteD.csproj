@@ -240,36 +240,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
-    <Content Include="..\Shared\Views\Shared\_Layout.cshtml">
-      <Link>Views\Shared\_Layout.cshtml</Link>
-    </Content>
-    <Content Include="..\Shared\Views\Shared\Error.cshtml">
-      <Link>Views\Shared\Error.cshtml</Link>
-    </Content>
-    <Content Include="..\Shared\Views\CodeFlow\App\CallService.cshtml">
-      <Link>Views\CodeFlow\App\CallService.cshtml</Link>
-    </Content>
-    <Content Include="..\Shared\Views\CodeFlow\App\Index.cshtml">
-      <Link>Views\CodeFlow\App\Index.cshtml</Link>
-    </Content>
-    <Content Include="..\Shared\Views\CodeFlow\Callback\Index.cshtml">
-      <Link>Views\CodeFlow\Callback\Index.cshtml</Link>
-    </Content>
-    <Content Include="..\Shared\Views\CodeFlow\Callback\ShowApiResult.cshtml">
-      <Link>Views\CodeFlow\Callback\ShowApiResult.cshtml</Link>
-    </Content>
-    <Content Include="..\Shared\Views\CodeFlow\Callback\Token.cshtml">
-      <Link>Views\CodeFlow\Callback\Token.cshtml</Link>
-    </Content>
-    <Content Include="..\Shared\Views\Home\BouncedFromIdentityServer.cshtml">
-      <Link>Views\Home\BouncedFromIdentityServer.cshtml</Link>
-    </Content>
-    <Content Include="..\Shared\Views\Home\FormLogin.cshtml">
-      <Link>Views\Home\FormLogin.cshtml</Link>
-    </Content>
-    <Content Include="..\Shared\Views\Home\Index.cshtml">
-      <Link>Views\Home\Index.cshtml</Link>
-    </Content>
     <Content Include="Areas\HelpPage\Views\Web.config" />
     <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\ResourceModel.cshtml" />
@@ -300,7 +270,6 @@
     <None Include="Scripts\_references.js" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Scripts\jquery-2.1.3.min.map" />
-    <Content Include="Views\Home\TestHtmlForm.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,8 +1,6 @@
-﻿using System;
-using System.Security.Claims;
+﻿using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
-using Thinktecture.IdentityModel.Client;
 
 namespace IdentityServerAzureSpike.Shared.Controllers
 {
@@ -25,12 +23,7 @@ namespace IdentityServerAzureSpike.Shared.Controllers
             return View("Index");
         }
 
-        
-        [Route]
-        public ActionResult BouncedFromIdentityServer()
-        {
-            return View((User as ClaimsPrincipal).Claims);
-        }
+      
 
 
         public ActionResult Signout()

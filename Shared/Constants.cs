@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
+using IdentityServerAzureSpike.Shared.Extensions;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
@@ -35,7 +37,6 @@ namespace IdentityServerAzureSpike.Shared
         public static readonly List<string> FullScopes = Scopes.Full.Split().ToList();
         public static readonly List<string> CodeFlowScopes = Scopes.CodeFlow.Split().ToList();
         public static readonly List<string> ImplicitScopes = Scopes.Implicit.Split().ToList();
-
 
         public static class Cookie
         {
@@ -107,6 +108,36 @@ namespace IdentityServerAzureSpike.Shared
         
         }
 
+        public static class RedirectUri
+        {
+            public const string HybridFlow = "HybridFlow";
+            public const string ImplicitFlow = "ImplicitFlow";
+            public const string CodeFlow = "CodeFlow";
+
+            public enum FlowType
+            {
+                Hybrid,
+                Implicit,
+                Code
+            }
+
+            public static string Build(FlowType flowType, string uri)
+            {
+                string url = uri.EnsureTrailingSlash();
+
+                switch (flowType)
+                {
+                    case FlowType.Hybrid:
+                        return string.Concat(url, HybridFlow);
+                    case FlowType.Implicit:
+                        return string.Concat(url, ImplicitFlow);
+                    case FlowType.Code:
+                        return string.Concat(url, CodeFlow);
+                    default:
+                        throw new NotImplementedException(flowType.ToString());       
+                }
+            }
+        }
 
     }
 }

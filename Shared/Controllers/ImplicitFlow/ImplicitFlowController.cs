@@ -7,10 +7,10 @@ using System.Web;
 using System.Web.Mvc;
 using IdentityServerAzureSpike.Shared.Config;
 
-namespace IdentityServerAzureSpike.Shared.Controllers.Implicit
+namespace IdentityServerAzureSpike.Shared.Controllers.ImplicitFlow
 {
-    [Route("implicitflow")]
-    public abstract class ImplicitFlowController : ControllerBase
+    [Route(Constants.RedirectUri.ImplicitFlow)]
+    public class ImplicitFlowController : ControllerBase
     {
 
         [HttpPost]
@@ -24,7 +24,7 @@ namespace IdentityServerAzureSpike.Shared.Controllers.Implicit
                 "?client_id=" + DemoSite.Name +
                 "&response_type=" + Thinktecture.IdentityServer.Core.Constants.ResponseTypes.IdTokenToken + 
                 "&scope=openid email" +
-                "&redirect_uri=" + DemoSite.RedirectUri +
+                "&redirect_uri=" + DemoSite.ImplicitUri +
                 "&response_mode=form_post" +
                 "&state=" + state +
                 "&nonce=" + nonce;

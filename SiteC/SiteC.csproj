@@ -309,42 +309,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="WebRole.cs" />
-    <Content Include="..\Shared\Views\Shared\_Layout.cshtml">
-      <Link>Views\Shared\_Layout.cshtml</Link>
-    </Content>
-    <Content Include="..\Shared\Views\Shared\Error.cshtml">
-      <Link>Views\Shared\Error.cshtml</Link>
-    </Content>
-    <Content Include="..\Shared\Views\CodeFlow\App\CallService.cshtml">
-      <Link>Views\CodeFlow\App\CallService.cshtml</Link>
-    </Content>
-    <Content Include="..\Shared\Views\CodeFlow\App\Index.cshtml">
-      <Link>Views\CodeFlow\App\Index.cshtml</Link>
-    </Content>
-    <Content Include="..\Shared\Views\CodeFlow\Callback\Index.cshtml">
-      <Link>Views\CodeFlow\Callback\Index.cshtml</Link>
-    </Content>
-    <Content Include="..\Shared\Views\CodeFlow\Callback\ShowApiResult.cshtml">
-      <Link>Views\CodeFlow\Callback\ShowApiResult.cshtml</Link>
-    </Content>
-    <Content Include="..\Shared\Views\CodeFlow\Callback\Token.cshtml">
-      <Link>Views\CodeFlow\Callback\Token.cshtml</Link>
-    </Content>
-    <Content Include="..\Shared\Views\Home\BouncedFromIdentityServer.cshtml">
-      <Link>Views\Home\BouncedFromIdentityServer.cshtml</Link>
-    </Content>
-    <Content Include="..\Shared\Views\Home\FormLogin.cshtml">
-      <Link>Views\Home\FormLogin.cshtml</Link>
-    </Content>
-    <Content Include="..\Shared\Views\Home\Index.cshtml">
-      <Link>Views\Home\Index.cshtml</Link>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Shared\Shared.csproj">
       <Project>{FEB509D1-A739-43C2-843C-5463C5A21F29}</Project>
       <Name>Shared</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -56,17 +56,4 @@ namespace IdentityServerAzureSpike.Shared.Config
         }
     }
 
-    public static class DemoSitesExtensions
-    {
-        public static List<string> GetRedirectUris(this DemoSite site)
-        {
-            return new List<string>()
-            {
-                site.RedirectUri,
-                site.Uri + "/hybrid",
-                site.Uri + "/implicit",
-                site.Uri + "/code"
-            };
-        }
-    }
 }

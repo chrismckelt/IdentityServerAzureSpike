@@ -6,7 +6,7 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 
-namespace IdentityServerAzureSpike.SiteE.Areas.HelpPage
+namespace IdentityServerAzureSpike.SiteE.Areas.HelpPage.SampleGeneration
 {
     /// <summary>
     /// This class will create an object of a given type and populate it with sample data.

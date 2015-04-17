@@ -1,4 +1,4 @@
-namespace IdentityServerAzureSpike.SiteC.Areas.HelpPage
+namespace IdentityServerAzureSpike.SiteC.Areas.HelpPage.SampleGeneration
 {
     /// <summary>
     /// Indicates whether the sample is used for request or response

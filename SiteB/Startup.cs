@@ -31,8 +31,8 @@ namespace IdentityServerAzureSpike.SiteB
                 ClientId = DemoSites.Instance.B.Name,
                 // must match IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config.Clients
                 Authority = Shared.Constants.IdentityServerCoreUri,
-                RedirectUri = DemoSites.Instance.B.RedirectUri,
-                PostLogoutRedirectUri = DemoSites.Instance.B.RedirectUri,
+                RedirectUri = DemoSites.Instance.B.HybridUri,
+                PostLogoutRedirectUri = DemoSites.Instance.B.HybridUri,
                 ResponseType = Constants.ResponseTypes.CodeIdTokenToken,
                 Scope = Shared.Constants.Scopes.Full,
                 SignInAsAuthenticationType = Shared.Constants.Cookie.AuthenticationType,
