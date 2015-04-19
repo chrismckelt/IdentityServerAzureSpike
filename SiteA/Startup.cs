@@ -21,13 +21,11 @@ namespace IdentityServerAzureSpike.SiteA
             JwtSecurityTokenHandler.InboundClaimTypeMap = new Dictionary<string, string>();
 
             //https://github.com/KentorIT/owin-cookie-saver 
-            // handle Microsoft's Owin implementation for System.Web
-            
             app.UseKentorOwinCookieSaver();
+            
+            app.UseCookieAuthentication(Shared.Constants.Cookie.BuildActive());
 
-            //app.UseCookieAuthentication(Shared.Constants.Cookie.BuildActive());
-
-            //app.UseCookieAuthentication(Shared.Constants.Cookie.BuildPassive());
+            app.UseCookieAuthentication(Shared.Constants.Cookie.BuildPassive());
 
             app.UseOpenIdConnectAuthentication(new OpenIdConnectAuthenticationOptions
             {
