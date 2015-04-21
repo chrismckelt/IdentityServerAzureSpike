@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
+using IdentityServerAzureSpike.Shared.Extensions;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
@@ -14,45 +16,6 @@ namespace IdentityServerAzureSpike.Shared
         public const string IdentityServerUri = "https://identity.demo.local";
         public const string IdentityServerCoreUri = "https://identity.demo.local/core";
         public const string IdentityServerIdentityUri = "https://identity.demo.local/identity";
-
-
-        public static class Sites
-        {
-            public static class A
-            {
-                public static readonly string Name = "SiteA_Hybrid";
-                public static readonly string Uri = "http://sitea.demo.local:9556";
-                public static readonly string RedirectUri = Uri + "/BouncedFromIdentityServer";
-                public static readonly string PostbackUri = Uri + "/codeflow/callback/";
-            }
-            public static class B
-            {
-                public static readonly string Name = "SiteB_Hybrid";
-                public static readonly string Uri = "http://SiteB.demo.local:9557";
-                public static readonly string RedirectUri = Uri + "/BouncedFromIdentityServer";
-                public static readonly string PostbackUri = Uri + "/codeflow/callback/";
-            }
-            public static class C
-            {
-                public static readonly string Name = "SiteC_ImplicitFlow";
-                public static readonly string Uri = "http://sitec.demo.local:9558";
-                public static readonly string RedirectUri = Uri + "/?WelcomeBack=you";
-                public static readonly string PostbackUri = Uri + "/?LoggedOut=you";
-            }
-            public static class D
-            {
-                public static readonly string Name = "SiteD_CodeFlow";
-                public static readonly string Uri = "http://SiteD.demo.local:9559";
-                public static readonly string RedirectUri = Uri + "/BouncedFromIdentityServer";
-                public static readonly string PostbackUri = Uri + "/callback/";
-            }
-            public static class E
-            {
-                public static readonly string Name = "SiteC_ImplicitFlow";
-                public static readonly string Uri = "http://sitee.demo.local:9560";
-                public static readonly string PostbackUri = Uri + "/implicitflow/callback/";
-            }
-        }
 
         public const string Secret = "secret";
 
@@ -71,41 +34,9 @@ namespace IdentityServerAzureSpike.Shared
             public const string Implicit = "openid email";
         }
 
-        public static readonly List<string> RequiredScopes = Scopes.Full.Split().ToList();
-
-        public static readonly List<string> RedirectSiteAUris = new List<string>()
-        {
-            Constants.Sites.A.Uri,
-            Constants.Sites.A.RedirectUri,
-             Constants.Sites.A.PostbackUri,
-        };
-
-        public static readonly List<string> RedirectSiteBUris = new List<string>()
-        {
-            Constants.Sites.B.Uri,
-            Constants.Sites.B.RedirectUri,
-            Constants.Sites.B.PostbackUri,
-        };
-
-        public static readonly List<string> RedirectSiteCUris = new List<string>()
-        {
-            Constants.Sites.C.Uri,
-            Constants.Sites.C.RedirectUri,
-            Constants.Sites.C.PostbackUri,
-        };
-
-        public static readonly List<string> RedirectSiteDUris = new List<string>()
-        {
-            Constants.Sites.D.Uri,
-            Constants.Sites.D.RedirectUri,
-            Constants.Sites.D.PostbackUri,
-        };
-
-        public static readonly List<string> RedirectSiteEUris = new List<string>()
-        {
-            Constants.Sites.E.Uri,
-            Constants.Sites.E.PostbackUri,            
-        };
+        public static readonly List<string> FullScopes = Scopes.Full.Split().ToList();
+        public static readonly List<string> CodeFlowScopes = Scopes.CodeFlow.Split().ToList();
+        public static readonly List<string> ImplicitScopes = Scopes.Implicit.Split().ToList();
 
         public static class Cookie
         {
@@ -177,6 +108,36 @@ namespace IdentityServerAzureSpike.Shared
         
         }
 
+        public static class RedirectUri
+        {
+            public const string HybridFlow = "HybridFlow";
+            public const string ImplicitFlow = "ImplicitFlow";
+            public const string CodeFlow = "CodeFlow";
+
+            public enum FlowType
+            {
+                Hybrid,
+                Implicit,
+                Code
+            }
+
+            public static string Build(FlowType flowType, string uri)
+            {
+                string url = uri.EnsureTrailingSlash();
+
+                switch (flowType)
+                {
+                    case FlowType.Hybrid:
+                        return string.Concat(url, HybridFlow);
+                    case FlowType.Implicit:
+                        return string.Concat(url, ImplicitFlow);
+                    case FlowType.Code:
+                        return string.Concat(url, CodeFlow);
+                    default:
+                        throw new NotImplementedException(flowType.ToString());       
+                }
+            }
+        }
 
     }
 }

@@ -1,4 +1,5 @@
-using IdentityServerAzureSpike.Shared;
+﻿using System;
+using System.Diagnostics;
 using Microsoft.WindowsAzure.ServiceRuntime;
 
 namespace IdentityServerAzureSpike.SiteE
@@ -7,7 +8,7 @@ namespace IdentityServerAzureSpike.SiteE
     {
         public override bool OnStart()
         {
-            LogUtil.SetupLogger("SiteE"); 
+           Trace.WriteLine("WebRole.OnStart..." + DateTime.Now.ToShortTimeString());
 
             return base.OnStart();
         }

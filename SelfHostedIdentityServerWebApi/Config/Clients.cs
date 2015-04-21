@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Security.Claims;
 using IdentityServerAzureSpike.Shared;
+using IdentityServerAzureSpike.Shared.Config;
 using Thinktecture.IdentityServer.Core.Models;
 
 namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
@@ -16,85 +17,90 @@ namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi.Config
                  new Client
                 {
                     Flow = Flows.Hybrid, // can serve all apps
-                    ClientId = Constants.Sites.A.Name,
-                    ClientName = Constants.Sites.A.Name,
-                    ClientUri = Constants.Sites.A.Uri,
+                    ClientId = DemoSites.Instance.A.Name,
+                    ClientName = DemoSites.Instance.A.Name,
+                    ClientUri = DemoSites.Instance.A.Uri,
                     Enabled = true,
                     ClientSecrets = new List<ClientSecret>
                     {
                         new ClientSecret(Constants.Secret.Sha256())
                     },
-                    ScopeRestrictions = Constants.RequiredScopes,
+                    ScopeRestrictions = Constants.FullScopes,
                     
-                    RedirectUris = Constants.RedirectSiteAUris,
-                    PostLogoutRedirectUris =  Shared.Constants.RedirectSiteAUris,
+                    RedirectUris = DemoSites.Instance.A.RedirectUris,
+                    PostLogoutRedirectUris = DemoSites.Instance.A.RedirectUris,
                     IncludeJwtId = true,
-                    AccessTokenType = AccessTokenType.Jwt
+                    AlwaysSendClientClaims = true,
                 },
 
                 //b
                 new Client
                 {
                     Flow = Flows.Hybrid, // can serve all apps
-                    ClientId = Constants.Sites.B.Name,
-                    ClientName = Constants.Sites.B.Name,
-                    ClientUri = Constants.Sites.B.Uri,
+                    ClientId = DemoSites.Instance.B.Name,
+                    ClientName = DemoSites.Instance.B.Name,
+                    ClientUri = DemoSites.Instance.B.Uri,
                     Enabled = true,
                     ClientSecrets = new List<ClientSecret>
                     {
                         new ClientSecret(Constants.Secret.Sha256())
                     },
-                    ScopeRestrictions = Constants.RequiredScopes,
+                    ScopeRestrictions = Constants.FullScopes,
                     
-                    RedirectUris = Constants.RedirectSiteBUris,
-                    PostLogoutRedirectUris =  Shared.Constants.RedirectSiteBUris,
+                    RedirectUris = DemoSites.Instance.B.RedirectUris,
+                    PostLogoutRedirectUris =  DemoSites.Instance.B.RedirectUris,
+                    IncludeJwtId = true,
                     AlwaysSendClientClaims = true,
-                    AccessTokenType = AccessTokenType.Jwt
-                  
                 },
                 //c
                  new Client
                 {
                     Flow = Flows.Implicit, // for javascript or form posted querystring clients
-                    ClientId = Constants.Sites.C.Name,
-                    ClientName = Constants.Sites.C.Name,
+                    ClientId = DemoSites.Instance.C.Name,
+                    ClientName = DemoSites.Instance.C.Name,
                     Enabled = true,
-                    RedirectUris = Constants.RedirectSiteCUris,
-                    PostLogoutRedirectUris =  Constants.RedirectSiteCUris,
+                    RedirectUris = DemoSites.Instance.C.RedirectUris,
+                    PostLogoutRedirectUris =  DemoSites.Instance.C.RedirectUris,
                     ClientSecrets = new List<ClientSecret>
                     {
                         new ClientSecret(Constants.Secret.Sha256())
                     },                    
+                    IncludeJwtId = true,
+                    AlwaysSendClientClaims = true,
+                    ScopeRestrictions = Constants.ImplicitScopes,
                 },
                 //d
                   new Client
                 {
                     Flow = Flows.AuthorizationCode, // for mvc
-                    ClientId = Constants.Sites.D.Name,
-                    ClientName = Constants.Sites.D.Name,
+                    ClientId = DemoSites.Instance.D.Name,
+                    ClientName = DemoSites.Instance.D.Name,
                     Enabled = true,
                     
-                    RedirectUris = Constants.RedirectSiteDUris,
-                    PostLogoutRedirectUris =  Constants.RedirectSiteDUris,
+                    RedirectUris = DemoSites.Instance.D.RedirectUris,
+                    PostLogoutRedirectUris =  DemoSites.Instance.D.RedirectUris,
                     ClientSecrets = new List<ClientSecret>
                     {
                         new ClientSecret(Constants.Secret.Sha256())
                     },                    
-                    AccessTokenType = AccessTokenType.Jwt
+                    ScopeRestrictions = Constants.CodeFlowScopes,
+                    IncludeJwtId = true,
+                    AlwaysSendClientClaims = true,
                 },
                 //e
                   new Client
                 {
                     Flow = Flows.Implicit, // 
-                    ClientId = Constants.Sites.E.Name,
-                    ClientName = Constants.Sites.E.Name,
+                    ClientId = DemoSites.Instance.E.Name,
+                    ClientName = DemoSites.Instance.E.Name,
                     Enabled = true,
-                    RedirectUris = Constants.RedirectSiteEUris,
-                    PostLogoutRedirectUris =  Constants.RedirectSiteEUris,
+                    RedirectUris = DemoSites.Instance.E.RedirectUris,
+                    PostLogoutRedirectUris =  DemoSites.Instance.E.RedirectUris,
                     ClientSecrets = new List<ClientSecret>
                     {
                         new ClientSecret(Constants.Secret.Sha256())
                     },                    
+                     ScopeRestrictions = Constants.ImplicitScopes,
                 },
             };
 

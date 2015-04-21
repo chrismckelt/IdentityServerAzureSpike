@@ -228,6 +228,39 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -239,42 +272,14 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
-    <Content Include="..\Shared\Views\Shared\_Layout.cshtml">
-      <Link>Views\Shared\_Layout.cshtml</Link>
-    </Content>
-    <Content Include="..\Shared\Views\Shared\Error.cshtml">
-      <Link>Views\Shared\Error.cshtml</Link>
-    </Content>
-    <Content Include="..\Shared\Views\CodeFlow\App\CallService.cshtml">
-      <Link>Views\CodeFlow\App\CallService.cshtml</Link>
-    </Content>
-    <Content Include="..\Shared\Views\CodeFlow\App\Index.cshtml">
-      <Link>Views\CodeFlow\App\Index.cshtml</Link>
-    </Content>
-    <Content Include="..\Shared\Views\CodeFlow\Callback\Index.cshtml">
-      <Link>Views\CodeFlow\Callback\Index.cshtml</Link>
-    </Content>
-    <Content Include="..\Shared\Views\CodeFlow\Callback\ShowApiResult.cshtml">
-      <Link>Views\CodeFlow\Callback\ShowApiResult.cshtml</Link>
-    </Content>
-    <Content Include="..\Shared\Views\CodeFlow\Callback\Token.cshtml">
-      <Link>Views\CodeFlow\Callback\Token.cshtml</Link>
-    </Content>
-    <Content Include="..\Shared\Views\Home\BouncedFromIdentityServer.cshtml">
-      <Link>Views\Home\BouncedFromIdentityServer.cshtml</Link>
-    </Content>
-    <Content Include="..\Shared\Views\Home\FormLogin.cshtml">
-      <Link>Views\Home\FormLogin.cshtml</Link>
-    </Content>
-    <Content Include="..\Shared\Views\Home\Index.cshtml">
-      <Link>Views\Home\Index.cshtml</Link>
-    </Content>
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.1.3.js" />
     <Content Include="Scripts\jquery-2.1.3.min.js" />
+    <Content Include="Scripts\jquery-ui-1.11.4.js" />
+    <Content Include="Scripts\jquery-ui-1.11.4.min.js" />
     <Content Include="Scripts\npm.js" />
     <None Include="Scripts\_references.js" />
     <Content Include="Views\_ViewStart.cshtml" />
@@ -300,11 +305,6 @@
     <Compile Include="..\Shared\App_Start\RouteConfig.cs">
       <Link>App_Start\RouteConfig.cs</Link>
     </Compile>
-    <Compile Include="Controllers\CodeFlow\AppController.cs" />
-    <Compile Include="Controllers\CodeFlow\CallbackController.cs" />
-    <Compile Include="Controllers\HelpController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\CodeFlow\CodeFlowController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -320,8 +320,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\" />
-    <Folder Include="Controllers\Implicit\" />
-    <Folder Include="Views\Implicit\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

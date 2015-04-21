@@ -1,15 +1,12 @@
 using System;
 using System.Diagnostics;
-using System.IO;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
-using IdentityServerAzureSpike.Shared;
+using IdentityServerAzureSpike.Shared.Utility;
 using Microsoft.Owin.Hosting;
 using Microsoft.WindowsAzure.ServiceRuntime;
 using Serilog;
-using Thinktecture.IdentityServer.Core.Logging;
-using Thinktecture.IdentityServer.Core.Logging.LogProviders;
 
 namespace IdentityServerAzureSpike.SelfHostedIdentityServerWebApi
 {
