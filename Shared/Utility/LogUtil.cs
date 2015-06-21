@@ -12,7 +12,12 @@ namespace IdentityServerAzureSpike.Shared.Utility
     {
         public static void SetupLogger(string logname)
         {
-            string file = @"c:\logs\" + CreateMeaningfulFileName(logname) + ".log";
+            const string logDir = @"c:\logs\";
+            if (Directory.Exists(logDir))
+            {
+                Directory.CreateDirectory(logDir);
+            }
+            string file = logDir + CreateMeaningfulFileName(logname) + ".log";
             File.Delete(file);
 
             // serilog to azure console & file
